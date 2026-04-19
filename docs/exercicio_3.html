@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Exercício 3 - Pacotes R para Ecologia de Paisagen – Diário de Ecologia de paisagens - Anna Luisa</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
+
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+
+<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+
+<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
+
+<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+
+<script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
+
+<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+
+<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+
+<script src="site_libs/leaflet-binding-2.2.3/leaflet.js"></script>
+
+<script src="site_libs/leaflet-providers-3.0.0/leaflet-providers.js"></script>
+
+<script src="site_libs/leaflet-providers-plugin-2.2.3/leaflet-providers-plugin.js"></script>
+
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Diário de Ecologia de paisagens - Anna Luisa</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./exercicio_1.html"> 
+<span class="menu-text">Exercício 1 - O Mosaico no Lance de Vista</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./exercicio_3.html" aria-current="page"> 
+<span class="menu-text">Exercício 3 - Pacotes R para Ecologia de Paisagens</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./exercicio_4.html"> 
+<span class="menu-text">Exercício 4 -</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#pacotes-do-r-dessa-disciplina" id="toc-pacotes-do-r-dessa-disciplina" class="nav-link active" data-scroll-target="#pacotes-do-r-dessa-disciplina">Pacotes do R dessa disciplina</a></li>
+  <li><a href="#verificando-instalação" id="toc-verificando-instalação" class="nav-link" data-scroll-target="#verificando-instalação">Verificando instalação</a></li>
+  <li><a href="#dados-raster---terra" id="toc-dados-raster---terra" class="nav-link" data-scroll-target="#dados-raster---terra">Dados raster - <code>terra</code></a></li>
+  <li><a href="#métricas-de-paisagem---landscapemetrics" id="toc-métricas-de-paisagem---landscapemetrics" class="nav-link" data-scroll-target="#métricas-de-paisagem---landscapemetrics">Métricas de paisagem - <code>landscapemetrics</code></a>
+  <ul class="collapse">
+  <li><a href="#calculando-múltiplas-métricas-de-uma-vez" id="toc-calculando-múltiplas-métricas-de-uma-vez" class="nav-link" data-scroll-target="#calculando-múltiplas-métricas-de-uma-vez">Calculando múltiplas métricas de uma vez</a></li>
+  <li><a href="#visualizando-fragmentos" id="toc-visualizando-fragmentos" class="nav-link" data-scroll-target="#visualizando-fragmentos">Visualizando fragmentos</a></li>
+  </ul></li>
+  <li><a href="#mapas-temáticos---tmap" id="toc-mapas-temáticos---tmap" class="nav-link" data-scroll-target="#mapas-temáticos---tmap">Mapas temáticos - <code>tmap</code></a></li>
+  <li><a href="#fluxo-integrado-de-trabalho" id="toc-fluxo-integrado-de-trabalho" class="nav-link" data-scroll-target="#fluxo-integrado-de-trabalho">Fluxo integrado de trabalho</a></li>
+  <li><a href="#erros-comuns-na-instalação" id="toc-erros-comuns-na-instalação" class="nav-link" data-scroll-target="#erros-comuns-na-instalação">Erros comuns na instalação</a></li>
+  <li><a href="#resumo-script-de-configuração-completa" id="toc-resumo-script-de-configuração-completa" class="nav-link" data-scroll-target="#resumo-script-de-configuração-completa">Resumo: script de configuração completa</a></li>
+  <li><a href="#ver-como-citar-os-pacotes" id="toc-ver-como-citar-os-pacotes" class="nav-link" data-scroll-target="#ver-como-citar-os-pacotes">Ver como citar os pacotes</a></li>
+  <li><a href="#dúvidas" id="toc-dúvidas" class="nav-link" data-scroll-target="#dúvidas">Dúvidas</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Exercício 3 - Pacotes R para Ecologia de Paisagen</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="pacotes-do-r-dessa-disciplina" class="level2">
+<h2 class="anchored" data-anchor-id="pacotes-do-r-dessa-disciplina">Pacotes do R dessa disciplina</h2>
+<p>Para Ecologia de Paisagens, precisamos de pacotes que nos permitam:</p>
+<ul>
+<li>Ler e manipular <strong>dados espaciais</strong> (rasters e vetores)</li>
+<li>Calcular <strong>métricas de paisagem</strong> (fragmentação, conectividade, diversidade de habitats)</li>
+<li>Criar <strong>mapas e visualizações</strong> de alta qualidade</li>
+<li>Realizar <strong>análises estatísticas</strong> ecológicas</li>
+</ul>
+<p>Os pacotes que usaremos podem ser agrupados por função:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 26%">
+<col style="width: 49%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Grupo</th>
+<th>Pacotes</th>
+<th>Para que servem</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dados espaciais — Raster</td>
+<td>terra</td>
+<td>Leitura, manipulação e análise de dados matriciais (GeoTIFF, etc.)</td>
+</tr>
+<tr class="even">
+<td>Dados espaciais — Vetor</td>
+<td>sf</td>
+<td>Geometrias vetoriais (pontos, linhas, polígonos) em formato tidy</td>
+</tr>
+<tr class="odd">
+<td>Métricas de paisagem</td>
+<td>landscapemetrics</td>
+<td>Cálculo de &gt;130 métricas de padrão de paisagem (substitui o FRAGSTATS)</td>
+</tr>
+<tr class="even">
+<td>Visualização de mapas</td>
+<td>tmap, ggplot2</td>
+<td>Mapas temáticos estáticos e interativos</td>
+</tr>
+<tr class="odd">
+<td>Ecologia de comunidades</td>
+<td>vegan</td>
+<td>Diversidade, ordenação, análises multivariadas</td>
+</tr>
+<tr class="even">
+<td>Manipulação de dados</td>
+<td>tidyverse</td>
+<td>Conjunto de pacotes para ciência de dados (dplyr, tidyr, ggplot2…)</td>
+</tr>
+<tr class="odd">
+<td>Acesso a dados abertos</td>
+<td>rgbif, geodata</td>
+<td>Download de ocorrências (GBIF) e dados ambientais</td>
+</tr>
+<tr class="even">
+<td>Shapefiles geográficos do Basil</td>
+<td>geobr</td>
+<td>Municípios, limites de estado e bbiomas</td>
+</tr>
+</tbody>
+</table>
+<p>Como instalar pacotes necessários:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vetor com todos os pacotes necessários</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pacotes <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Dados espaciais</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"terra"</span>,          <span class="co"># Análise de dados raster (sucessor moderno do 'raster')</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"sf"</span>,             <span class="co"># Dados vetoriais em formato tidy (Simple Features)</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Métricas de paisagem</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"landscapemetrics"</span>, <span class="co"># &gt;130 métricas de padrão de paisagem (substitui FRAGSTATS)</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Visualização</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"tmap"</span>,           <span class="co"># Mapas temáticos estáticos e interativos</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ggplot2"</span>,        <span class="co"># Gráficos e visualizações gerais</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"tidyterra"</span>,      <span class="co"># Integração do terra com ggplot2</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ecologia</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">"vegan"</span>,          <span class="co"># Diversidade, ordenação, análises multivariadas</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">"iNEXT"</span>,          <span class="co"># Rarefação e extrapolação de diversidade</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Manipulação de dados (Tidyverse)</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">"dplyr"</span>,          <span class="co"># Manipulação de tabelas (filter, select, mutate...)</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="st">"tidyr"</span>,          <span class="co"># Organização de dados (pivot_longer, pivot_wider...)</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="st">"readr"</span>,          <span class="co"># Leitura de arquivos CSV e similares</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="st">"tibble"</span>,         <span class="co"># Tabelas melhoradas (alternativa ao data.frame)</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="st">"purrr"</span>,          <span class="co"># Programação funcional (map, walk...)</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Acesso a dados abertos</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="st">"geodata"</span>,        <span class="co"># Download de dados climáticos, elevação, etc.</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="st">"rgbif"</span>,          <span class="co"># Acesso ao GBIF (ocorrências de espécies)</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  <span class="st">"rnaturalearth"</span>,  <span class="co"># Fronteiras e mapas-base do Natural Earth</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="st">"rnaturalearthdata"</span>, <span class="co"># Dados complementares do Natural Earth</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="st">"geobr"</span> ,        <span class="co"># Shapefiles da geografia Brasileira</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Utilitários</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  <span class="st">"remotes"</span>,        <span class="co"># Instalar pacotes do GitHub</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  <span class="st">"here"</span>            <span class="co"># Gerenciamento de caminhos de arquivo</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalar apenas os que ainda não estão instalados</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>novos <span class="ot">&lt;-</span> pacotes[<span class="sc">!</span>(pacotes <span class="sc">%in%</span> <span class="fu">installed.packages</span>()[, <span class="st">"Package"</span>])]</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">length</span>(novos) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Instalando"</span>, <span class="fu">length</span>(novos), <span class="st">"pacote(s)...</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(novos)</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Todos os pacotes já estão instalados!</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Todos os pacotes já estão instalados!</code></pre>
+</div>
+</div>
+</section>
+<section id="verificando-instalação" class="level2">
+<h2 class="anchored" data-anchor-id="verificando-instalação">Verificando instalação</h2>
+<p>Carregando principais pacotes:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(landscapemetrics)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"✓ Todos os pacotes carregados com sucesso!</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>✓ Todos os pacotes carregados com sucesso!</code></pre>
+</div>
+</div>
+</section>
+<section id="dados-raster---terra" class="level2">
+<h2 class="anchored" data-anchor-id="dados-raster---terra">Dados raster - <code>terra</code></h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Criar um raster de exemplo (paisagem simulada)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="at">nrows =</span> <span class="dv">50</span>, <span class="at">ncols =</span> <span class="dv">50</span>, </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> <span class="dv">50</span>, <span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">ymax =</span> <span class="dv">50</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Simular 4 classes de uso do solo</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(r) <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="fu">ncell</span>(r), <span class="at">replace =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.50</span>, <span class="fl">0.20</span>, <span class="fl">0.20</span>, <span class="fl">0.10</span>))</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Nomear as classes</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(r) <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">id    =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> <span class="fu">c</span>(<span class="st">"Floresta"</span>, <span class="st">"Pastagem"</span>, <span class="st">"Agricultura"</span>, <span class="st">"Água"</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(r, </span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">col     =</span> <span class="fu">c</span>(<span class="st">"darkgreen"</span>, <span class="st">"lightgreen"</span>, <span class="st">"orange"</span>, <span class="st">"lightblue"</span>),</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">main    =</span> <span class="st">"Paisagem simulada — uso do solo"</span>,</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">mar     =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">6</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="exercicio_3_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Operações com raster:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Informações do raster</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(r)          <span class="co"># Dimensões, extensão, CRS</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">res</span>(r)            <span class="co"># Resolução espacial</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ext</span>(r)            <span class="co"># Extensão geográfica</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ncell</span>(r)          <span class="co"># Número total de células</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">freq</span>(r)           <span class="co"># Frequência de cada classe (tabela de área)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="métricas-de-paisagem---landscapemetrics" class="level2">
+<h2 class="anchored" data-anchor-id="métricas-de-paisagem---landscapemetrics">Métricas de paisagem - <code>landscapemetrics</code></h2>
+<p>Este é o pacote central da disciplina. O landscapemetrics é um pacote R para calcular métricas de paisagem para padrões categóricos em um fluxo de trabalho organizado (tidy). Pode ser usado como substituto direto do FRAGSTATS, oferecendo um fluxo reproduzível de análise de paisagem em um único ambiente.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Os três níveis de métricas
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Todas as funções no <code>landscapemetrics</code> começam com <code>lsm_</code>. A segunda parte do nome especifica o nível: <strong>patch</strong> (p), <strong>class</strong> (c) ou <strong>landscape</strong> (l).</p>
+</div>
+</div>
+<p><strong>Patch (parcela/mancha)</strong> — métricas para cada fragmento individual <strong>Class (classe)</strong> — métricas agregadas por tipo de uso do solo <strong>Landscape (paisagem)</strong> — métricas para toda a paisagem</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(landscapemetrics)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregar paisagem de exemplo interna do pacote</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>paisagem <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">rast</span>(landscapemetrics<span class="sc">::</span>landscape)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- VERIFICAÇÃO OBRIGATÓRIA antes de calcular métricas ----</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">check_landscape</span>(paisagem)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Caution: Coordinate reference system not metric - Units of results
+based on cellsizes and/or distances may be incorrect.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  layer crs units   class n_classes OK
+1     1  NA    NA integer         3 ❓</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># -------- VER A PAISAGEM CRIADA ARTIFICIALMENTE</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(paisagem)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="exercicio_3_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- Métricas de PATCH (nível de fragmento) ----</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Área de cada fragmento (em hectares)</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>areas <span class="ot">&lt;-</span> <span class="fu">lsm_p_area</span>(paisagem)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(areas)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 6
+  layer level class    id metric  value
+  &lt;int&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;   &lt;dbl&gt;
+1     1 patch     1     1 area   0.0001
+2     1 patch     1     2 area   0.0005
+3     1 patch     1     3 area   0.0072
+4     1 patch     1     4 area   0.0001
+5     1 patch     1     5 area   0.0001
+6     1 patch     1     6 area   0.008 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Distância ao vizinho mais próximo (isolamento)</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>isolamento <span class="ot">&lt;-</span> <span class="fu">lsm_p_enn</span>(paisagem)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(isolamento)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 6
+  layer level class    id metric value
+  &lt;int&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;  &lt;dbl&gt;
+1     1 patch     1     1 enn     7   
+2     1 patch     1     2 enn     4   
+3     1 patch     1     3 enn     2   
+4     1 patch     1     4 enn     6.32
+5     1 patch     1     5 enn     5   
+6     1 patch     1     6 enn     2.24</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- Métricas de CLASS (nível de classe) ----</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Proporção de cada classe na paisagem</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>proporcao <span class="ot">&lt;-</span> <span class="fu">lsm_c_pland</span>(paisagem)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(proporcao)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 6
+  layer level class    id metric value
+  &lt;int&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;  &lt;dbl&gt;
+1     1 class     1    NA pland   20.4
+2     1 class     2    NA pland   26  
+3     1 class     3    NA pland   53.6</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Total de borda por classe</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>borda <span class="ot">&lt;-</span> <span class="fu">lsm_c_te</span>(paisagem)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(borda)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 6
+  layer level class    id metric value
+  &lt;int&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;  &lt;dbl&gt;
+1     1 class     1    NA te       181
+2     1 class     2    NA te       203
+3     1 class     3    NA te       296</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- Métricas de LANDSCAPE (nível de paisagem) ----</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Índice de diversidade de Shannon</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>shannon <span class="ot">&lt;-</span> <span class="fu">lsm_l_shdi</span>(paisagem)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(shannon)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 6
+  layer level     class    id metric value
+  &lt;int&gt; &lt;chr&gt;     &lt;int&gt; &lt;int&gt; &lt;chr&gt;  &lt;dbl&gt;
+1     1 landscape    NA    NA shdi    1.01</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Área total</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>area_total <span class="ot">&lt;-</span> <span class="fu">lsm_l_ta</span>(paisagem)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(area_total)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 6
+  layer level     class    id metric value
+  &lt;int&gt; &lt;chr&gt;     &lt;int&gt; &lt;int&gt; &lt;chr&gt;  &lt;dbl&gt;
+1     1 landscape    NA    NA ta      0.09</code></pre>
+</div>
+</div>
+<section id="calculando-múltiplas-métricas-de-uma-vez" class="level3">
+<h3 class="anchored" data-anchor-id="calculando-múltiplas-métricas-de-uma-vez">Calculando múltiplas métricas de uma vez</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular várias métricas simultaneamente</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>metricas <span class="ot">&lt;-</span> <span class="fu">calculate_lsm</span>(</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  paisagem,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">what =</span> <span class="fu">c</span>(</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"lsm_l_ta"</span>,    <span class="co"># Área total</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"lsm_l_shdi"</span>,  <span class="co"># Diversidade de Shannon</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"lsm_l_pd"</span>,    <span class="co"># Densidade de fragmentos</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"lsm_c_pland"</span>, <span class="co"># Proporção de cada classe</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"lsm_c_np"</span>     <span class="co"># Número de fragmentos por classe</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Please use 'check_landscape()' to ensure the input data is valid.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(metricas)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Listar TODAS as 130+ métricas disponíveis</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># list_lsm()  # descomente para ver a lista completa</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 × 6
+  layer level     class    id metric    value
+  &lt;int&gt; &lt;chr&gt;     &lt;int&gt; &lt;int&gt; &lt;chr&gt;     &lt;dbl&gt;
+1     1 class         1    NA np         9   
+2     1 class         2    NA np        13   
+3     1 class         3    NA np         6   
+4     1 class         1    NA pland     20.4 
+5     1 class         2    NA pland     26   
+6     1 class         3    NA pland     53.6 
+7     1 landscape    NA    NA pd     31111.  
+8     1 landscape    NA    NA shdi       1.01
+9     1 landscape    NA    NA ta         0.09</code></pre>
+</div>
+</div>
+</section>
+<section id="visualizando-fragmentos" class="level3">
+<h3 class="anchored" data-anchor-id="visualizando-fragmentos">Visualizando fragmentos</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar fragmentos rotulados por classe</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">show_patches</span>(paisagem, <span class="at">class =</span> <span class="st">"all"</span>, <span class="at">labels =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$layer_1</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="exercicio_3_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar área de núcleo (interior dos fragmentos)</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">show_cores</span>(paisagem, <span class="at">class =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$layer_1</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="exercicio_3_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="mapas-temáticos---tmap" class="level2">
+<h2 class="anchored" data-anchor-id="mapas-temáticos---tmap">Mapas temáticos - <code>tmap</code></h2>
+<p>O <code>tmap</code> cria mapas de alta qualidade com uma sintaxe intuitiva, parecida com o <code>ggplot2</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Criar paisagem simulada para o mapa</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="at">nrows =</span> <span class="dv">50</span>, <span class="at">ncols =</span> <span class="dv">50</span>,</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">xmin =</span> <span class="sc">-</span><span class="fl">35.5</span>, <span class="at">xmax =</span> <span class="sc">-</span><span class="fl">35.0</span>,</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">ymin =</span> <span class="sc">-</span><span class="fl">8.5</span>,  <span class="at">ymax =</span> <span class="sc">-</span><span class="fl">8.0</span>,</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">crs  =</span> <span class="st">"EPSG:4326"</span>)</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(r) <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="fu">ncell</span>(r), <span class="at">replace =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>                    <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.50</span>, <span class="fl">0.20</span>, <span class="fl">0.20</span>, <span class="fl">0.10</span>))</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(r) <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">id    =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> <span class="fu">c</span>(<span class="st">"Floresta"</span>, <span class="st">"Pastagem"</span>, <span class="st">"Agricultura"</span>, <span class="st">"Água"</span>)</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Modo interativo</span></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a><span class="fu">tmap_mode</span>(<span class="st">"view"</span>)  <span class="co"># mapa interativo (navegável)</span></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(r) <span class="sc">+</span></span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_raster</span>(</span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">col.scale =</span> <span class="fu">tm_scale_categorical</span>(</span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkgreen"</span>, <span class="st">"lightgreen"</span>, <span class="st">"orange"</span>, <span class="st">"lightblue"</span>)</span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">col.legend =</span> <span class="fu">tm_legend</span>(<span class="at">title =</span> <span class="st">"Uso do Solo"</span>)</span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_title</span>(<span class="st">"Paisagem Simulada — Pernambuco"</span>) <span class="sc">+</span></span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_scalebar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<style>#legend01 { background: #FFFFFF; opacity: 1}</style>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-75d9546b0df4a8792ac0" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-75d9546b0df4a8792ac0">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"attributionControl":true},"calls":[{"method":"createMapPane","args":["tmap401",401]},{"method":"addLayersControl","args":[["Esri.WorldGrayCanvas","OpenStreetMap","Esri.WorldTopoMap"],"r",{"collapsed":true,"autoZIndex":true,"position":"topleft"}]},{"method":"addProviderTiles","args":["Esri.WorldGrayCanvas",null,"Esri.WorldGrayCanvas",{"minZoom":0,"maxZoom":18,"maxNativeZoom":17,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["OpenStreetMap",null,"OpenStreetMap",{"minZoom":0,"maxZoom":18,"maxNativeZoom":17,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["Esri.WorldTopoMap",null,"Esri.WorldTopoMap",{"minZoom":0,"maxZoom":18,"maxNativeZoom":17,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"pane":"tilePane"}]},{"method":"addRasterImage","args":["data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAzCAYAAADVY1sUAAAHGklEQVRogdVaP476PBCdRL8zUETiFJyAknaROAE9KRCHQBTOIWiQoKXkBNtvj5SCgiv4K8JzXl7G2W0/Swji2OPxeP48z2DXnzZef9poW4vhHWI8W4zn7rdth7/DO6SxtrXIczEWz/wunvvxoIMPv8czxqKf+/ANXtM4HsgMMxFsjgnwojpePzwW45R+jgb3QTgq5Hi2WMalpVYfarvuW5u/NtasgoVjsLg0Kx7d++fsYmbd8+5eG+bWh9rMzMIxJFpx2X3CMSS6131rxaPruy3aNOa2aNM80NC1sT54MOvm1YfaiodZEd4h1oc6LRiXZs0qJObA1G3R2td3lTaiizAjPJf7d/famlXH6Py1sefsMhKC9udoYn3MK9GJVjz6k+E+3gS+ITXQ4AXj0hIN9IN2fahtfaoGzM1fGzMzW5+qNB9tdx8KlfmoD/VnrqOPrINq/GqI6GfdVfvJ2Y4acc6+PBpqU4VtLaoKzF+bJBlu13076Mcz67nOw7v1qRrYkK4BVWGVmVIvrA1+R6oFZlg1MAbqdd236ZkZZcbANGwCagBmQEuFWDw6+mw7cdmrFwvjum9td+/UtGRGuYE5NPUexcPShz0J2vy1SQaukgdTvCY8EASJtrvXdlu0o1Nan6rBuiUzGZc2GAgDhhSU2JT7xWaYNtxvswqpH3PAlNJgtfRUrRewBCU1JDZEL7Cps0D0V4eRo+UFQp4DehxI3eCpMEI9icKJXNTWBRS6eEyCQS9662bVM4424jE0BStUUt7mPDf+mzv28J3ywFhQN16a9d5J4Qoawwq2k+fskuawbsNTgQY7CtXzcAzJdng9syEMAk3YGHvV9anqIMruXg/CvS4I2IL+qXEefFFDxXt27+rZwPz8tUmu+rZoR7AG8WgUEKcWYyJYjN20h78YNIIGM8dezfvNGHBKSOV13yYJA41yW58q+/rugh3wEJ9QTgho2AQCJnAWYlBuHgsQgVJ541ZyhFXCIHZbdBCcpVgfOiSrQTMcQ9okBMRrABVAgIhVsD/Qec4uSdp8IqolEMBItRhypEG0QVYRM0tqwqrASNa7Figt0NMxqlbch9+wb/eGyIiX3Z2HeHNuVd3klPvNoWV2wZ47Zhol38iAgdQVqj1AIh7GYjjjXbzmr026LSq9uOzeM/TB6daH2nb3oceE6+4enF16gScndZ2vwQr9XvBU9OBFe02M5NCBeQwo7lLokTt+vNOLl5ew+Iu6eJvxUIFtLZoywdJT2JAlsvUFoQtzOsfTAm+8d8ou5PEI8qZYNdS4c6qnR89jc+mk3xwLYzulEd6hO5Hf8k6QwhSQm4L7HhD11EQRtCco1RB8F+Edot6fc3frXKoHsaL36X08+fquBl4P9PhunoMsZn0M4uyJF0tMd+55Js9DeYabM9opb/WX+blTGPzOHeNfGJpihr2bqh33e5clzxnoLZHVMLxDLJG65ONHkOGApoASz6xqDPFZVTkVxMk2NK+PVRY0vAAL3FeuT1XKYGADSPN4kxi+87Omj5RBRGUW2HN2GWyYc2PYBLIx3JC8AM2Oh+3YU+TsxAuGXr+qRi7ae27WU+vfcFw8f7AWJ5e5qYRxn+A7DOD97j7MF+N3swrpagoaOF3+Nht6S1wdvKZwvnjYEGt5uIb7NbhNeZspnAY6U5AjB2nUYYwi+xRDSmAKduPYVXVyKptzxbk0VS61ZEwkRzh3OopoGTDmorTO0eccgFUBKm5LhR7Wd9Zd9GnEVZ2FjsPeODPDtzzYAReXPLpsA1ifs/+wP7R/HlPhGMwe3UJPu6SFbovWms+VVBna3WtrPvOj9cw1slkP4jBTDHNwcWtWHT/sKEZwybtDeNVYNS4vOkMNclDbW8Or3kLFp67Kqloldv2cXVIBFDvnqIrGAA7vkDiAJLUYhMAFABmXvbQ1YiNoMj9cwtMS3fpUdZnK608bOZKiQde9IqQeL0dhRrZYXFHxlIp5WRtG3yiWKmIvAUd4MhbmgowaI0MT4B1ORiB/xSeFSpRiKy3G8oY5v4zkntm4aPoPk+PSzCiLEo7BGusNt1kFuy42Zt8V1cUvAybXB/J4j+7Io1Wj0pyCURizl1PuVKkeCTvVLZH8m7qyss/OxRgPCeSiey6AjqL0dhyHPCcyiEMeY57HycEPZsKL4goKda6XofFyBF7igvkp+Ri5Xojj42CmVV4k1ECDaxhqA6h1wBNxY1Bp1qdsOWfMtjFIzH3WK2xr0Q1uq97VmXXRlf8zwtEe7bpvk8F7tJ6zS6rSenV8buwR8fcRvv9AsOgv4tkiQwquAmkCIecydfG/NK80wf9DUZeumzPrEx7NKvTZeD1a7JTVgOMBpO/FG2aSMZf6fsVSmMt/4AE/v/3RprCtRa9a5DHDx8p24wUsDxRqjDDzA6MXUFnVtUw3VXT637X/APE8WA+rr4QRAAAAAElFTkSuQmCC",[[-7.999999999999998,-35.49999999999999],[-8.507348633784401,-34.99739176092524]],"r","r",{"tileSize":256,"zIndex":1,"minZoom":0,"pane":"tmap401","opacity":1}]},{"method":"addControl","args":["<div>\n  <div style=\"font-size: 14px; text-align: left; margin-bottom: 5px; color: #000000;\">Uso do Solo<\/div>\n<\/div>\n<div>\n  <img src=\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20width%3D%2214%22%20height%3D%2214%22%3E%0A%20%20%3Crect%20id%3D%22stadium%22%20x%3D%220%22%20y%3D%220%22%20height%3D%2214%22%20width%3D%2214%22%20rx%3D%2225%25%22%20stroke%3D%22%23000000%22%20fill%3D%22%23006400%22%20stroke-opacity%3D%220%22%20fill-opacity%3D%221%22%20stroke-width%3D%220%22%20stroke-dash%3D%22none%22%20baseSize%3D%2220%22%3E%3C%2Frect%3E%0A%3C%2Fsvg%3E\" style=\"vertical-align: middle; margin: 5px; margin-right: 0px; margin-left: 0px\" height=\"14\" width=\"14\"/>\n  <span style=\"font-size: 14px; vertical-align: middle; margin: 0px;\">Floresta<\/span>\n<\/div>\n<div>\n  <img src=\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20width%3D%2214%22%20height%3D%2214%22%3E%0A%20%20%3Crect%20id%3D%22stadium%22%20x%3D%220%22%20y%3D%220%22%20height%3D%2214%22%20width%3D%2214%22%20rx%3D%2225%25%22%20stroke%3D%22%23000000%22%20fill%3D%22%2390EE90%22%20stroke-opacity%3D%220%22%20fill-opacity%3D%221%22%20stroke-width%3D%220%22%20stroke-dash%3D%22none%22%20baseSize%3D%2220%22%3E%3C%2Frect%3E%0A%3C%2Fsvg%3E\" style=\"vertical-align: middle; margin: 5px; margin-right: 0px; margin-left: 0px\" height=\"14\" width=\"14\"/>\n  <span style=\"font-size: 14px; vertical-align: middle; margin: 0px;\">Pastagem<\/span>\n<\/div>\n<div>\n  <img src=\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20width%3D%2214%22%20height%3D%2214%22%3E%0A%20%20%3Crect%20id%3D%22stadium%22%20x%3D%220%22%20y%3D%220%22%20height%3D%2214%22%20width%3D%2214%22%20rx%3D%2225%25%22%20stroke%3D%22%23000000%22%20fill%3D%22%23FFA500%22%20stroke-opacity%3D%220%22%20fill-opacity%3D%221%22%20stroke-width%3D%220%22%20stroke-dash%3D%22none%22%20baseSize%3D%2220%22%3E%3C%2Frect%3E%0A%3C%2Fsvg%3E\" style=\"vertical-align: middle; margin: 5px; margin-right: 0px; margin-left: 0px\" height=\"14\" width=\"14\"/>\n  <span style=\"font-size: 14px; vertical-align: middle; margin: 0px;\">Agricultura<\/span>\n<\/div>\n<div>\n  <img src=\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20width%3D%2214%22%20height%3D%2214%22%3E%0A%20%20%3Crect%20id%3D%22stadium%22%20x%3D%220%22%20y%3D%220%22%20height%3D%2214%22%20width%3D%2214%22%20rx%3D%2225%25%22%20stroke%3D%22%23000000%22%20fill%3D%22%23ADD8E6%22%20stroke-opacity%3D%220%22%20fill-opacity%3D%221%22%20stroke-width%3D%220%22%20stroke-dash%3D%22none%22%20baseSize%3D%2220%22%3E%3C%2Frect%3E%0A%3C%2Fsvg%3E\" style=\"vertical-align: middle; margin: 5px; margin-right: 0px; margin-left: 0px\" height=\"14\" width=\"14\"/>\n  <span style=\"font-size: 14px; vertical-align: middle; margin: 0px;\">Água<\/span>\n<\/div>","bottomright","legend01","info legend r leaflegend-group-r"]},{"method":"addScaleBar","args":[{"maxWidth":100,"metric":true,"imperial":true,"updateWhenIdle":true,"position":"bottomright"}]}],"fitBounds":[-8.497406945037223,-35.49999999999999,-7.999999999999998,-34.99739176092524,[]],"limits":{"lat":[-8.507348633784401,-7.999999999999998],"lng":[-35.49999999999999,-34.99739176092524]}},"evals":[],"jsHooks":{"render":[{"code":"function(el, x, data) {\n  return (\nfunction(el, x) {\n  var updateLeafLegend = function() {\n    var controlGroups = document.querySelectorAll(\n      'input.leaflet-control-layers-selector');\n    controlGroups.forEach(g => {\n      var groupName = g.nextSibling.innerText.substr(1);\n      var className = 'leaflegend-group-' +\n        groupName.replace(/[^a-zA-Z0-9]/g, '');\n      var checked = g.checked;\n      document.querySelectorAll('.legend.' + className).forEach(l => {\n        l.hidden = !checked;\n      })\n    })\n  }\n\n  updateLeafLegend();\n  this.on('baselayerchange', el => updateLeafLegend())\n  this.on('overlayadd', el => updateLeafLegend());\n  this.on('overlayremove', el => updateLeafLegend());\n}\n                        ).call(this.getMap(), el, x, data);\n}","data":null},{"code":"function(el, x, data) {\n  return (\n\t\t\t\t\t\tfunction(el, x) {\n\t\t\t\t\t\t\tvar tldiv = el.getElementsByClassName(\"leaflet-top leaflet-left\")[0];\n\t\t\t\t\t\t\tvar titlediv = document.createElement('div');\n\t\t\t\t\t\t\ttitlediv.className = \"info legend leaflet-control\";\n\t\t\t\t\t\t\ttitlediv.innerHTML = \"<b>Paisagem Simulada — Pernambuco<\/b>\";\n\t\t\t\t\t\t\ttldiv.insertBefore(titlediv, tldiv.childNodes[0]);\n\t\t\t\t\t\t}).call(this.getMap(), el, x, data);\n}","data":null}]}}</script>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modo estático (para publicação)</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tmap_mode</span>(<span class="st">"plot"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ tmap modes "plot" - "view"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(r) <span class="sc">+</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_raster</span>(</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">col.scale =</span> <span class="fu">tm_scale_categorical</span>(</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkgreen"</span>, <span class="st">"lightgreen"</span>, <span class="st">"orange"</span>, <span class="st">"lightblue"</span>)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">col.legend =</span> <span class="fu">tm_legend</span>(<span class="at">title =</span> <span class="st">"Uso do Solo"</span>)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_title</span>(<span class="st">"Paisagem Simulada"</span>) <span class="sc">+</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_scalebar</span>(<span class="at">position =</span> <span class="fu">c</span>(<span class="st">"left"</span>, <span class="st">"bottom"</span>)) <span class="sc">+</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_compass</span>(<span class="at">position =</span> <span class="fu">c</span>(<span class="st">"right"</span>, <span class="st">"top"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="exercicio_3_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Ecologia de comunidades - <code>vegan</code></p>
+<p>O <code>vegan</code> é o pacote padrão para análises de diversidade e estrutura de comunidade</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Dados simulados: matriz de abundância (sites × espécies)</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">99</span>)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>comunidades <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rpois</span>(<span class="dv">10</span> <span class="sc">*</span> <span class="dv">20</span>, <span class="at">lambda =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">5</span>, <span class="dv">100</span>), <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">100</span>))),</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">10</span>, <span class="at">ncol =</span> <span class="dv">20</span>,</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">dimnames =</span> <span class="fu">list</span>(</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(<span class="st">"Site_"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(<span class="st">"Sp_"</span>,   <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>comunidades</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Sp_1 Sp_2 Sp_3 Sp_4 Sp_5 Sp_6 Sp_7 Sp_8 Sp_9 Sp_10 Sp_11 Sp_12 Sp_13
+Site_1     5    5    3    5    7    6    8    2    5     2     0     1     1
+Site_2     2    5    2    4    5    7    4    6    6     7     2     2     4
+Site_3     6    3    7    4    7    6    6    4    2     3     1     0     1
+Site_4    11    6    5    5    8   10    6    4    5     5     0     5     1
+Site_5     5    6    7    2    5    4    5    5    4     3     1     1     0
+Site_6     9    6    4    5    8    7    7    2    3     3     1     0     1
+Site_7     6    4    0    6    4    2    5    5    2     9     0     0     1
+Site_8     4    2    7    7    4    5    8    2    4     5     1     0     3
+Site_9     4    2    0    5    5    8    1    6    2     4     0     0     0
+Site_10    3    3    3   10    2    4    7    6    7     1     0     0     0
+        Sp_14 Sp_15 Sp_16 Sp_17 Sp_18 Sp_19 Sp_20
+Site_1      0     1     1     1     1     1     1
+Site_2      0     2     0     2     1     0     1
+Site_3      1     1     2     1     1     1     0
+Site_4      4     0     2     1     0     1     1
+Site_5      1     0     2     0     2     3     1
+Site_6      2     1     2     3     0     2     2
+Site_7      0     1     0     2     1     2     2
+Site_8      1     1     1     2     0     2     3
+Site_9      1     0     1     2     2     0     2
+Site_10     1     3     1     0     0     2     2</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- Diversidade alfa ----</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>div_shannon <span class="ot">&lt;-</span> <span class="fu">diversity</span>(comunidades, <span class="at">index =</span> <span class="st">"shannon"</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>div_simpson <span class="ot">&lt;-</span> <span class="fu">diversity</span>(comunidades, <span class="at">index =</span> <span class="st">"simpson"</span>)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>riqueza     <span class="ot">&lt;-</span> <span class="fu">specnumber</span>(comunidades)</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>resultados_div <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">site      =</span> <span class="fu">rownames</span>(comunidades),</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">riqueza   =</span> riqueza,</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">shannon   =</span> <span class="fu">round</span>(div_shannon, <span class="dv">3</span>),</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">simpson   =</span> <span class="fu">round</span>(div_simpson, <span class="dv">3</span>)</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(resultados_div)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           site riqueza shannon simpson
+Site_1   Site_1      18   2.610   0.913
+Site_2   Site_2      17   2.679   0.924
+Site_3   Site_3      18   2.640   0.917
+Site_4   Site_4      17   2.629   0.918
+Site_5   Site_5      17   2.668   0.923
+Site_6   Site_6      18   2.678   0.920
+Site_7   Site_7      15   2.501   0.905
+Site_8   Site_8      18   2.696   0.922
+Site_9   Site_9      14   2.440   0.899
+Site_10 Site_10      15   2.482   0.900</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- Ordenação (NMDS) ----</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>nmds <span class="ot">&lt;-</span> <span class="fu">metaMDS</span>(comunidades, <span class="at">distance =</span> <span class="st">"bray"</span>, </span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">trymax =</span> <span class="dv">50</span>, <span class="at">trace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Stress do NMDS:"</span>, <span class="fu">round</span>(nmds<span class="sc">$</span>stress, <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Stress do NMDS: 0.137 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stress &lt; 0.1 = excelente; &lt; 0.2 = bom; &gt; 0.3 = problemático</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nmds, <span class="at">type =</span> <span class="st">"t"</span>, <span class="at">main =</span> <span class="st">"NMDS — Composição de Comunidades"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="exercicio_3_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="fluxo-integrado-de-trabalho" class="level2">
+<h2 class="anchored" data-anchor-id="fluxo-integrado-de-trabalho">Fluxo integrado de trabalho</h2>
+<p>Veja como esses pacotes se conectam em uma análise típica de Ecologia de Paisagens:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(landscapemetrics)</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. CARREGAR paisagem (aqui usamos exemplo interno)</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>paisagem <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">rast</span>(landscapemetrics<span class="sc">::</span>landscape)</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. VERIFICAR a paisagem</span></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="fu">check_landscape</span>(paisagem)</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. CALCULAR métricas de fragmento (área e isolamento)</span></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>metricas_patch <span class="ot">&lt;-</span> <span class="fu">calculate_lsm</span>(</span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>  paisagem,</span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">what =</span> <span class="fu">c</span>(<span class="st">"lsm_p_area"</span>, <span class="st">"lsm_p_enn"</span>, <span class="st">"lsm_p_para"</span>)</span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. ORGANIZAR os resultados com dplyr</span></span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a>fragmentos <span class="ot">&lt;-</span> metricas_patch <span class="sc">|&gt;</span></span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(class, id, metric, value) <span class="sc">|&gt;</span></span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> metric, <span class="at">values_from =</span> value) <span class="sc">|&gt;</span></span>
+<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">area =</span> area, <span class="at">isolamento =</span> enn, <span class="at">perimetro_area =</span> para)</span>
+<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(fragmentos)</span>
+<span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. VISUALIZAR a relação área × isolamento</span></span>
+<span id="cb42-27"><a href="#cb42-27" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fragmentos, <span class="fu">aes</span>(<span class="at">x =</span> area, <span class="at">y =</span> isolamento, <span class="at">color =</span> <span class="fu">factor</span>(class))) <span class="sc">+</span></span>
+<span id="cb42-28"><a href="#cb42-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb42-29"><a href="#cb42-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
+<span id="cb42-30"><a href="#cb42-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"1"</span> <span class="ot">=</span> <span class="st">"darkgreen"</span>, <span class="st">"2"</span> <span class="ot">=</span> <span class="st">"orange"</span>, <span class="st">"3"</span> <span class="ot">=</span> <span class="st">"steelblue"</span>),</span>
+<span id="cb42-31"><a href="#cb42-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Classe 1"</span>, <span class="st">"Classe 2"</span>, <span class="st">"Classe 3"</span>),</span>
+<span id="cb42-32"><a href="#cb42-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">name   =</span> <span class="st">"Classe"</span></span>
+<span id="cb42-33"><a href="#cb42-33" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb42-34"><a href="#cb42-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb42-35"><a href="#cb42-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">title   =</span> <span class="st">"Relação Área × Isolamento dos Fragmentos"</span>,</span>
+<span id="cb42-36"><a href="#cb42-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">x       =</span> <span class="st">"Área do fragmento (ha)"</span>,</span>
+<span id="cb42-37"><a href="#cb42-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">y       =</span> <span class="st">"Distância ao vizinho mais próximo (m)"</span>,</span>
+<span id="cb42-38"><a href="#cb42-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Métricas calculadas com landscapemetrics"</span></span>
+<span id="cb42-39"><a href="#cb42-39" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb42-40"><a href="#cb42-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="exercicio_3_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  layer crs units   class n_classes OK
+1     1  NA    NA integer         3 ❓
+# A tibble: 6 × 5
+  class    id   area isolamento perimetro_area
+  &lt;int&gt; &lt;int&gt;  &lt;dbl&gt;      &lt;dbl&gt;          &lt;dbl&gt;
+1     1     1 0.0001       7             4    
+2     1     2 0.0005       4             2.4  
+3     1     3 0.0072       2             0.833
+4     1     4 0.0001       6.32          4    
+5     1     5 0.0001       5             4    
+6     1     6 0.008        2.24          0.85 </code></pre>
+</div>
+</div>
+</section>
+<section id="erros-comuns-na-instalação" class="level2">
+<h2 class="anchored" data-anchor-id="erros-comuns-na-instalação">Erros comuns na instalação</h2>
+<p>O terra depende de bibliotecas externas (GDAL, PROJ). Se ocorrer erro na instalação:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># No Windows: instale a versão binária pré-compilada</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"terra"</span>, <span class="at">type =</span> <span class="st">"binary"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: o pacote 'terra' está em uso e não será instalado</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># No macOS: instale via Homebrew antes do R</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co"># brew install gdal proj geos</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Use este bloco para diagnóstico rápido:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar versão do R</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>R.version.string</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar pacotes instalados e suas versões</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>pacotes_check <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"terra"</span>, <span class="st">"sf"</span>, <span class="st">"landscapemetrics"</span>, <span class="st">"tmap"</span>, <span class="st">"vegan"</span>, <span class="st">"tidyverse"</span>)</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (pkg <span class="cf">in</span> pacotes_check) {</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">requireNamespace</span>(pkg, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>    v <span class="ot">&lt;-</span> <span class="fu">packageVersion</span>(pkg)</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">"✓ %-20s versão %s</span><span class="sc">\n</span><span class="st">"</span>, pkg, v))</span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">"✗ %-20s NÃO instalado</span><span class="sc">\n</span><span class="st">"</span>, pkg))</span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Atualize os pacotes no início de cada semestre
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Pacotes como <code>terra</code> e <code>sf</code> são atualizados com frequência. Manter versões recentes evita incompatibilidades e garante acesso às funções mais novas.</p>
+</div>
+</div>
+</section>
+<section id="resumo-script-de-configuração-completa" class="level2">
+<h2 class="anchored" data-anchor-id="resumo-script-de-configuração-completa">Resumo: script de configuração completa</h2>
+<p>Salve este script como <code>00_setup.R</code> na raiz do seu projeto. Execute-o uma vez no início da disciplina:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># =============================================================</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 00_setup.R</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Script de configuração inicial — Ecologia de Paisagens BO-304</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Execute UMA VEZ no início da disciplina</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="co"># =============================================================</span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- 1. Lista de pacotes necessários ----</span></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>pacotes <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"terra"</span>, <span class="st">"sf"</span>,</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"landscapemetrics"</span>,</span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"tmap"</span>, <span class="st">"ggplot2"</span>, <span class="st">"tidyterra"</span>,</span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"vegan"</span>, <span class="st">"iNEXT"</span>,</span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"dplyr"</span>, <span class="st">"tidyr"</span>, <span class="st">"readr"</span>, <span class="st">"tibble"</span>, <span class="st">"purrr"</span>,</span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"geodata"</span>, <span class="st">"rgbif"</span>,</span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"rnaturalearth"</span>, <span class="st">"rnaturalearthdata"</span>,</span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">"remotes"</span>, <span class="st">"here"</span></span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- 2. Instalar os que faltam ----</span></span>
+<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a>novos <span class="ot">&lt;-</span> pacotes[<span class="sc">!</span>(pacotes <span class="sc">%in%</span> <span class="fu">installed.packages</span>()[, <span class="st">"Package"</span>])]</span>
+<span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">length</span>(novos) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"Instalando "</span>, <span class="fu">length</span>(novos), <span class="st">" pacote(s) novo(s)..."</span>)</span>
+<span id="cb48-23"><a href="#cb48-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(novos)</span>
+<span id="cb48-24"><a href="#cb48-24" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb48-25"><a href="#cb48-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"Todos os pacotes já estão instalados."</span>)</span>
+<span id="cb48-26"><a href="#cb48-26" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Todos os pacotes já estão instalados.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- 3. Verificação final ----</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">=== VERIFICAÇÃO DOS PACOTES ==="</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+=== VERIFICAÇÃO DOS PACOTES ===</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (pkg <span class="cf">in</span> pacotes) {</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  ok <span class="ot">&lt;-</span> <span class="fu">requireNamespace</span>(pkg, <span class="at">quietly =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="fu">ifelse</span>(ok, <span class="st">"✓"</span>, <span class="st">"✗"</span>), <span class="fu">sprintf</span>(<span class="st">" %-25s"</span>, pkg),</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ifelse</span>(ok, <span class="fu">paste</span>(<span class="st">"v"</span>, <span class="fu">packageVersion</span>(pkg)), <span class="st">"FALHOU"</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>✓  terra                     v 1.8.93 
+✓  sf                        v 1.0.24 
+✓  landscapemetrics          v 2.2.1 
+✓  tmap                      v 4.2 
+✓  ggplot2                   v 4.0.2 
+✓  tidyterra                 v 1.1.0 
+✓  vegan                     v 2.7.3 
+✓  iNEXT                     v 3.0.2 
+✓  dplyr                     v 1.2.1 
+✓  tidyr                     v 1.3.2 
+✓  readr                     v 2.2.0 
+✓  tibble                    v 3.3.1 
+✓  purrr                     v 1.2.2 
+✓  geodata                   v 0.6.9 
+✓  rgbif                     v 3.8.5 
+✓  rnaturalearth             v 1.2.0 
+✓  rnaturalearthdata         v 1.0.0 
+✓  remotes                   v 2.5.0 
+✓  here                      v 1.0.2 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Configuracao concluida! Versao do R: "</span>, R.version.string)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Configuracao concluida! Versao do R: R version 4.4.2 (2024-10-31 ucrt)</code></pre>
+</div>
+</div>
+</section>
+<section id="ver-como-citar-os-pacotes" class="level2">
+<h2 class="anchored" data-anchor-id="ver-como-citar-os-pacotes">Ver como citar os pacotes</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ver como citar um pacote</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">"landscapemetrics"</span>)</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">"terra"</span>)</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">"vegan"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>To cite landscapemetrics or acknowledge its use, please cite this
+Software note, substituting the version of the application that you
+used for ‘v0.0’.
+
+  Hesselbarth, M.H.K., Sciaini, M., With, K.A., Wiegand, K., Nowosad,
+  J. 2019. landscapemetrics: an open-source R tool to calculate
+  landscape metrics. - Ecography 42:1648-1657 (v0.0).
+
+Uma entrada BibTeX para usuários(as) de LaTeX é
+
+  @Article{,
+    title = {landscapemetrics: an open-source R tool to calculate landscape metrics},
+    author = {Maximilian H.K. Hesselbarth and Marco Sciaini and Kimberly A. With and Kerstin Wiegand and Jakub Nowosad},
+    journal = {Ecography},
+    volume = {42},
+    year = {2019},
+    pages = {1648-1657},
+  }
+Para citar o pacote 'terra' em publicações use:
+
+  Hijmans R (2026). _terra: Spatial Data Analysis_. R package version
+  1.8-93, &lt;https://CRAN.R-project.org/package=terra&gt;.
+
+Uma entrada BibTeX para usuários(as) de LaTeX é
+
+  @Manual{,
+    title = {terra: Spatial Data Analysis},
+    author = {Robert J. Hijmans},
+    year = {2026},
+    note = {R package version 1.8-93},
+    url = {https://CRAN.R-project.org/package=terra},
+  }
+Para citar o pacote 'vegan' em publicações use:
+
+  Oksanen J, Simpson G, Blanchet F, Kindt R, Legendre P, Minchin P,
+  O'Hara R, Solymos P, Stevens M, Szoecs E, Wagner H, Barbour M,
+  Bedward M, Bolker B, Borcard D, Borman T, Carvalho G, Chirico M, De
+  Caceres M, Durand S, Evangelista H, FitzJohn R, Friendly M, Furneaux
+  B, Hannigan G, Hill M, Lahti L, Martino C, McGlinn D, Ouellette M,
+  Ribeiro Cunha E, Smith T, Stier A, Ter Braak C, Weedon J (2026).
+  _vegan: Community Ecology Package_. R package version 2.7-3,
+  &lt;https://CRAN.R-project.org/package=vegan&gt;.
+
+Uma entrada BibTeX para usuários(as) de LaTeX é
+
+  @Manual{,
+    title = {vegan: Community Ecology Package},
+    author = {Jari Oksanen and Gavin L. Simpson and F. Guillaume Blanchet and Roeland Kindt and Pierre Legendre and Peter R. Minchin and R.B. O'Hara and Peter Solymos and M. Henry H. Stevens and Eduard Szoecs and Helene Wagner and Matt Barbour and Michael Bedward and Ben Bolker and Daniel Borcard and Tuomas Borman and Gustavo Carvalho and Michael Chirico and Miquel {De Caceres} and Sebastien Durand and Heloisa Beatriz Antoniazi Evangelista and Rich FitzJohn and Michael Friendly and Brendan Furneaux and Geoffrey Hannigan and Mark O. Hill and Leo Lahti and Cameron Martino and Dan McGlinn and Marie-Helene Ouellette and Eduardo {Ribeiro Cunha} and Tyler Smith and Adrian Stier and Cajo J.F. {Ter Braak} and James Weedon},
+    year = {2026},
+    note = {R package version 2.7-3},
+    url = {https://CRAN.R-project.org/package=vegan},
+  }</code></pre>
+</div>
+</div>
+</section>
+<section id="dúvidas" class="level2">
+<h2 class="anchored" data-anchor-id="dúvidas">Dúvidas</h2>
+<p>O que é raiz do projeto? O que significa <code>&lt;!-- #| eval: true --&gt;</code> e <code>#| eval: true</code>? O comando de uptade dos programas deu erro na redenrização</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

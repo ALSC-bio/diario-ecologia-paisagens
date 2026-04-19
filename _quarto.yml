@@ -1,0 +1,27 @@
+project:
+  type: website
+  resources: images
+  output-dir: docs
+
+website:
+  title: "Diário de Ecologia de paisagens - Anna Luisa"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: exercicio_1.qmd
+        text: Exercício 1 - O Mosaico no Lance de Vista
+      - href: exercicio_3.qmd
+        text: Exercício 3 - Pacotes R para Ecologia de Paisagens
+      - href: exercicio_4.qmd
+        text: Exercício 4 - 
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+
+editor: visual
