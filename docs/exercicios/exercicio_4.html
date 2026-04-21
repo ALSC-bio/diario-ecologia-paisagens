@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Untitled – Diário de Ecologia de paisagens - Anna Luisa</title>
+<title>Exercício 4 - Amostragem de Paisagens com Restrição de Borda — Murici-AL – Diário de Ecologia de paisagens - Anna Luisa</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +20,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -80,9 +115,9 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Diário de Ecologia de paisagens - Anna Luisa</span>
     </a>
   </div>
@@ -93,21 +128,28 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./exercicio_1.html"> 
-<span class="menu-text">Exercício 1 - O Mosaico no Lance de Vista</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-exercícios" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Exercícios</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-exercícios">    
+        <li>
+    <a class="dropdown-item" href="../exercicios/exercicio_1.html">
+ <span class="dropdown-text">Exercício 1 - O Mosaico no Lance de Vista</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./exercicio_3.html"> 
-<span class="menu-text">Exercício 3 - Pacotes R para Ecologia de Paisagens</span></a>
+        <li>
+    <a class="dropdown-item" href="../exercicios/exercicio_3.html">
+ <span class="dropdown-text">Exercício 3 - Pacotes R para Ecologia de Paisagens</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./exercicio_4.html" aria-current="page"> 
-<span class="menu-text">Exercício 4 -</span></a>
+        <li>
+    <a class="dropdown-item" href="../exercicios/exercicio_4.html">
+ <span class="dropdown-text">Exercício 4 - Amostragem de Paisagens com Restrição de Borda — Murici-AL</span></a>
   </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -119,15 +161,24 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#contexto-do-exercício" id="toc-contexto-do-exercício" class="nav-link active" data-scroll-target="#contexto-do-exercício">1 Contexto do exercício</a></li>
+  <li><a href="#preparando-o-ambiente" id="toc-preparando-o-ambiente" class="nav-link" data-scroll-target="#preparando-o-ambiente">2 Preparando o ambiente</a></li>
+  <li><a href="#projeção-e-legenda" id="toc-projeção-e-legenda" class="nav-link" data-scroll-target="#projeção-e-legenda">3 Projeção e legenda</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Untitled</h1>
+<h1 class="title">Exercício 4 - Amostragem de Paisagens com Restrição de Borda — Murici-AL</h1>
+<p class="subtitle lead">Análise espacial com terra, tidyverse e landscapemetrics</p>
 </div>
 
 
@@ -144,8 +195,73 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="contexto-do-exercício" class="level2">
+<h2 class="anchored" data-anchor-id="contexto-do-exercício">1 Contexto do exercício</h2>
+<p>Neste exercício trabalhei com um mapa de uso e cobertura da terra do município de Murici (AL), obtido por classificação de imagens de satélite. O objetivo é selecionar 15 pontos amostrais no interior de remanescentes florestais que estejam a pelo menos 2 km da borda do mapa (para evitar efeitos de borda não controlados). Em cada ponto foi extraído um buffer circular de 500 m de raio e calculada a composição percentual de cada classe de uso do solo.</p>
+<p>Adicionalmente, utilizei o pacote <code>landscapemetrics</code> para calcular métricas de diversidade (Shannon), proporção de floresta e densidade de borda para cada uma das 15 paisagens amostrais.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Arquivo necessário
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Para a realização dessa atividade foi utilizado o arquivo raster 2024_murici.tif fornecido pelo professor. Coloquei ele no diretório de trabalho antes de executar o código.</p>
+</div>
+</div>
+</section>
+<section id="preparando-o-ambiente" class="level2">
+<h2 class="anchored" data-anchor-id="preparando-o-ambiente">2 Preparando o ambiente</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyterra)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(landscapemetrics)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>r_murici <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"2024_murici.tif"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="projeção-e-legenda" class="level2">
+<h2 class="anchored" data-anchor-id="projeção-e-legenda">3 Projeção e legenda</h2>
+<p>O arquivo original está em coordenadas geográficas (lat/long). Para trabalhar com distâncias em metros (ex.: 2000 m, 500 m) é obrigatório projetá-lo para um sistema de coordenadas planas (UTM - Universal Transversa de Mercator). Usaremos o fuso 25S (EPSG:31985), adequado para Alagoas.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>r_utm <span class="ot">&lt;-</span> <span class="fu">project</span>(r_murici, <span class="st">"EPSG:31985"</span>, <span class="at">method =</span> <span class="st">"near"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Dúvida
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Existem sistemas de coordenadas planas para diferentes estados? Como saber qual sistema utilizar para a localidade que estoutrabalhando ou que venha a trabalhar?</p>
+</div>
+</div>
+<p>As classes originais estão codificadas por números. Associá-los os rótulos e cores</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>legenda <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">11</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">25</span>, <span class="dv">33</span>),</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Categoria =</span> <span class="fu">c</span>(<span class="st">"Formação Florestal"</span>, <span class="st">"Formação Savânica"</span>, <span class="st">"Campo Alagado"</span>, </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Pastagem"</span>, <span class="st">"Cana"</span>, <span class="st">"Mosaico de Usos"</span>, <span class="st">"Área Urbanizada"</span>, </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Outras Áreas não Vegetadas"</span>, <span class="st">"Corpo d'Água"</span>),</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Cores =</span> <span class="fu">c</span>(<span class="st">"#006400"</span>, <span class="st">"#7cfc00"</span>, <span class="st">"#00ffff"</span>, <span class="st">"#ffff00"</span>, <span class="st">"#ff4500"</span>, </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">"#f4a460"</span>, <span class="st">"#ff0000"</span>, <span class="st">"#d3d3d3"</span>, <span class="st">"#0000ff"</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>##4</p>
+<p>##5</p>
+<p>##6</p>
+<p>##7</p>
+<p>##8</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

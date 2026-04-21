@@ -1,0 +1,37 @@
+---
+title: "Exercício 1 - O Mosaico no Lance de Vista"
+---
+
+## Parte 1: Delimitação e Descrição (A Paisagem Humana)
+
+A observação foi realizada a partir do quinto andar do Centro de Tecnológia e Geociências (CTG). Utilizei toda a extensão da folha de um caderno A4 sem pauta para fazer o desenho a mão livre do que pude observar e entender da paisagem, como copas de árvores e telhados de prédios. Não utilizei meu horizonte visível para delimitar a extensão espacial, pois a distância e sobreposição de construções impossibilitou a vizualização dos limites de de cada elemento.
+
+Como é possível observar na imagem abaixo não utilizei o modelo PCM tradicional para fazer mapeamento estrutural da paisagem. Identifiquei a matriz, elemento mais abundante, como construções urbanas. No entanto preferi por dividir as manchas levando em conta que poderiam ser habitats diferentes para diferentes organismos. A divisão foi entre áreas abertas, (como gramíneas, plantas arbustivas e solo exposto) e áreas com cobertura, vegetadas com árvores ou palmeiras. É possível ver também vizualizar um elemento de cor roxa, esse é uma placa solar que inicialmente diferenciei de construções urbanas, mas depois o agrupei dentro dessa categória ao perceber que os outros elementos urbanos também variavam muito em suas características e possíveis permeabilidades.
+
+![Desenho a mão livre](exercise_images/desenho_ctg.jpg)
+
+## Parte 2: Escala, Granulação e Transmutação
+
+A descrição de um sistema ecológico muda conforme a escala escolhida
+
+**O Grão (resolção) de observação:** No meu desenho, o menor elemento que consegui distinguir claramente e representar claramente foram as copas de palmeiras representadas na parte central e inferior no desenho a mão liivre **Exercício de Transmutação:** Fiz uma malha com quadrantes de 1x1 cm e transmutei todo o desenho, forçando a homogeniezação em cada quadrante para que cada quadrado possuisse apenas uma das 3 categórias definidas previamente. Por conta das dimensões da folha utilizada, escolhi quadrantes de 3x3 cm para fazer uma segunda transmultação. **Reflexão:** Observe como o aumento do grão faz com que elementos pequenos (manchas menores) desapareçam da sua análise
+
+![Desenho com granulação de 1x1cm](exercise_images/desenho_ctg_1cm.jpg)
+
+![Desenho com granulação de 3x3cm](exercise_images/desenho_ctg_3cm.jpg)
+
+## Parte 3: A “Lente Biológica” (Escala de Percepção)
+
+A paisagem não é absoluta; ela existe “segundo um observador”
+
+Troca de Escala: Imagine a paisagem sob a ótica de uma espécie focal (ex: uma águia ou uma borboleta) Redesenho Funcional: Se você fosse um gafanhoto, sua paisagem total teria cerca de 4
+
+Escolha um detalhe minúsculo da sua vista original (ex: uma moita de capim) e redesenhe-o ocupando a folha inteira. Nesta nova escala, o que antes era uma “mancha” insignificante agora é o seu mosaico complexo de habitats?
+
+## Questões para Discussão
+
+1.Ao aumentar o tamanho do grão (Parte 2), você perdeu informações que seriam vitais para a conservação de alguma espécie específica?
+
+2.Como a conectividade funcional mudou entre a sua visão humana e a visão do “gafanhoto”? Elementos que eram barreiras continuam sendo?
+
+3.Você consegue identificar algum distúrbio (natural ou antrópico) que foi o responsável por criar essa heterogeneidade que você desenhou?

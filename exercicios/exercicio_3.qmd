@@ -1,5 +1,5 @@
 ---
-title: "Exercício 3 - Pacotes R para Ecologia de Paisagen"
+title: "Exercício 3 - Pacotes R para Ecologia de Paisagens"
 ---
 
 ## Pacotes do R dessa disciplina
@@ -14,7 +14,7 @@ Para Ecologia de Paisagens, precisamos de pacotes que nos permitam:
 Os pacotes que usaremos podem ser agrupados por função:
 
 | Grupo | Pacotes | Para que servem |
-|------------------|-------------------|------------------------------------|
+|------------------|-------------------|-----------------------------------|
 | Dados espaciais — Raster | terra | Leitura, manipulação e análise de dados matriciais (GeoTIFF, etc.) |
 | Dados espaciais — Vetor | sf | Geometrias vetoriais (pontos, linhas, polígonos) em formato tidy |
 | Métricas de paisagem | landscapemetrics | Cálculo de \>130 métricas de padrão de paisagem (substitui o FRAGSTATS) |
@@ -403,6 +403,8 @@ ggplot(fragmentos, aes(x = area, y = isolamento, color = factor(class))) +
 O terra depende de bibliotecas externas (GDAL, PROJ). Se ocorrer erro na instalação:
 
 ```{r}
+#| message: false
+#| warning: false
 #| results: false
 # No Windows: instale a versão binária pré-compilada
 install.packages("terra", type = "binary")
@@ -410,6 +412,8 @@ install.packages("terra", type = "binary")
 # No macOS: instale via Homebrew antes do R
 # brew install gdal proj geos
 ```
+
+## Verificação do ambiente e atualização de pacotes
 
 Use este bloco para diagnóstico rápido:
 
@@ -435,6 +439,12 @@ for (pkg in pacotes_check) {
 ## Atualize os pacotes no início de cada semestre
 
 Pacotes como `terra` e `sf` são atualizados com frequência. Manter versões recentes evita incompatibilidades e garante acesso às funções mais novas.
+
+```{r}
+#| eval: false
+# Verificar e atualizar todos os pacotes instalados
+update.packages(ask = FALSE, checkBuilt = TRUE)
+```
 :::
 
 ## Resumo: script de configuração completa
@@ -492,4 +502,4 @@ citation("vegan")
 
 ## Dúvidas
 
-O que é raiz do projeto? O que significa `<!-- #| eval: true -->` e `#| eval: true`? O comando de uptade dos programas deu erro na redenrização
+O que é raiz do projeto? O comando de uptade dos programas deu erro na redenrização
