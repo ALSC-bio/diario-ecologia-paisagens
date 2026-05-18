@@ -15,7 +15,9 @@ Como é possível observar na imagem abaixo não utilizei o modelo PCM tradicion
 A descrição de um sistema ecológico muda conforme a escala escolhida
 
 **O Grão (resolção) de observação:** No meu desenho, o menor elemento que consegui distinguir claramente e representar claramente foram as copas de palmeiras representadas na parte central e inferior no desenho a mão livre.
+
 **Exercício de Transmutação:** Fiz uma malha com quadrantes de 1x1 cm e transmutei todo o desenho, forçando a homogeniezação em cada quadrante para que cada quadrado possuisse apenas uma das 3 categórias definidas previamente. Por conta das dimensões da folha utilizada, escolhi quadrantes de 3x3 cm para fazer uma segunda transmultação.
+
 **Reflexão:** Observe como o aumento do grão faz com que elementos pequenos (manchas menores) desapareçam da sua análise
 
 ![Desenho com granulação de 1x1cm](exercise_images/desenho_ctg_1cm.jpg)

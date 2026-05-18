@@ -1,0 +1,18 @@
+---
+title: "Exercício Prático 5 - Descrevendo uma paisagem"
+subtitle: "Consultoria Técnica para Criação de Unidades de Conservação (UCs)"
+format: html
+---
+
+
+```{r}
+#| results: hold
+
+library(terra)
+library(tidyverse)
+library(tidyterra)
+library(landscapemetrics)
+
+r_murici <- rast("2024_altamira_pa_cobertura.tif")
+```
+
