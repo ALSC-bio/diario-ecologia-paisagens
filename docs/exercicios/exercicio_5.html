@@ -148,6 +148,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../exercicios/exercicio_4.html">
  <span class="dropdown-text">Exercício 4 - Amostragem de Paisagens com Restrição de Borda — Murici-AL</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../exercicios/exercicio_5.html">
+ <span class="dropdown-text">Exercício 5 - Descrevendo uma paisagem</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -220,6 +224,16 @@ O seguinte objeto é mascarado por 'package:stats':
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(landscapemetrics)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>r_murici <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"2024_altamira_pa_cobertura.tif"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>legenda <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">11</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">25</span>, <span class="dv">33</span>),</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Categoria =</span> <span class="fu">c</span>(<span class="st">"Formação Florestal"</span>, <span class="st">"Formação Savânica"</span>, <span class="st">"Campo Alagado"</span>, </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Pastagem"</span>, <span class="st">"Cana"</span>, <span class="st">"Mosaico de Usos"</span>, <span class="st">"Área Urbanizada"</span>, </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Outras Áreas não Vegetadas"</span>, <span class="st">"Corpo d'Água"</span>),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Cores =</span> <span class="fu">c</span>(<span class="st">"#006400"</span>, <span class="st">"#7cfc00"</span>, <span class="st">"#00ffff"</span>, <span class="st">"#ffff00"</span>, <span class="st">"#ff4500"</span>, </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">"#f4a460"</span>, <span class="st">"#ff0000"</span>, <span class="st">"#d3d3d3"</span>, <span class="st">"#0000ff"</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 
