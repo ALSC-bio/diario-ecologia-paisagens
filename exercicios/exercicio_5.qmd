@@ -16,3 +16,15 @@ library(landscapemetrics)
 r_murici <- rast("2024_altamira_pa_cobertura.tif")
 ```
 
+```{r}
+legenda <- data.frame(
+  id = c(3, 4, 11, 15, 20, 21, 24, 25, 33),
+  Categoria = c("Formação Florestal", "Formação Savânica", "Campo Alagado", 
+                "Pastagem", "Cana", "Mosaico de Usos", "Área Urbanizada", 
+                "Outras Áreas não Vegetadas", "Corpo d'Água"),
+  Cores = c("#006400", "#7cfc00", "#00ffff", "#ffff00", "#ff4500", 
+            "#f4a460", "#ff0000", "#d3d3d3", "#0000ff")
+)
+```
+
+

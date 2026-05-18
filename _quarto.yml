@@ -15,7 +15,9 @@ website:
           - href: exercicios/exercicio_3.qmd
             text: Exercício 3 - Pacotes R para Ecologia de Paisagens 
           - href: exercicios/exercicio_4.qmd
-            text: Exercício 4 - Amostragem de Paisagens com Restrição de Borda — Murici-AL 
+            text: Exercício 4 - Amostragem de Paisagens com Restrição de Borda — Murici-AL
+          - href: exercicios/exercicio_5.qmd
+            text: Exercício Prático 5 - Descrevendo uma paisagem
 
 format:
   html:
