@@ -5,17 +5,19 @@ format: html
 ---
 
 ## Preparos de dados e delineamento amostral:
+
 ```{r}
-#| results: hold
+#| results: false
+#| eval: false
 
 library(terra)
 library(tidyverse)
 library(tidyterra)
 library(landscapemetrics)
 
-r_altamira <- rast("2024_altamira_pa_cobertura.tif")
+r_buique <- rast("2024_altamira_pa_cobertura.tif")
 
-r_utm <- project(r_altamira, "EPSG:31985", method = "near")
+r_utm <- project(r_buique, "EPSG:31985", method = "near")
 
 legenda <- data.frame(
   id = c(3, 4, 11, 15, 20, 21, 24, 25, 33),
@@ -59,7 +61,8 @@ ggplot() +
 ```
 
 ```{r}
-#| results: hold
+#| results: false
+#| eval: false
 
 set.seed(1234)
 pontos_finais <- NULL
@@ -125,7 +128,8 @@ ggplot() +
 ```
 
 ```{r}
-#| results: hold
+#| results: false
+#| eval: false
 
 # Identificar o valor numérico da classe Floresta
 id_floresta <- legenda$id[legenda$Categoria == "Formação Florestal"]
@@ -171,7 +175,8 @@ write.csv(metricas_paisagem, "metricas_landscapemetrics_altamira.csv", row.names
 ```
 
 ```{r}
-#| results: hold
+#| results: false
+#| eval: false
 
 lista_recortes <- list()
 for(i in 1:nrow(buffers)) {
@@ -197,8 +202,6 @@ ggplot(df_painel) +
         legend.position = "bottom")
 ```
 
-
-
 Quantificação da Estrutura (Métricas de Paisagem)
 
 Métricas de Área e Borda: Para entender o efeito de borda e a disponibilidade de habitat de interior.
@@ -206,6 +209,3 @@ Métricas de Área e Borda: Para entender o efeito de borda e a disponibilidade 
 Métricas de Forma: Para avaliar a complexidade dos fragmentos e sua vulnerabilidade a pressões externas.
 
 Métricas de Isolamento/Proximidade: Para inferir a conectividade estrutural entre as manchas.
-
-
-

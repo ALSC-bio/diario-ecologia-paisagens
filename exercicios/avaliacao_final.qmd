@@ -1,0 +1,685 @@
+---
+title: "Avaliação final"
+subtitle: "Análise Integrada de Paisagem: Ecologia · Política · Manejo"
+format: html
+---
+
+# 1. Análise descritiva da paisagem
+
+Santana do Araguaia é um município localizado no extremo sudeste do Pará às margens do rio Araguaia, possuindo 11.591,427 km² de extensão. Por conta da grande extensão, para o cálculo da maior parte das metricas, optei por analisar a paisagem através de 15 pontos aleatórios com 3km de raio com seu centro em uma área de Formação Florestal.
+
+
+```{r}
+#| eval: true
+#| message: false
+#| warning: false
+#| code-fold: true
+#| results: hold
+
+library(terra)
+library(tidyverse)
+library(tidyterra)
+library(landscapemetrics)
+library(geobr)
+library(ggplot2)
+library(patchwork)
+
+r_santana <- rast("2024_coverage_santana_araguaia.tif") #baixei 30m por conta da comparação temporal
+
+r_utm <- project(r_santana, "EPSG:31985", method = "near")
+
+legenda <- data.frame(
+  id = c(3, 4, 6, 11, 15, 21, 24, 25, 33, 39, 41, 29, 9, 12, 30),
+  Categoria = c("Formação Florestal", "Formação Savânica","Floresta Alagável",    "Campo Alagado", "Pastagem", "Mosaico de Usos", "Área Urbanizada", 
+  "Outras Áreas não Vegetadas", "Corpo d'Água", "Soja", 
+  "Outras lavouras temporárias", "Afloramento Rochoso", "Silvicultura",
+  "Formação Campestre", "Mineração"),
+  Cores = c("#006400", "#7cfc00","#007785", "#00FF7F", "#edde8e", "#ffefc3",               "#ff0000", "#d3d3d3", "#0000ff", "#f5b3c8", "#f54ca9", "#fc8114",              "#7a5900", "#ffff00", "#9c0027")
+)
+
+levels(r_utm) <- legenda[,1:2]
+
+ggplot() +  #adicionar norte geográfico
+  geom_spatraster(data = r_utm) +
+  scale_fill_manual(values = legenda$Cores, na.value = "white", name = "Uso do Solo") +
+  labs(title = "Santana do Araguaia (PA) em 2024 - mapbiomas") +
+  theme_minimal()
+
+list_lsm()
+```
+
+```{r}
+#| eval: false
+#| message: false
+#| warning: false
+#| code-fold: true
+#| results: hold
+
+# Calculando métricas
+
+check_landscape(r_utm)
+
+# composição
+
+#PLAND e SHDI
+
+metri_compo <- calculate_lsm(
+  r_utm,
+  what = c(
+    "lsm_l_ta",    # Área total
+    "lsm_l_shdi",  # Diversidade de Shannon
+    "lsm_c_pland")) # Proporção de cada classe
+
+print(metri_compo)
+
+# configuração
+
+# NP(PD), ED, AI e ENN_MN
+  
+metri_confi <- calculate_lsm(
+  r_utm,
+  what = c(
+    "lsm_l_pd",    # Densidade de fragmentos
+    "lsm_c_np",     # Número de fragmentos por classe
+    "lsm_c_enn_mn", #Mean of euclidean nearest-neighbor distance (Aggregation metric)
+    "lsm_p_enn",  
+    "lsm_l_ed", # Edge Density (Area and Edge metric)
+    "lsm_c_ed", 
+    "lsm_l_ai"     # Aggregation index (Aggregation metric)
+  ))
+
+#lsm_c_enn_mn
+#lsm_c_ed
+#lsm_c_pd
+#lsm_c_ai
+
+#	lsm_p_core  core area of patch
+
+print(metri_confi)
+```
+
+
+
+```{r}
+#| eval: true
+#| message: false
+#| warning: false
+#| code-fold: true
+#| results: hold
+
+# Criando sorteio de 15 pontos dentro de áreas de vegetação nativa
+
+vetor_total <- as.polygons(r_utm, dissolve = TRUE)
+municipio_limite <- aggregate(vetor_total)
+limite_seguro <- buffer(municipio_limite, width = -2000)
+
+floresta <- vetor_total[vetor_total$Categoria == "Formação Florestal", ]
+area_sorteio <- crop(floresta, limite_seguro)
+
+if (is.list(area_sorteio)) {
+  area_sorteio <- do.call(rbind, area_sorteio)
+}
+
+if (nrow(area_sorteio) == 0) {
+  stop("Erro: Nenhuma floresta encontrada a mais de 2km da borda.")
+}
+
+matriz_reclass <- cbind(legenda$id, 1:nrow(legenda))
+matriz_reclass <- rbind(matriz_reclass, c(NA, 0))
+r_classificado <- classify(r_utm, matriz_reclass)
+r_fator <- as.factor(r_classificado)
+
+set.seed(1234)
+pontos_finais <- NULL
+tentativas <- 0
+
+while(is.null(pontos_finais) || nrow(pontos_finais) < 15) {
+  tentativas <- tentativas + 1
+  cand <- spatSample(area_sorteio, size = 1, method = "random") 
+  
+  if (nrow(cand) > 0) {
+    if (is.null(pontos_finais)) {
+      pontos_finais <- cand
+    } else {
+      dists <- distance(cand, pontos_finais)
+      if (min(dists) >= 6000) { 
+        pontos_finais <- rbind(pontos_finais, cand)
+      }
+    }
+  }
+  
+  if (tentativas > 5000) break
+}
+
+# Verificar CRS
+if (!identical(crs(pontos_finais), crs(r_utm))) {
+  pontos_finais <- project(pontos_finais, crs(r_utm))
+}
+
+buffers <- buffer(pontos_finais, width = 3000)
+buffers$id_paisagem <- 1:nrow(buffers)
+
+# Extração e processamento
+extracao <- terra::extract(r_utm, buffers)
+nome_col_raster <- names(extracao)[2]
+
+tabela_final <- extracao %>%
+  rename(id_buffer = ID, categoria_bruta = !!sym(nome_col_raster)) %>%
+  group_by(id_buffer) %>%
+  mutate(total_px = n()) %>%
+  group_by(id_buffer, categoria_bruta) %>%
+  summarise(
+    pixels = n(),
+    percentagem = (pixels / first(total_px)) * 100,
+    .groups = "drop"
+  ) %>%
+  mutate(Categoria_Limpa = as.character(categoria_bruta)) %>%
+  left_join(legenda %>% select(Categoria, Cores), by = c("Categoria_Limpa" = "Categoria"))
+
+write.csv(tabela_final, "uso_solo_murici_final.csv", row.names = FALSE)
+writeVector(pontos_finais, "pontos_final.shp", overwrite=TRUE)
+
+# Garantir que os pontos tenham um ID para o rótulo
+pontos_finais$id_ponto <- 1:nrow(pontos_finais)
+
+ggplot() +
+  geom_spatraster(data = r_utm) +
+  scale_fill_manual(values = legenda$Cores, na.value = "white", name = "Uso do Solo") +
+  geom_spatvector(data = buffers, fill = NA, color = "black", linewidth = 1) +
+  geom_spatvector(data = pontos_finais, color = "red", size = 3, shape = 19) +
+  geom_spatvector_text(data = pontos_finais, aes(label = 1:15), 
+                       color = "red", size = 3, vjust = -0.8) +
+  labs(title = "Pontos amostrais e buffers de 2000 m") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+
+```
+
+
+```{r}
+#| eval: true
+#| message: false
+#| warning: false
+#| code-fold: true
+#| results: hold
+
+# Identificar o valor numérico da classe Floresta
+id_floresta <- legenda$id[legenda$Categoria == "Formação Florestal"]
+
+# Lista para armazenar métricas de cada buffer
+metricas_lista <- list()
+
+for(i in 1:nrow(buffers)) {
+  # Recortar o raster para o buffer i
+  crop_i <- crop(r_utm, buffers[i,])
+  mask_i <- mask(crop_i, buffers[i,])
+  
+  # Calcular Shannon diversity (nível da paisagem)
+  shannon <- lsm_l_shdi(mask_i)
+  
+  # Calcular métricas de classe para todas as classes
+  pland_all <- lsm_c_pland(mask_i)   # percentual de cada classe
+  ed_all <- lsm_c_ed(mask_i)         # densidade de borda por classe
+  
+  # Filtrar apenas a classe floresta
+  pland_floresta <- pland_all %>% filter(class == id_floresta)
+  ed_floresta <- ed_all %>% filter(class == id_floresta)
+  
+  # Extrair valores (se não houver floresta, colocar NA ou 0)
+  div_shannon <- shannon$value
+  perc_floresta <- ifelse(nrow(pland_floresta) > 0, pland_floresta$value, 0)
+  dens_borda <- ifelse(nrow(ed_floresta) > 0, ed_floresta$value, NA)
+  
+  # Guardar
+  metricas_lista[[i]] <- data.frame(
+    id_buffer = i,
+    diversidade_shannon = div_shannon,
+    perc_floresta = perc_floresta,
+    densidade_borda_m_ha = dens_borda
+  )
+}
+
+# Combinar tudo
+metricas_paisagem <- bind_rows(metricas_lista)
+
+print(metricas_paisagem)
+
+write.csv(metricas_paisagem, "metricas_landscapemetrics.csv", row.names = FALSE)
+```
+
+
+
+```{r}
+#| eval: true
+#| message: false
+#| warning: false
+#| code-fold: true
+#| results: hold
+
+lista_recortes <- list()
+for(i in 1:nrow(buffers)) {
+  crop_i <- crop(r_utm, buffers[i, ])
+  mask_i <- mask(crop_i, buffers[i, ])
+  df_i <- as.data.frame(mask_i, xy = TRUE, cells = TRUE)
+  df_i$id_buffer <- paste("Paisagem", i)
+  lista_recortes[[i]] <- df_i
+}
+df_painel <- bind_rows(lista_recortes)
+
+ggplot(df_painel) +
+  geom_tile(aes(x = x, y = y, fill = Categoria)) +
+  scale_fill_manual(values = setNames(legenda$Cores, legenda$Categoria)) +
+  facet_wrap(~id_buffer, nrow = 3, ncol = 5, scales = "free") +
+  theme_minimal() +
+  labs(title = "Painel de Amostragem: 15 Paisagens de Santana do Araguaia-PA",
+       subtitle = "Recortes circulares de 3000m de raio (Interior de Floresta)",
+       fill = "Uso do Solo") +
+  theme(axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid = element_blank(),
+        legend.position = "bottom")
+
+```
+
+
+O valor da diversidade de shannon (1.38) demonstra uma alta heterogeneadade de paisagens dentro do município. Quanto as proporções de cada uso de terra...
+
+```{r}
+#| eval: true
+#| message: false
+#| warning: false
+#| code-fold: true
+#| results: hold
+
+# Escala temporal
+
+# raster de 2005
+
+r_santana_2005 <- rast("2005_coverage_santana.tif") #baixei 30m por conta da comparação temporal
+
+r_utm_2005 <- project(r_santana_2005, "EPSG:31985", method = "near")
+
+levels(r_utm_2005) <- legenda[,1:2]
+
+#raster de 1985
+
+r_santana_1985 <- rast("1985_coverage_santana.tif") #baixei 30m por conta da comparação temporal
+
+r_utm_1985 <- project(r_santana_1985, "EPSG:31985", method = "near")
+
+levels(r_utm_1985) <- legenda[,1:2]
+
+
+ggplot() +  #adicionar norte geográfico
+  geom_spatraster(data = r_utm) +
+  scale_fill_manual(values = legenda$Cores, na.value = "white", name = "Uso do Solo") +
+  labs(title = "Santana do Araguaia (PA) em 2024 - mapbiomas") +
+  theme_minimal()
+
+ggplot() +  #adicionar norte geográfico
+  geom_spatraster(data = r_utm_2005) +
+  scale_fill_manual(values = legenda$Cores, na.value = "white", name = "Uso do Solo") +
+  labs(title = "Santana do Araguaia (PA) em 2005 - mapbiomas") +
+  theme_minimal()
+
+ggplot() +  #adicionar norte geográfico
+  geom_spatraster(data = r_utm_1985) +
+  scale_fill_manual(values = legenda$Cores, na.value = "white", name = "Uso do Solo") +
+  labs(title = "Santana do Araguaia (PA) em 1985 - mapbiomas") +
+  theme_minimal()
+
+
+```
+
+
+
+
+
+
+# 2. Diagnóstico ecológico
+
+Conectividade e metapopulações 
+Efeito de borda
+Produtividade primária e estoque de carbono 
+Heterogeneidade e diversidade beta
+
+# 3. Análise de Ecologia Política
+
+Grupos beneficiados: Volkswagen e politicos/donos de terra que ganharam com desapropriamento
+Grupos afetados negativamente: Trabalhadores da antiga fazenda rio cristalino, trabalhadores rurais sem terras ou que foram enganados no esquema de venda de terras nos assentamentos, povo indigena kayapo.
+
+### Linha do tempo
+
+ - 1973: Volkswagen adquire 140 mil hectares de terras públicas
+    - Recebeu incentivos da  Superintendência de Desenvolvimento da Amazônia (SUDAM) no governo militar.
+    - Conhecida como Fazenda Rio Cristalino.
+    - Criação de gado
+ - Denúncias de irregularidades trabalhistas, tortura e trabalho escravo
+ - Década de 70: Criação da TI Santana do Araguaia em cidade vizinha 
+ - 1998: Aliciamento dos moradores para ocupação de terras, pressionando INCRA para reforma agrária e indenização.
+ - 2004: Governo Federal desapropria parte da antiga Fazenda Cristalino, assentando 1300 famílias e reservando parte da área para exploração de reserva de urânio.
+ - 2008: INCRA abre processo de desapropriação de terras para fins de reforma agrária de 52 mil hectares da Fazenda Cristalino, de posse da Agropecuária Santa Bárbara Xinguara.
+ - 2011-2025:  diminuição de 27.612 moradores (47,55% da população do municipio)
+
+
+### Referências:
+
+ALANTYGEL. Famílias de trabalhadores rurais de Santana do Araguaia são vítimas de tortura praticada por pistoleiros. Comissão Pastoral da Terra - CPT, 28 set. 2012. Disponível em: <https://cptnacional.org.br/2012/09/28/familias-de-trabalhadores-rurais-de-santana-do-araguaia-sao-vitimas-de-tortura-praticada-por-pistoleiros/>. Acesso em: 16 jun. 2026
+
+CARAJÁS, Gazeta. Santana do Araguaia é 4º município que mais perdeu moradores no Brasil - Gazeta Carajás. Disponível em: <https://www.gazetacarajas.com/noticia/santana-do-araguaia-e-4-municipio-que-mais-perdeu-moradores-no-brasil>. Acesso em: 16 jun. 2026. 
+
+Folha de S.Paulo - Questão agrária: Desapropriação vira negócio no Pará - 15/08/99. Disponível em: <https://www1.folha.uol.com.br/fsp/brasil/fc15089914.htm>. Acesso em: 16 jun. 2026. 
+
+LEIROS, Marcela. Quem são os Iny Karajá, etnia às margens do Rio Araguaia. Revista Cenarium, 28 abr. 2025. Disponível em: <https://revistacenarium.com.br/quem-sao-os-iny-karaja-etnia-que-preserva-tradicao-as-margens-do-rio-araguaia/>. Acesso em: 16 jun. 2026
+
+LENGERT, Mathias. As vítimas do Araguaia: famílias de camponeses mortos na ditadura pedem reparação. Disponível em: <https://www.ihu.unisinos.br/categorias/655795-as-vitimas-do-araguaia-familias-de-camponeses-mortos-na-ditadura-pedem-reparacao>. Acesso em: 16 jun. 2026.
+
+MPF vai à Justiça pela demarcação da Terra Indígena Karajá em Santana do Araguaia : Disponível em: <https://www.olharalerta.com.br/noticia/68085/mpf-vai-a-justica-pela-demarcacao-da-terra-indigena-karaja-em-santana-do-araguaia>. Acesso em: 16 jun. 2026.
+
+OLIVEIRA, Marcelo. PA: Volkswagen teve fazenda com trabalho escravo e verba da ditadura. Agência Pública, 31 jan. 2025. Disponível em: <https://apublica.org/2025/01/volkswagen-manteve-por-12-anos-fazenda-com-trabalho-escravo-no-pa-financiada-pela-ditadura/>. Acesso em: 16 jun. 2026
+
+PA - Conflitos e disputas por terra na Amazônia são marcados por assassinatos na região. Mapa de Conflitos Envolvendo Injustiça Ambiental e Saúde no Brasil, [S.d.]. Disponível em: <https://mapadeconflitos.ensp.fiocruz.br/conflito/pa-conflitos-e-disputas-por-terra-na-amazonia-sao-marcados-por-assassinatos-na-regiao/>. Acesso em: 16 jun. 2026
+
+SANTANA, Diego. Casos de Covid-19 aumentam entre povos indígenas de Santana do Araguaia. ZÉ DUDU, 17 jun. 2020. Disponível em: <https://www.zedudu.com.br/casos-de-covid-19-aumentam-entre-povos-indigenas-de-santana-do-araguaia/>. Acesso em: 16 jun. 2026
+
+SILVA, Thawanne Rayssa Galdino. OS KARAJÁ DE SANTANA DO ARAGUAIA/PA: AGENTES E CONFLITOS EM UMA DEMARCAÇÃO DE TERRA INDÍGENA NA AMAZÔNIA DURANTE A DITADURA MILITAR (DÉCADA DE 1970). Revista Hydra: Revista Discente de História da UNIFESP, v. 8, n. 16, p. 226–248, 2024. 
+
+SOUZA, Beatriz. Urânio, gado e reforma agrária: que fim levou a Fazenda Volkswagen? Repórter Brasil, 11 mar. 2026. Disponível em: <https://reporterbrasil.org.br/2026/03/fim-fazenda-volkswagen-trabalhadores-escravizados-para/>. Acesso em: 16 jun. 2026.
+
+
+# 4. Proposta de manejo integrado
+
+Aumentar em cerca  de 34% a coberta de Formação Florestal regularizando as reservas legais do município
+
+```{r}
+#| eval: false
+#| message: false
+#| warning: false
+#| code-fold: true
+#| include: false
+#| results: false
+
+## Criando limite para município
+vetor_total <- as.polygons(r_utm, dissolve = TRUE)
+municipio_limite <- aggregate(vetor_total)
+
+
+## Raster fundiário SNCI
+
+# Carregar o shapefile de municípios do Pará
+municipios_pa <- vect("C:/Users/Anna/Documents/disciplinas_bach/ecologia_de_paisagens/diario_ecologia_anna/exercicios/shapefiles/PA_Municipios_2025/PA_Municipios_2025.shp")
+print(municipios_pa) #saber nome da coluna e se o município está em letra maíscula ou minúscula
+
+# Filtrar apenas Santana do Araguaia
+santana_poligono <- municipios_pa[municipios_pa$NM_MUN == "Santana do Araguaia", ]
+nrow(santana_poligono)
+
+# Carregar o shapefile fundiário SNCI
+shp_snci <- vect("C:/Users/Anna/Documents/disciplinas_bach/ecologia_de_paisagens/diario_ecologia_anna/exercicios/shapefiles/SNCI_Brasil_PA/SNCI_Brasil_PA.shp")
+
+# ALINHAR OS CRS
+# Para cruzar dois shapes, eles precisam estar na mesma projeção.
+# Colocar o SNCI na mesma projeção do polígono de Santana.
+shp_snci <- project(shp_snci, crs(santana_poligono))
+
+# CORTAR O SHAPEFILE SNCI PELO LIMITE DE SANTANA
+snci_santana <- terra::intersect(shp_snci, santana_poligono)
+
+## Raster fundiário Sigef
+
+# Carregar o shapefile fundiário Sigef
+shp_sigef <- vect("C:/Users/Anna/Documents/disciplinas_bach/ecologia_de_paisagens/diario_ecologia_anna/exercicios/shapefiles/Sigef_Brasil_PA/Sigef_Brasil_PA.shp")
+
+# ALINHAR OS CRS
+# Para cruzar dois shapes, eles precisam estar na mesma projeção.
+# Colocar o SNCI na mesma projeção do polígono de Santana.
+shp_sigef <- project(shp_sigef, crs(santana_poligono))
+
+# CORTAR O SHAPEFILE SNCI PELO LIMITE DE SANTANA
+sigef_santana <- terra::intersect(shp_sigef, santana_poligono)
+
+# Unir SNCI e SIGEF 
+
+# Usamos 'rbind' para juntar as tabelas. 
+# Nota: Se houver sobreposição espacial, o 'union' seria mais rigoroso, 
+# mas o 'rbind' é mais rápido para análise de cobertura.
+terras_fund <- rbind(snci_santana, sigef_santana)
+
+# Reprojetar o novo shapefile para o raster de cobertura
+fund_santana_utm <- terra::project(terras_fund, crs(r_utm))
+
+print(fund_santana_utm) #conferir se está tudo certo
+nrow(fund_santana_utm) #conferir se está tudo certo
+
+# Cortar e mascarar o raster usando esse limite
+r_masked_fund <- crop(r_utm, fund_santana_utm)
+r_masked_fund <- mask(r_masked_fund, fund_santana_utm)
+
+# Visualizar
+ggplot() +
+  geom_spatraster(data = r_masked_fund) +
+  geom_spatvector(data = fund_santana_utm, fill = NA, color = "black", linewidth = 0.5) + # Opcional: desenha os limites do SNCI por cima
+  geom_spatvector(data = municipio_limite, fill = NA, color = "black", linewidth = 0.5) +
+  scale_fill_manual(values = legenda$Cores, na.value = "white", name = "Uso do Solo") +
+  labs(title = "Terras declaradas no SNCI e Sigef em Santana do araguaia - 2025 ") +
+  theme_minimal()
+
+
+## Raster fundiário Assentamentos
+
+# Carregar o shapefile fundiário Sigef
+
+shp_assen <- vect("C:/Users/Anna/Documents/disciplinas_bach/ecologia_de_paisagens/diario_ecologia_anna/exercicios/shapefiles/Assentamento_Brasil/Assentamento_Brasil.shp")
+
+print(shp_assen)
+nrow(shp_assen)
+
+# ALINHAR OS CRS
+# Para cruzar dois shapes, eles precisam estar na mesma projeção.
+# Colocar o SNCI na mesma projeção do polígono de Santana.
+shp_assen <- project(shp_assen, crs(santana_poligono))
+
+# CORTAR O SHAPEFILE SNCI PELO LIMITE DE SANTANA
+assen_santana <- terra::intersect(shp_assen, santana_poligono)
+
+print(assen_santana)
+nrow(assen_santana)
+
+# Reprojetar o novo shapefile para o raster de cobertura
+assen_santana_utm <- terra::project(assen_santana, crs(r_utm))
+
+print(assen_santana_utm) #conferir se está tudo certo
+nrow(assen_santana_utm) #conferir se está tudo certo
+
+# Cortar e mascarar o raster usando esse limite
+r_masked_assen <- crop(r_utm, assen_santana_utm)
+r_masked_assen <- mask(r_masked_assen, assen_santana_utm)
+
+# Visualizar
+ggplot() +
+  geom_spatraster(data = r_masked_assen) +
+  geom_spatvector(data = assen_santana_utm, fill = NA, color = "black", linewidth = 0.5) + # Opcional: desenha os limites do SNCI por cima
+  geom_spatvector(data = municipio_limite, fill = NA, color = "black", linewidth = 0.5) +
+  scale_fill_manual(values = legenda$Cores, na.value = "white", name = "Uso do Solo") +
+  labs(title = "Assentamentos em Santana do araguaia - 2025 ") +
+  theme_minimal()
+
+
+
+```
+
+```{r}
+#| eval: true
+#| message: false
+#| warning: false
+#| code-fold: true
+#| results: hold
+
+# --- Preparação dos Shapefiles Fundiários e de Assentamentos ---
+
+## Criando limite para município
+vetor_total <- as.polygons(r_utm, dissolve = TRUE)
+municipio_limite <- aggregate(vetor_total)
+
+# Carregar o shapefile de municípios do Pará (ajuste o caminho conforme necessário)
+municipios_pa <- vect("C:/Users/Anna/Documents/disciplinas_bach/ecologia_de_paisagens/diario_ecologia_anna/exercicios/shapefiles/PA_Municipios_2025/PA_Municipios_2025.shp")
+
+# Filtrar apenas Santana do Araguaia
+santana_poligono <- municipios_pa[municipios_pa$NM_MUN == "Santana do Araguaia", ]
+
+# Carregar SNCI e SIGEF
+shp_snci <- vect("C:/Users/Anna/Documents/disciplinas_bach/ecologia_de_paisagens/diario_ecologia_anna/exercicios/shapefiles/SNCI_Brasil_PA/SNCI_Brasil_PA.shp")
+shp_sigef <- vect("C:/Users/Anna/Documents/disciplinas_bach/ecologia_de_paisagens/diario_ecologia_anna/exercicios/shapefiles/Sigef_Brasil_PA/Sigef_Brasil_PA.shp")
+
+# Carregar o shapefile de Assentamentos
+shp_assen <- vect("C:/Users/Anna/Documents/disciplinas_bach/ecologia_de_paisagens/diario_ecologia_anna/exercicios/shapefiles/Assentamento_Brasil/Assentamento_Brasil.shp")
+
+# Reprojetar todos para o CRS do polígono de Santana
+shp_snci <- project(shp_snci, crs(santana_poligono))
+shp_sigef <- project(shp_sigef, crs(santana_poligono))
+shp_assen <- project(shp_assen, crs(santana_poligono))
+
+# Cortar todos pelo limite de Santana do Araguaia
+snci_santana <- terra::intersect(shp_snci, santana_poligono)
+sigef_santana <- terra::intersect(shp_sigef, santana_poligono)
+assen_santana <- terra::intersect(shp_assen, santana_poligono)
+
+# Reprojetar o shapefile de assentamentos para o raster de cobertura (para uso posterior)
+assen_santana_utm <- terra::project(assen_santana, crs(r_utm))
+
+# --- União de SIGEF e SNCI e Resolução de Sobreposição com Assentamentos ---
+
+# 3.1. Unir SIGEF e SNCI
+# Usamos 'union' para combinar as geometrias e atributos. Isso cria novas feições onde há sobreposição.
+# Para simplificar a análise subsequente, podemos dissolver as geometrias unidas.
+terras_fund_uniao <- terra::union(snci_santana, sigef_santana)
+
+# Se houver atributos duplicados ou que não são relevantes para a união, podemos simplificar antes de dissolver
+# Ou selecionar apenas os atributos que queremos manter.
+# Por exemplo, se quisermos apenas a geometria, podemos fazer:
+# terras_fund_uniao_geom <- terra::aggregate(terras_fund_uniao, dissolve = TRUE)
+# Para manter os atributos e lidar com sobreposições, 'union' é o correto.
+
+# 3.2. Remover áreas de assentamento da união SIGEF/SNCI
+# As áreas de assentamento serão 'apagadas' da união SIGEF/SNCI.
+fund_santana_sem_assentamento <- terra::erase(terras_fund_uniao, assen_santana)
+
+# 3.3. Criar SpatVector com a sobreposição dos três (SIGEF+SNCI dentro de Assentamentos)
+# Isso representa as áreas de SIGEF/SNCI que *estão* dentro dos assentamentos.
+fund_santana_apenas_assentamento <- terra::intersect(terras_fund_uniao, assen_santana)
+
+#unir imoveis dentro de assentamentos com os limites dos assentamentos
+terras_assen <- rbind(fund_santana_apenas_assentamento, assen_santana)
+
+# Reprojetar o shapefile resultante (sem e apenas assentamentos) para o raster de cobertura
+fund_santana_utm <- terra::project(fund_santana_sem_assentamento, crs(r_utm))
+assen_santana_utm <- terra::project(terras_assen, crs(r_utm))
+
+# Cortar e mascarar o raster usando o limite fundiário sem assentamentos
+r_masked_fund <- crop(r_utm, fund_santana_utm)
+r_masked_fund <- mask(r_masked_fund, fund_santana_utm)
+
+# Cortar e mascarar o raster usando o limite fundiário apenas assentamentos
+r_masked_assen <- crop(r_utm, assen_santana_utm)
+r_masked_assen <- mask(r_masked_assen, assen_santana_utm)
+
+# --- 4. Cálculo de Áreas e Agrupamento ---
+
+# No terra, expanse() calcula em m². Dividimos por 10.000 para hectares.
+fund_santana_utm$area_ha <- expanse(fund_santana_utm, unit = "ha")
+
+# Criar os dois grupos
+pequenas <- fund_santana_utm[fund_santana_utm$area_ha <= 300, ]
+grandes  <- fund_santana_utm[fund_santana_utm$area_ha > 300, ]
+
+# --- 5. Calcular Proporção das Classes (PLAND) ---
+# IDs solicitados: 3, 4, 6, 11 e 12 (Formação Campestre é ID 12 no MapBiomas)
+#ids_interesse <- c(3, 4, 6, 11, 12)
+
+# Função para calcular PLAND (Percentage of Landscape) para um grupo ou feição individual
+calcular_pland <- function(raster, mascara, titulo) {
+  # Corta o raster pela máscara do grupo
+  r_crop <- crop(raster, mascara)
+  r_mask <- mask(r_crop, mascara)
+  
+  # Calcula a métrica PLAND (porcentagem da classe)
+  metricas <- calculate_lsm(r_mask, what = c("lsm_c_pland", "lsm_l_ta"))
+  
+  # Filtra apenas as classes de interesse e organiza
+  resultado <- metricas %>%
+    left_join(legenda, by = c("class" = "id")) %>%
+    mutate(Grupo = titulo) %>%
+    select(Grupo, Categoria, value)
+  
+  return(resultado)
+}
+
+# Executar para os dois grupos como um todo
+res_pequenas_total <- calcular_pland(r_utm, pequenas, "Até 300 ha (Total)")
+res_grandes_total  <- calcular_pland(r_utm, grandes, "Mais de 300 ha (Total)")
+
+# --- 6. Calcular Métricas Individualmente para Áreas > 300 ha ---
+
+# Salavar resultados
+write.csv(res_pequenas_total, "metricas_total_ate_300.csv", row.names = FALSE)
+write.csv(res_grandes_total, "metricas_total_maisde_300.csv", row.names = FALSE)
+
+# Inicializar a lista para armazenar os resultados individuais
+metricas_grandes_individuais <- list()
+
+# Iterar sobre cada feição no grupo \'grandes\'
+if (nrow(grandes) > 0) { # Adicionada verificação para garantir que há propriedades no grupo
+  for (i in 1:nrow(grandes)) {
+    propriedade_atual <- grandes[i, ]
+    
+    # Criar um identificador para a propriedade
+    id_propriedade <- paste0("Propriedade_", i, "_Area_", round(propriedade_atual$area_ha, 2), "ha")
+    
+    # Calcular PLAND para a propriedade individual
+    metricas_individuais <- calcular_pland(r_utm, propriedade_atual, id_propriedade)
+    
+    # Adicionar ao resultado, se não for NULL
+    if (!is.null(metricas_individuais)) {
+      metricas_grandes_individuais[[id_propriedade]] <- metricas_individuais
+    }
+  }
+}
+
+# Combinar todos os resultados individuais em um único data frame
+metricas_grandes_individuais_df <- do.call(rbind, metricas_grandes_individuais)
+
+#salvar resultados
+write.csv(metricas_grandes_individuais_df, "metricas_individual_maisde_300.csv", row.names = FALSE)
+
+# --- 7. Visualização (Opcional) ---
+
+# Visualizar o resultado da união SIGEF/SNCI sem assentamentos
+ ggplot() +
+   geom_spatraster(data = r_masked_fund) +
+   geom_spatvector(data = fund_santana_utm, fill = NA, color = "black", linewidth = 0.5) +
+   scale_fill_manual(values = legenda$Cores, na.value = "white", name = "Uso do Solo") +
+    geom_spatvector(data = municipio_limite, fill = NA, color = "black", linewidth = 0.5) +
+   labs(title = "Imóveis rurais (SIGEF/SNCI) fora dos Assentamentos em Santana do Araguaia - 2025") +
+   theme_minimal()
+
+# Visualizar a sobreposição de SIGEF/SNCI com Assentamentos
+ ggplot() +
+   geom_spatraster(data = r_masked_assen) +
+   geom_spatvector(data = assen_santana_utm, fill = NA, color = "black", linewidth = 0.5) +
+   scale_fill_manual(values = legenda$Cores, na.value = "white", name = "Uso do Solo") +
+   geom_spatvector(data = municipio_limite, fill = NA, color = "black", linewidth = 0.5) +
+   labs(title = "Sobreposição de Terras Fundiárias (SIGEF/SNCI) com Assentamentos em Santana do Araguaia - 2025") +
+   theme_minimal()
+
+0.8-0.3368  # 80% de cobertura menos a cobertura florestal atual em imoveis rurais com mais de 4 módulos fiscais (75 ha é o módulo rural desse munícipio), ou seja, com mais de 300 ha
+ 
+869397.9136*0.4632 # área total de todos os imóveis rurais vezes porcentagem de de área florestal que precisa ser reflorestada
+ 
+402705.1/1159142.7 # área total que precisa ser reflorestada dividida pela área do município, resultando em quanto porcento do município precisa ser reflorestado
+
+```
+
+
+## Referências:
+
+https://www.legisweb.com.br/legislacao/?id=416495
