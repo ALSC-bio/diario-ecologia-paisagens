@@ -18,8 +18,8 @@ website:
             text: Exercício 4 - Amostragem de Paisagens com Restrição de Borda — Murici-AL
           - href: exercicios/exercicio_5.qmd
             text: Exercício 5 - Descrevendo uma paisagem
-          - href: Avaliação final
-            text: exercicios/avaliacao_final.qmd
+      - href: exercicios/avaliacao_final.qmd
+        text: Avaliação final
 
 format:
   html:
