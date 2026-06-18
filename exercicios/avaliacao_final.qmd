@@ -219,6 +219,7 @@ Formação campestre
 #| message: false
 #| warning: false
 #| code-fold: true
+#| include: false
 #| results: hold
 
 # Calculando métricas
@@ -356,7 +357,7 @@ ggplot() +
   geom_spatvector(data = pontos_finais, color = "red", size = 5, shape = 19) +
   geom_spatvector_text(data = pontos_finais, aes(label = 1:15), 
                        color = "white", size = 3, vjust = -0.8) +
-  labs(title = "Pontos amostrais e buffers de 5000 m") +
+  labs(title = "Paisagens amostrais buffers de 5000 m") +
   theme_minimal() +
   theme(legend.position = "bottom")
 
@@ -496,7 +497,7 @@ Grupos afetados negativamente: Trabalhadores da antiga fazenda rio cristalino, t
  - 1998: Aliciamento dos moradores para ocupação de terras, pressionando INCRA para reforma agrária e indenização.
  - 2004: Governo Federal desapropria parte da antiga Fazenda Cristalino, assentando 1300 famílias e reservando parte da área para exploração de reserva de urânio.
  - 2008: INCRA abre processo de desapropriação de terras para fins de reforma agrária de 52 mil hectares da Fazenda Cristalino, de posse da Agropecuária Santa Bárbara Xinguara.
- - 2011-2025: diminuição de 27.612 moradores (47,55% da população do municipio)
+ - 2011-2025: diminuição de 27.612 moradores (47,55% da população do municipio)
 
 
 ### Referências:
@@ -526,8 +527,9 @@ SOUZA, Beatriz. Urânio, gado e reforma agrária: que fim levou a Fazenda Volksw
 
 # 4. Proposta de manejo integrado
 
-
+Estabelecer Terra Indígena Iny/Kayapó próxima à paisagem 2
 Aumentar em cerca  de 34% a coberta de Formação Florestal regularizando as reservas legais do município
+adequação ambiental para imóveis rurais
 
 ```{r}
 #| eval: false

@@ -14,7 +14,7 @@ Para Ecologia de Paisagens, precisamos de pacotes que nos permitam:
 Os pacotes que usaremos podem ser agrupados por função:
 
 | Grupo | Pacotes | Para que servem |
-|------------------|-------------------|-----------------------------------|
+|-------------------|-------------------|----------------------------------|
 | Dados espaciais — Raster | terra | Leitura, manipulação e análise de dados matriciais (GeoTIFF, etc.) |
 | Dados espaciais — Vetor | sf | Geometrias vetoriais (pontos, linhas, polígonos) em formato tidy |
 | Métricas de paisagem | landscapemetrics | Cálculo de \>130 métricas de padrão de paisagem (substitui o FRAGSTATS) |
@@ -27,6 +27,8 @@ Os pacotes que usaremos podem ser agrupados por função:
 Como instalar pacotes necessários:
 
 ```{r}
+#| eval: false
+
 # Vetor com todos os pacotes necessários
 pacotes <- c(
   # Dados espaciais
