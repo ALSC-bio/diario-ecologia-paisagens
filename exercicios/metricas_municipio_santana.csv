@@ -1,0 +1,32 @@
+"class","Categoria","Metrica","Valor"
+3,"Formação Florestal","np",6103
+4,"Formação Savânica","np",3027
+6,"Floresta Alagável","np",1252
+9,"Silvicultura","np",148
+11,"Campo Alagado","np",2116
+12,"Formação Campestre","np",596
+15,"Pastagem","np",3125
+21,"Mosaico de Usos","np",522
+24,"Área Urbanizada","np",13
+25,"Outras Áreas não Vegetadas","np",291
+29,"Afloramento Rochoso","np",702
+30,"Mineração","np",31
+33,"Corpo d'Água","np",634
+39,"Soja","np",1213
+41,"Outras lavouras temporárias","np",1674
+3,"Formação Florestal","pland",29.8806949304257
+4,"Formação Savânica","pland",1.36149407958976
+6,"Floresta Alagável","pland",5.27691728998142
+9,"Silvicultura","pland",0.240945028035768
+11,"Campo Alagado","pland",3.64923675659308
+12,"Formação Campestre","pland",0.122399253382796
+15,"Pastagem","pland",50.2870689642723
+21,"Mosaico de Usos","pland",0.89839258253228
+24,"Área Urbanizada","pland",0.103694300416138
+25,"Outras Áreas não Vegetadas","pland",0.027498789042409
+29,"Afloramento Rochoso","pland",0.266596883485776
+30,"Mineração","pland",0.0426314836204732
+33,"Corpo d'Água","pland",0.826932213660879
+39,"Soja","pland",6.62653931084143
+41,"Outras lavouras temporárias","pland",0.388958134119757
+NA,NA,"shdi",1.37582569383793
