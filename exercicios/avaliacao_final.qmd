@@ -22,7 +22,8 @@ library(tidyterra)
 library(landscapemetrics)
 library(geobr)
 library(ggplot2)
-library(patchwork)
+library(readr)
+library(knitr)
 
 r_santana <- rast("2024_coverage_santana_araguaia.tif") #baixei 30m por conta da comparação temporal
 
@@ -193,68 +194,68 @@ ggplot() +
   theme_minimal() +
   theme(legend.position = "bottom")
 
-```
+# --- Cálculo de Métricas para Todas as Classes ---
 
-
-```{r}
-#| eval: true
-#| message: false
-#| warning: false
-#| code-fold: true
-#| results: hold
-
-# Identificar o valor numérico da classe Floresta
-id_floresta <- legenda$id[legenda$Categoria == "Formação Florestal"]
-
-# Lista para armazenar métricas de cada buffer
-metricas_lista <- list()
+# Lista para armazenar os resultados
+metricas_completas <- list()
 
 for(i in 1:nrow(buffers)) {
-  # Recortar o raster para o buffer i
+  # 1. Recortar e mascarar o raster para o buffer atual
   crop_i <- crop(r_utm, buffers[i,])
   mask_i <- mask(crop_i, buffers[i,])
   
-  # Calcular Shannon diversity (nível da paisagem)
-  shannon <- lsm_l_shdi(mask_i)
+  # 2. Calcular as métricas desejadas
+  # lsm_c_pland: % da paisagem ocupada por cada classe
+  # lsm_c_np: Número de manchas por classe
+  # lsm_p_enn: Distância do vizinho mais próximo (nível da mancha - patch)
+  # lsm_l_shdi: Diversidade de Shannon (nível da paisagem)
   
-  # Calcular métricas de classe para todas as classes
-  pland_all <- lsm_c_pland(mask_i)   # percentual de cada classe
-  ed_all <- lsm_c_ed(mask_i)         # densidade de borda por classe
+  pland <- lsm_c_pland(mask_i)
+  np    <- lsm_c_np(mask_i)
+  enn_p <- lsm_p_enn(mask_i) # Retorna um valor por mancha
+  shdi  <- lsm_l_shdi(mask_i)
+  ai    <- lsm_c_ai(mask_i)
+  edge  <- lsm_c_ed(mask_i)
   
-  # Filtrar apenas a classe floresta
-  pland_floresta <- pland_all %>% filter(class == id_floresta)
-  ed_floresta <- ed_all %>% filter(class == id_floresta)
+  # Como o ENN é calculado por mancha (patch), vamos tirar a média por classe 
+  # para consolidar na tabela de classes
+  enn_c <- enn_p %>%
+    group_by(class) %>%
+    summarise(enn_mean = mean(value, na.rm = TRUE), .groups = "drop")
   
-  # Extrair valores (se não houver floresta, colocar NA ou 0)
-  div_shannon <- shannon$value
-  perc_floresta <- ifelse(nrow(pland_floresta) > 0, pland_floresta$value, 0)
-  dens_borda <- ifelse(nrow(ed_floresta) > 0, ed_floresta$value, NA)
+  # 3. Unir as métricas de classe em um único dataframe para este buffer
+  metrics_buffer <- pland %>%
+    select(class, pland = value) %>%
+    left_join(np %>% select(class, np = value), by = "class") %>%
+    left_join(ai %>% select(class, ai = value), by = "class") %>%
+    left_join(edge %>% select(class, edge = value), by = "class") %>%
+    left_join(enn_c, by = "class") %>%
+    mutate(
+      id_buffer = i,
+      shannon_paisagem = shdi$value
+    )
   
-  # Guardar
-  metricas_lista[[i]] <- data.frame(
-    id_buffer = i,
-    diversidade_shannon = div_shannon,
-    perc_floresta = perc_floresta,
-    densidade_borda_m_ha = dens_borda
-  )
+  metricas_completas[[i]] <- metrics_buffer
 }
 
-# Combinar tudo
-metricas_paisagem <- bind_rows(metricas_lista)
+# 4. Combinar todos os buffers e adicionar os nomes das categorias
+tabela_metricas_final <- bind_rows(metricas_completas) %>%
+  left_join(legenda %>% select(id, Categoria), by = c("class" = "id")) %>%
+  select(id_buffer, class, Categoria, pland, np, ai, edge, enn_mean, shannon_paisagem)
 
-print(metricas_paisagem)
+# Visualizar e Salvar
+print(tabela_metricas_final)
+write.csv(tabela_metricas_final, "metricas_completas_por_classe_santana.csv", row.names = FALSE)
 
-write.csv(metricas_paisagem, "metricas_landscapemetrics.csv", row.names = FALSE)
-```
+dados <- read_csv("metricas_completas_por_classe_santana.csv")
 
+kable(
+  dados,
+  digits = 2,
+  caption = "Métricas da paisagem por buffer"
+)
 
-
-```{r}
-#| eval: true
-#| message: false
-#| warning: false
-#| code-fold: true
-#| results: hold
+# Visualizar buffers
 
 lista_recortes <- list()
 for(i in 1:nrow(buffers)) {
@@ -272,14 +273,18 @@ ggplot(df_painel) +
   facet_wrap(~id_buffer, nrow = 3, ncol = 5, scales = "free") +
   theme_minimal() +
   labs(title = "Painel de Amostragem: 15 Paisagens de Santana do Araguaia-PA",
-       subtitle = "Recortes circulares de 3000m de raio (Interior de Floresta)",
+       subtitle = "Recortes circulares de 3000m de raio (Interior de Floresta Terra Firme)",
        fill = "Uso do Solo") +
   theme(axis.text = element_blank(),
         axis.ticks = element_blank(),
         panel.grid = element_blank(),
         legend.position = "bottom")
 
+
 ```
+
+
+
 
 
 O valor da diversidade de shannon (1.38) demonstra uma alta heterogeneadade de paisagens dentro do município. Quanto as proporções de cada uso de terra...
@@ -335,11 +340,15 @@ ggplot() +  #adicionar norte geográfico
 
 
 
-
 # 2. Diagnóstico ecológico
+
+Em estudos do PDBFF as aves amzonicas de áreas abertas como savanas, capinaranas e . Além disso, houve recuperação da abundância de aves antes da fragmentação em fragmentos com 10 ha (com floresta secundária como matriz) 
 
 Conectividade e metapopulações 
 Efeito de borda
+
+Não é muito claro efeito de borda para aves em terra firme
+
 Produtividade primária e estoque de carbono 
 Heterogeneidade e diversidade beta
 
@@ -351,15 +360,15 @@ Grupos afetados negativamente: Trabalhadores da antiga fazenda rio cristalino, t
 ### Linha do tempo
 
  - 1973: Volkswagen adquire 140 mil hectares de terras públicas
-    - Recebeu incentivos da  Superintendência de Desenvolvimento da Amazônia (SUDAM) no governo militar.
-    - Conhecida como Fazenda Rio Cristalino.
-    - Criação de gado
- - Denúncias de irregularidades trabalhistas, tortura e trabalho escravo
+  - Recebeu incentivos e isenção fiscal da Superintendência de Desenvolvimento da Amazônia (SUDAM) no governo militar.
+  - Conhecida como Fazenda Rio Cristalino.
+  - Criação de gado
+  - Denúncias de irregularidades trabalhistas, tortura e trabalho escravo
  - Década de 70: Criação da TI Santana do Araguaia em cidade vizinha 
  - 1998: Aliciamento dos moradores para ocupação de terras, pressionando INCRA para reforma agrária e indenização.
  - 2004: Governo Federal desapropria parte da antiga Fazenda Cristalino, assentando 1300 famílias e reservando parte da área para exploração de reserva de urânio.
  - 2008: INCRA abre processo de desapropriação de terras para fins de reforma agrária de 52 mil hectares da Fazenda Cristalino, de posse da Agropecuária Santa Bárbara Xinguara.
- - 2011-2025:  diminuição de 27.612 moradores (47,55% da população do municipio)
+ - 2011-2025: diminuição de 27.612 moradores (47,55% da população do municipio)
 
 
 ### Referências:
