@@ -421,6 +421,7 @@ Use este bloco para diagnóstico rápido:
 
 ```{r}
 #| results: false
+#| eval: false
 # Verificar versão do R
 R.version.string
 
@@ -454,6 +455,7 @@ update.packages(ask = FALSE, checkBuilt = TRUE)
 Salve este script como `00_setup.R` na raiz do seu projeto. Execute-o uma vez no início da disciplina:
 
 ```{r}
+#| eval: false
 # =============================================================
 # 00_setup.R
 # Script de configuração inicial — Ecologia de Paisagens BO-304
