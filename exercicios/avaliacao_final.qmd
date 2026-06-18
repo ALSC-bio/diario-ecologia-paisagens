@@ -258,7 +258,7 @@ print(metri_confi)
 ```
 
 
-Por conta da grande extensão do município optei por calcular as métricas ... em 15 pontos sorteados com raio de 3km
+Por conta da grande extensão do município optei por calcular as métricas ... em 15 pontos sorteados com raio de 5km
 
 ```{r}
 #| eval: true
@@ -458,7 +458,18 @@ Efeito de borda
 Não é muito claro efeito de borda para aves em terra firme
 
 Produtividade primária e estoque de carbono 
+
+![Fogo acumulado no município de 1985 a 2025](exercise_images/fogo_acumulado_santana.png)
+
+![Fogo no município ao longo os anos](exercise_images/fogo_escala_temporal_santana.png)
+
+![Área queimada acumulada no município de 1985 a 2025](exercise_images/area_acumulada_fogo_santana.png)
+
+![Carbono no solo](exercise_images/carbono_no_solo_santana.png)
+
 Heterogeneidade e diversidade beta
+
+
 
 # 3. Análise de Ecologia Política
 
