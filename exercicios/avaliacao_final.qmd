@@ -25,6 +25,7 @@ library(readr)
 library(knitr)
 library(dplyr)
 library(gt)
+library(tmap)
 
 r_santana <- rast("2024_coverage_santana_araguaia.tif") #baixei 30m por conta da comparação temporal
 
@@ -74,7 +75,6 @@ kable(
   caption = "Métricas de todo o município"
   )
   
-#tmap_mode("view")
 ```
 
 O valor da diversidade de shannon (1,38) demonstra uma alta heterogeneadade de paisagens dentro do município. Quanto as proporções de cada uso de terra, a maior parte do município é ocupado por pastagem (50,29%), enquanto a formação florestal ocupa 29,88% do município. Santana do araguaia também tem sua área composta por 6,63% de soja e apenas 0,10% de área urbana, sendo um município predominante rural. Quanto ao número de fragmentos por município as classes mais fragmentadas são formação florestal, pastagem, formação savânica, campo alagado, outras lavouras temporárias e floresta alagável. Quatro das fitofisionomias nativas presentes no município estão entre os usos de solo mais fragmentados.
