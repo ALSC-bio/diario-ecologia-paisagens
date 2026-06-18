@@ -349,7 +349,7 @@ ggplot() +
   geom_spatvector(data = pontos_finais, color = "red", size = 5, shape = 19) +
   geom_spatvector_text(data = pontos_finais, aes(label = 1:15), 
                        color = "white", size = 3, vjust = -0.8) +
-  labs(title = "Pontos amostrais e buffers de 2000 m") +
+  labs(title = "Pontos amostrais e buffers de 5000 m") +
   theme_minimal() +
   theme(legend.position = "bottom")
 
@@ -431,7 +431,7 @@ ggplot(df_painel) +
   facet_wrap(~id_buffer, nrow = 3, ncol = 5, scales = "free") +
   theme_minimal() +
   labs(title = "Painel de Amostragem: 15 Paisagens de Santana do Araguaia-PA",
-       subtitle = "Recortes circulares de 3000m de raio (Interior de Floresta Terra Firme)",
+       subtitle = "Recortes circulares de 5000m de raio (Interior de Floresta Terra Firme)",
        fill = "Uso do Solo") +
   theme(axis.text = element_blank(),
         axis.ticks = element_blank(),
