@@ -131,6 +131,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../exercicios/avaliacao_final.html" aria-current="page"> 
+<span class="menu-text">Avaliação final</span></a>
+  </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-exercícios" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Exercícios</span>
@@ -154,10 +158,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link active" href="../exercicios/avaliacao_final.html" aria-current="page"> 
-<span class="menu-text">Avaliação final</span></a>
-  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -227,27 +227,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>r_santana <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"2024_coverage_santana_araguaia.tif"</span>) <span class="co">#baixei 30m por conta da comparação temporal</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>r_utm <span class="ot">&lt;-</span> <span class="fu">project</span>(r_santana, <span class="st">"EPSG:31985"</span>, <span class="at">method =</span> <span class="st">"near"</span>)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>legenda <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">11</span>, <span class="dv">15</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">25</span>, <span class="dv">33</span>, <span class="dv">39</span>, <span class="dv">41</span>, <span class="dv">29</span>, <span class="dv">9</span>, <span class="dv">12</span>, <span class="dv">30</span>),</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">Categoria =</span> <span class="fu">c</span>(<span class="st">"Formação Florestal"</span>, <span class="st">"Formação Savânica"</span>,<span class="st">"Floresta Alagável"</span>,    <span class="st">"Campo Alagado"</span>, <span class="st">"Pastagem"</span>, <span class="st">"Mosaico de Usos"</span>, <span class="st">"Área Urbanizada"</span>, </span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Outras Áreas não Vegetadas"</span>, <span class="st">"Corpo d'Água"</span>, <span class="st">"Soja"</span>, </span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Outras lavouras temporárias"</span>, <span class="st">"Afloramento Rochoso"</span>, <span class="st">"Silvicultura"</span>,</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Formação Campestre"</span>, <span class="st">"Mineração"</span>),</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">Cores =</span> <span class="fu">c</span>(<span class="st">"#006400"</span>, <span class="st">"#7cfc00"</span>,<span class="st">"#007785"</span>, <span class="st">"#00FF7F"</span>, <span class="st">"#edde8e"</span>, <span class="st">"#ffefc3"</span>,               <span class="st">"#ff0000"</span>, <span class="st">"#d3d3d3"</span>, <span class="st">"#0000ff"</span>, <span class="st">"#f5b3c8"</span>, <span class="st">"#f54ca9"</span>, <span class="st">"#fc8114"</span>,              <span class="st">"#7a5900"</span>, <span class="st">"#ffff00"</span>, <span class="st">"#9c0027"</span>)</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(r_utm) <span class="ot">&lt;-</span> legenda[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span>  <span class="co">#adicionar norte geográfico</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_spatraster</span>(<span class="at">data =</span> r_utm) <span class="sc">+</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> legenda<span class="sc">$</span>Cores, <span class="at">na.value =</span> <span class="st">"white"</span>, <span class="at">name =</span> <span class="st">"Uso do Solo"</span>) <span class="sc">+</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Santana do Araguaia (PA) em 2024 - mapbiomas"</span>) <span class="sc">+</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>r_santana <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"2024_coverage_santana_araguaia.tif"</span>) <span class="co">#baixei 30m por conta da comparação temporal</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>r_utm <span class="ot">&lt;-</span> <span class="fu">project</span>(r_santana, <span class="st">"EPSG:31985"</span>, <span class="at">method =</span> <span class="st">"near"</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>legenda <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">11</span>, <span class="dv">15</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">25</span>, <span class="dv">33</span>, <span class="dv">39</span>, <span class="dv">41</span>, <span class="dv">29</span>, <span class="dv">9</span>, <span class="dv">12</span>, <span class="dv">30</span>),</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">Categoria =</span> <span class="fu">c</span>(<span class="st">"Formação Florestal"</span>, <span class="st">"Formação Savânica"</span>,<span class="st">"Floresta Alagável"</span>,    <span class="st">"Campo Alagado"</span>, <span class="st">"Pastagem"</span>, <span class="st">"Mosaico de Usos"</span>, <span class="st">"Área Urbanizada"</span>, </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Outras Áreas não Vegetadas"</span>, <span class="st">"Corpo d'Água"</span>, <span class="st">"Soja"</span>, </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Outras lavouras temporárias"</span>, <span class="st">"Afloramento Rochoso"</span>, <span class="st">"Silvicultura"</span>,</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Formação Campestre"</span>, <span class="st">"Mineração"</span>),</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">Cores =</span> <span class="fu">c</span>(<span class="st">"#006400"</span>, <span class="st">"#7cfc00"</span>,<span class="st">"#007785"</span>, <span class="st">"#00FF7F"</span>, <span class="st">"#edde8e"</span>, <span class="st">"#ffefc3"</span>,               <span class="st">"#ff0000"</span>, <span class="st">"#d3d3d3"</span>, <span class="st">"#0000ff"</span>, <span class="st">"#f5b3c8"</span>, <span class="st">"#f54ca9"</span>, <span class="st">"#fc8114"</span>,              <span class="st">"#7a5900"</span>, <span class="st">"#ffff00"</span>, <span class="st">"#9c0027"</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(r_utm) <span class="ot">&lt;-</span> legenda[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span>  <span class="co">#adicionar norte geográfico</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_spatraster</span>(<span class="at">data =</span> r_utm) <span class="sc">+</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> legenda<span class="sc">$</span>Cores, <span class="at">na.value =</span> <span class="st">"white"</span>, <span class="at">name =</span> <span class="st">"Uso do Solo"</span>) <span class="sc">+</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Santana do Araguaia (PA) em 2024 - mapbiomas"</span>) <span class="sc">+</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -283,12 +284,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  dados_muni,</span>
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">digits =</span> <span class="dv">2</span>,</span>
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"Métricas de todo o município"</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co">#tmap_mode("view")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>  layer       crs units   class n_classes OK
+<pre><code>
+|---------|---------|---------|---------|
+=========================================
+                                          
+  layer       crs units   class n_classes OK
 1     1 projected     m integer        15  ✔</code></pre>
 </div>
 <div class="cell-output-display">
@@ -582,7 +585,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># np: Número de Fragmentos (Patches)</span></span>
 <span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  metricas <span class="ot">&lt;-</span> <span class="fu">calculate_lsm</span>(r_utm, </span>
 <span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>                            <span class="at">level =</span> <span class="st">"class"</span>, </span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>                            <span class="at">metric =</span> <span class="fu">c</span>(<span class="st">"pland"</span>, <span class="st">"ed"</span>, <span class="st">"np"</span>))</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>                            <span class="at">metric =</span> <span class="fu">c</span>(<span class="st">"pland"</span>, <span class="st">"ed"</span>, <span class="st">"np"</span>, <span class="st">"ca"</span>))</span>
 <span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filtrar apenas as classes de interesse e organizar</span></span>
 <span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  resultado <span class="ot">&lt;-</span> metricas <span class="sc">%&gt;%</span></span>
@@ -618,48 +621,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>tabela_escala_temp <span class="ot">&lt;-</span> df_final <span class="sc">%&gt;%</span></span>
 <span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Metrica, <span class="at">values_from =</span> Valor) <span class="sc">%&gt;%</span></span>
 <span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(legenda <span class="sc">%&gt;%</span> <span class="fu">select</span>(id, Categoria), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"Classe"</span> <span class="ot">=</span> <span class="st">"id"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Ano, Classe, Categoria, pland, ed, np) <span class="sc">%&gt;%</span></span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Ano, Classe, Categoria, pland, ed, np, ca) <span class="sc">%&gt;%</span></span>
 <span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Porc_Cobertura =</span> pland, </span>
 <span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>         <span class="at">Densi_Borda =</span> ed, </span>
-<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>         <span class="at">Num_Fragmentos =</span> np)</span>
-<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a><span class="co"># Exibir o resultado final</span></span>
-<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>         <span class="at">Num_Fragmentos =</span> np,</span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>         <span class="at">Area =</span> ca)</span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a><span class="co"># Exibir o resultado final</span></span>
 <span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Salvar em CSV</span></span>
-<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(tabela_escala_temp, <span class="st">"metricas_santana_temporal.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a>dados_temp <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"metricas_santana_temporal.csv"</span>)</span>
-<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(</span>
-<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a>  dados_temp,</span>
-<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a>  <span class="at">digits =</span> <span class="dv">2</span>,</span>
-<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"Escala temporal da vegetação nativa"</span></span>
-<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a><span class="co"># Salvar em CSV</span></span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(tabela_escala_temp, <span class="st">"metricas_santana_temporal.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a>dados_temp <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"metricas_santana_temporal.csv"</span>)</span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(</span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a>  dados_temp,</span>
+<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a>  <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"Escala temporal da vegetação nativa"</span></span>
+<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Processando raster para o ano: 1985...
-Processando raster para o ano: 2005...
+<pre><code>
+|---------|---------|---------|---------|
+=========================================
+                                          
 
 |---------|---------|---------|---------|
 =========================================
                                           
-Processando raster para o ano: 2024...
+Processando raster para o ano: 1985...
 
 |---------|---------|---------|---------|
 =========================================
-                                          </code></pre>
+                                          
+Processando raster para o ano: 2005...
+Processando raster para o ano: 2024...</code></pre>
 </div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Escala temporal da vegetação nativa</caption>
 <colgroup>
 <col style="width: 6%">
-<col style="width: 9%">
-<col style="width: 26%">
-<col style="width: 20%">
-<col style="width: 16%">
-<col style="width: 20%">
+<col style="width: 8%">
+<col style="width: 22%">
+<col style="width: 18%">
+<col style="width: 14%">
+<col style="width: 18%">
+<col style="width: 12%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -669,6 +678,7 @@ Processando raster para o ano: 2024...
 <th style="text-align: right;">Porc_Cobertura</th>
 <th style="text-align: right;">Densi_Borda</th>
 <th style="text-align: right;">Num_Fragmentos</th>
+<th style="text-align: right;">Area</th>
 </tr>
 </thead>
 <tbody>
@@ -679,6 +689,7 @@ Processando raster para o ano: 2024...
 <td style="text-align: right;">72.69</td>
 <td style="text-align: right;">9.03</td>
 <td style="text-align: right;">1752</td>
+<td style="text-align: right;">924946.65</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1985</td>
@@ -687,6 +698,7 @@ Processando raster para o ano: 2024...
 <td style="text-align: right;">1.54</td>
 <td style="text-align: right;">3.00</td>
 <td style="text-align: right;">2200</td>
+<td style="text-align: right;">19605.05</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1985</td>
@@ -695,6 +707,7 @@ Processando raster para o ano: 2024...
 <td style="text-align: right;">6.89</td>
 <td style="text-align: right;">3.18</td>
 <td style="text-align: right;">1164</td>
+<td style="text-align: right;">87642.29</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1985</td>
@@ -703,6 +716,7 @@ Processando raster para o ano: 2024...
 <td style="text-align: right;">4.99</td>
 <td style="text-align: right;">2.75</td>
 <td style="text-align: right;">1137</td>
+<td style="text-align: right;">63454.14</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1985</td>
@@ -711,6 +725,7 @@ Processando raster para o ano: 2024...
 <td style="text-align: right;">0.16</td>
 <td style="text-align: right;">0.49</td>
 <td style="text-align: right;">626</td>
+<td style="text-align: right;">2072.94</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2005</td>
@@ -719,6 +734,7 @@ Processando raster para o ano: 2024...
 <td style="text-align: right;">41.64</td>
 <td style="text-align: right;">14.37</td>
 <td style="text-align: right;">4553</td>
+<td style="text-align: right;">529849.52</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">2005</td>
@@ -727,6 +743,7 @@ Processando raster para o ano: 2024...
 <td style="text-align: right;">1.52</td>
 <td style="text-align: right;">3.10</td>
 <td style="text-align: right;">2064</td>
+<td style="text-align: right;">19289.20</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2005</td>
@@ -735,6 +752,7 @@ Processando raster para o ano: 2024...
 <td style="text-align: right;">5.98</td>
 <td style="text-align: right;">2.89</td>
 <td style="text-align: right;">1264</td>
+<td style="text-align: right;">76044.86</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">2005</td>
@@ -743,6 +761,7 @@ Processando raster para o ano: 2024...
 <td style="text-align: right;">4.76</td>
 <td style="text-align: right;">2.83</td>
 <td style="text-align: right;">1472</td>
+<td style="text-align: right;">60508.90</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2005</td>
@@ -751,6 +770,7 @@ Processando raster para o ano: 2024...
 <td style="text-align: right;">0.15</td>
 <td style="text-align: right;">0.46</td>
 <td style="text-align: right;">664</td>
+<td style="text-align: right;">1920.91</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">2024</td>
@@ -759,6 +779,7 @@ Processando raster para o ano: 2024...
 <td style="text-align: right;">29.88</td>
 <td style="text-align: right;">13.74</td>
 <td style="text-align: right;">6103</td>
+<td style="text-align: right;">380196.84</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2024</td>
@@ -767,6 +788,7 @@ Processando raster para o ano: 2024...
 <td style="text-align: right;">1.36</td>
 <td style="text-align: right;">2.95</td>
 <td style="text-align: right;">3027</td>
+<td style="text-align: right;">17323.42</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">2024</td>
@@ -775,6 +797,7 @@ Processando raster para o ano: 2024...
 <td style="text-align: right;">5.28</td>
 <td style="text-align: right;">2.42</td>
 <td style="text-align: right;">1252</td>
+<td style="text-align: right;">67142.59</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2024</td>
@@ -783,6 +806,7 @@ Processando raster para o ano: 2024...
 <td style="text-align: right;">3.65</td>
 <td style="text-align: right;">2.75</td>
 <td style="text-align: right;">2116</td>
+<td style="text-align: right;">46432.26</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">2024</td>
@@ -791,11 +815,14 @@ Processando raster para o ano: 2024...
 <td style="text-align: right;">0.12</td>
 <td style="text-align: right;">0.39</td>
 <td style="text-align: right;">596</td>
+<td style="text-align: right;">1557.39</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
+<p>Formação Florestal perdeu mais área entre 1985 e 2005, em 2024 a Formação Florestal possui menos da metade da área que possuia em 1985.</p>
+<p>Formação Savãnica Floresta Alagável Campo Alagado Formação campestre</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -842,7 +869,7 @@ Processando raster para o ano: 2024...
 <span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(metri_confi)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<p>Por conta da grande extensão do município optei por calcular as métricas … em 15 pontos sorteados com raio de 3km</p>
+<p>Por conta da grande extensão do município optei por calcular as métricas … em 15 pontos sorteados com raio de 5km</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -928,7 +955,7 @@ Processando raster para o ano: 2024...
 <span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_spatvector</span>(<span class="at">data =</span> pontos_finais, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">shape =</span> <span class="dv">19</span>) <span class="sc">+</span></span>
 <span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_spatvector_text</span>(<span class="at">data =</span> pontos_finais, <span class="fu">aes</span>(<span class="at">label =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>), </span>
 <span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a>                       <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Pontos amostrais e buffers de 2000 m"</span>) <span class="sc">+</span></span>
+<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Pontos amostrais e buffers de 5000 m"</span>) <span class="sc">+</span></span>
 <span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
 <span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
@@ -1019,7 +1046,7 @@ Processando raster para o ano: 2024...
 <span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>id_buffer, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">5</span>, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
 <span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
 <span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Painel de Amostragem: 15 Paisagens de Santana do Araguaia-PA"</span>,</span>
-<span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Recortes circulares de 3000m de raio (Interior de Floresta Terra Firme)"</span>,</span>
+<span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Recortes circulares de 5000m de raio (Interior de Floresta Terra Firme)"</span>,</span>
 <span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Uso do Solo"</span>) <span class="sc">+</span></span>
 <span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
@@ -2283,7 +2310,32 @@ Processando raster para o ano: 2024...
 <p>Conectividade e metapopulações</p>
 <p>Efeito de borda</p>
 <p>Não é muito claro efeito de borda para aves em terra firme</p>
-<p>Produtividade primária e estoque de carbono Heterogeneidade e diversidade beta</p>
+<p>Produtividade primária e estoque de carbono</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="exercise_images/fogo_acumulado_santana.png" class="img-fluid figure-img"></p>
+<figcaption>Fogo acumulado no município de 1985 a 2025</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="exercise_images/fogo_escala_temporal_santana.png" class="img-fluid figure-img"></p>
+<figcaption>Fogo no município ao longo os anos</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="exercise_images/area_acumulada_fogo_santana.png" class="img-fluid figure-img"></p>
+<figcaption>Área queimada acumulada no município de 1985 a 2025</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="exercise_images/carbono_no_solo_santana.png" class="img-fluid figure-img"></p>
+<figcaption>Carbono no solo</figcaption>
+</figure>
+</div>
+<p>Heterogeneidade e diversidade beta</p>
 </section>
 <section id="análise-de-ecologia-política" class="level1">
 <h1>3. Análise de Ecologia Política</h1>

@@ -145,7 +145,7 @@ processar_raster <- function(raster_path, ano) {
   # np: Número de Fragmentos (Patches)
   metricas <- calculate_lsm(r_utm, 
                             level = "class", 
-                            metric = c("pland", "ed", "np"))
+                            metric = c("pland", "ed", "np", "ca"))
   
   # Filtrar apenas as classes de interesse e organizar
   resultado <- metricas %>%
@@ -181,10 +181,11 @@ df_final <- bind_rows(lista_resultados)
 tabela_escala_temp <- df_final %>%
   tidyr::pivot_wider(names_from = Metrica, values_from = Valor) %>%
   left_join(legenda %>% select(id, Categoria), by = c("Classe" = "id")) %>%
-  select(Ano, Classe, Categoria, pland, ed, np) %>%
+  select(Ano, Classe, Categoria, pland, ed, np, ca) %>%
   rename(Porc_Cobertura = pland, 
          Densi_Borda = ed, 
-         Num_Fragmentos = np)
+         Num_Fragmentos = np,
+         Area = ca)
 
 # Exibir o resultado final
 
@@ -203,6 +204,12 @@ kable(
 
 ```
 
+Formação Florestal perdeu mais área entre 1985 e 2005, em 2024 a Formação Florestal possui menos da metade da área que possuia em 1985.
+
+Formação Savãnica
+Floresta Alagável
+Campo Alagado
+Formação campestre
 
 
 
