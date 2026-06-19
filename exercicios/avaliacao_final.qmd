@@ -6,7 +6,7 @@ format: html
 
 # 1. Análise descritiva da paisagem
 
-Santana do Araguaia é um município localizado no extremo sudeste do Pará às margens do rio Araguaia, possuindo 11.591,427 km² de extensão. Por conta da grande extensão, para o cálculo da maior parte das metricas, optei por analisar a paisagem através de 15 pontos aleatórios com 3km de raio com seu centro em uma área de Formação Florestal. Para métricas do município como um todo calculei a diversidade de shannon da paisagem, proporção de cada classe e número de fragmentos por classe. É possível visualizar o resultado tabelado abaixo assim como a projeção do município, que possível 15 classes de cobertura do solo.
+Santana do Araguaia é um município localizado no extremo sudeste do Pará às margens do rio Araguaia, possuindo 11.591,427 km² de extensão. Para métricas do município como um todo calculei a diversidade de shannon da paisagem, proporção de cada classe e número de fragmentos por classe. É possível visualizar o resultado tabelado abaixo assim como a projeção do município, que possível 15 classes de cobertura do solo.
 
 ```{r}
 #| eval: true
@@ -79,7 +79,7 @@ kable(
 
 O valor da diversidade de shannon (1,38) demonstra uma alta heterogeneadade de paisagens dentro do município. Quanto as proporções de cada uso de terra, a maior parte do município é ocupado por pastagem (50,29%), enquanto a formação florestal ocupa 29,88% do município. Santana do araguaia também tem sua área composta por 6,63% de soja e apenas 0,10% de área urbana, sendo um município predominante rural. Quanto ao número de fragmentos por município as classes mais fragmentadas são formação florestal, pastagem, formação savânica, campo alagado, outras lavouras temporárias e floresta alagável. Quatro das fitofisionomias nativas presentes no município estão entre os usos de solo mais fragmentados.
 
-Para entender melhor o histórico de uso de solo do município, escolhi projetar Santana do Araguaia nos anos de 1985, 2005 e 2024. 1985 é a data mais antiga disponível no mapbiomas, mas o uso do município para a criação de gado começou na década de 70. Nos anos 2000 houveram algumas despropriações de terra que resultaram em assentamentos que até hoje não estão totalmente regularizados quanto a divisão de terras. Escolhi calcular o percentual de cobertura, densidade de borda e número de fragmentos para as quatro fitofisionomias presentes no município para entender quanto de cobertura dessas fitofisionomias foram perdidas ao longo dos anos e quão fragmentas elas foram nesse processo.
+Para entender melhor o histórico de uso de solo do município, escolhi projetar Santana do Araguaia nos anos de 1985, 2005 e 2024.Escolhi calcular o percentual de cobertura, densidade de borda e número de fragmentos para as quatro fitofisionomias presentes no município para entender quanto de cobertura dessas fitofisionomias foram perdidas ao longo dos anos e quão fragmentas elas foram nesse processo.
 ```{r}
 #| eval: true
 #| message: false
@@ -204,69 +204,11 @@ kable(
 
 ```
 
-Formação Florestal perdeu mais área entre 1985 e 2005, em 2024 a Formação Florestal possui menos da metade da área que possuia em 1985.
+Formação Florestal perdeu mais área entre 1985 e 2005, perdendo 58,90% de sua área entre 1985 e 2024. O número de fragmentos para esse uso de solo também aumentou ao longo desses três períodos. No entanto, a densidade de borda para essa classe diminuiu de 2005 para 2024, mesmo com o aumento do número de fragmentos, como essa métrica mede apenas o periméttro dos fragmentos, a diminuição dessa métrica juntamente com o aumento da quantidade de fragmentos indica diminuição do tamanho desses fragmentos.
 
-Formação Savãnica
-Floresta Alagável
-Campo Alagado
-Formação campestre
+Na Formação Savãnica houve pouca variação entre os anos de 1985 e 2005, havendo fragmentação e perda de 11,64% da sua área de 1985 a 2024. A diminuição de área de cobertura de 1985 a 2024 foi semelhante entre as outras fitofisionomias; Floresta Alagável (23,39%), Campo Alagado (26,28%) e Formação campestre (23,20%). Como é possível observar nas imagens, as vegetações nativas foram em sua maioria substituídas por pastagem e em 2024 algumas áreas de pastagens, já presentes em 2005, foram substituídas por soja.
 
-
-
-
-```{r}
-#| eval: false
-#| message: false
-#| warning: false
-#| code-fold: true
-#| include: false
-#| results: hold
-
-# Calculando métricas
-
-check_landscape(r_utm)
-
-# composição
-
-#PLAND e SHDI
-
-metri_compo <- calculate_lsm(
-  r_utm,
-  what = c( 
-    "lsm_l_shdi",   # Diversidade de Shannon
-    "lsm_c_pland",  # Proporção de cada classe
-    "lsm_c_np"))    # Número de fragmentos por classe
-
-print(metri_compo)
-
-# configuração
-
-# NP(PD), ED, AI e ENN_MN
-  
-metri_confi <- calculate_lsm(
-  r_utm,
-  what = c(
-    "lsm_l_pd",     # Densidade de fragmentos
-    "lsm_c_np",     # Número de fragmentos por classe
-    "lsm_c_enn_mn", #Mean of euclidean nearest-neighbor distance (Aggregation metric)
-    "lsm_p_enn",  
-    "lsm_l_ed",    # Edge Density (Area and Edge metric)
-    "lsm_c_ed", 
-    "lsm_l_ai"     # Aggregation index (Aggregation metric)
-  ))
-
-#lsm_c_enn_mn
-#lsm_c_ed
-#lsm_c_pd
-#lsm_c_ai
-
-#	lsm_p_core  core area of patch
-
-print(metri_confi)
-```
-
-
-Por conta da grande extensão do município optei por calcular as métricas ... em 15 pontos sorteados com raio de 5km
+Por conta da grande extensão do município optei por calcular as métricas ... em 15 pontos sorteados com raio de 5km, essas serão as paisagens amostrais. As de classe iram se aplicar apenas à formação florestal. Escolhi essa classe por ser a fitofisionomia nativa mais predominante, por ter sido a que mais foi desmatada e por questões biologicas explicadas no próximo tópico.
 
 ```{r}
 #| eval: true
@@ -275,7 +217,7 @@ Por conta da grande extensão do município optei por calcular as métricas ... 
 #| code-fold: true
 #| results: hold
 
-# Criando sorteio de 15 pontos dentro de áreas de vegetação nativa
+# Criando sorteio de 15 pontos dentro de áreas de floresta de terra firme
 
 vetor_total <- as.polygons(r_utm, dissolve = TRUE)
 municipio_limite <- aggregate(vetor_total)
@@ -363,57 +305,65 @@ ggplot() +
 
 # --- Cálculo de Métricas para Todas as Classes ---
 
+# Identificar o valor numérico da classe Floresta
+id_floresta <- legenda$id[legenda$Categoria == "Formação Florestal"]
+
 # Lista para armazenar os resultados
-metricas_completas <- list()
+metricas_lista<- list()
 
 for(i in 1:nrow(buffers)) {
-  # 1. Recortar e mascarar o raster para o buffer atual
+  # Recortar e mascarar o raster para o buffer atual
   crop_i <- crop(r_utm, buffers[i,])
   mask_i <- mask(crop_i, buffers[i,])
   
-  # 2. Calcular as métricas desejadas
+  # Calcular as métricas desejadas
   # lsm_c_pland: % da paisagem ocupada por cada classe
   # lsm_c_np: Número de manchas por classe
   # lsm_p_enn: Distância do vizinho mais próximo (nível da mancha - patch)
   # lsm_l_shdi: Diversidade de Shannon (nível da paisagem)
   
-  pland <- lsm_c_pland(mask_i)
-  np    <- lsm_c_np(mask_i)
-  enn_p <- lsm_p_enn(mask_i) # Retorna um valor por mancha
-  shdi  <- lsm_l_shdi(mask_i)
-  ai    <- lsm_c_ai(mask_i)
-  edge  <- lsm_c_ed(mask_i)
+  pland_all <- lsm_c_pland(mask_i)
+  np_all    <- lsm_c_np(mask_i)
+  enn_all <- lsm_p_enn(mask_i) # Retorna um valor por mancha
+  shannon  <- lsm_l_shdi(mask_i)
+  ai_all    <- lsm_c_ai(mask_i)
+  ed_all  <- lsm_c_ed(mask_i)
   
-  # Como o ENN é calculado por mancha (patch), vamos tirar a média por classe 
-  # para consolidar na tabela de classes
-  enn_c <- enn_p %>%
-    group_by(class) %>%
-    summarise(enn_mean = mean(value, na.rm = TRUE), .groups = "drop")
+  # Filtrar apenas a classe floresta
+  pland_floresta <- pland_all %>% filter(class == id_floresta)
+  np_floresta <- np_all %>% filter(class == id_floresta)
+  enn_floresta <- enn_all %>% filter(class == id_floresta)
+  ai_floresta <- ai_all %>% filter(class == id_floresta)
+  ed_floresta <- ed_all %>% filter(class == id_floresta)
   
-  # 3. Unir as métricas de classe em um único dataframe para este buffer
-  metrics_buffer <- pland %>%
-    select(class, pland = value) %>%
-    left_join(np %>% select(class, np = value), by = "class") %>%
-    left_join(ai %>% select(class, ai = value), by = "class") %>%
-    left_join(edge %>% select(class, edge = value), by = "class") %>%
-    left_join(enn_c, by = "class") %>%
-    mutate(
-      id_buffer = i,
-      shannon_paisagem = shdi$value
-    )
   
-  metricas_completas[[i]] <- metrics_buffer
+  # Extrair valores (se não houver floresta, colocar NA ou 0)
+  div_shannon <- shannon$value
+  perc_floresta <- ifelse(nrow(pland_floresta) > 0, pland_floresta$value, 0)
+  num_frag <- ifelse(nrow(np_floresta) > 0, ed_floresta$value, NA)
+  frag_prox <- ifelse(nrow(enn_floresta) > 0, ed_floresta$value, NA)  
+  indice_agreg <- ifelse(nrow(ai_floresta) > 0, ed_floresta$value, NA)  
+  dens_borda <- ifelse(nrow(ed_floresta) > 0, ed_floresta$value, NA)
+  
+    # Guardar
+  metricas_lista[[i]] <- data.frame(
+    paisagem = i,
+    diversidade_shannon = div_shannon,
+    perc_floresta = perc_floresta,
+    num_fragmentos = num_frag,
+    proximidade_fragmentos = frag_prox,
+    indice_agregação = indice_agreg,
+    densidade_borda_m_ha = dens_borda
+  )
 }
-
-# 4. Combinar todos os buffers e adicionar os nomes das categorias
-tabela_metricas_final <- bind_rows(metricas_completas) %>%
-  left_join(legenda %>% select(id, Categoria), by = c("class" = "id")) %>%
-  select(id_buffer, class, Categoria, pland, np, ai, edge, enn_mean, shannon_paisagem)
+  
+# Combinar tudo
+metricas_paisagem <- bind_rows(metricas_lista)
 
 # Salvar e visualizar
-write.csv(tabela_metricas_final, "metricas_completas_por_classe_santana.csv", row.names = FALSE)
+write.csv(metricas_paisagem, "metricas_paisagens_florestal_santana.csv", row.names = FALSE)
 
-dados_buffers <- read_csv("metricas_completas_por_classe_santana.csv")
+dados_buffers <- read_csv("metricas_paisagens_florestal_santana.csv")
 
 kable(
   dados_buffers,
@@ -438,8 +388,8 @@ ggplot(df_painel) +
   scale_fill_manual(values = setNames(legenda$Cores, legenda$Categoria)) +
   facet_wrap(~id_buffer, nrow = 3, ncol = 5, scales = "free") +
   theme_minimal() +
-  labs(title = "Painel de Amostragem: 15 Paisagens de Santana do Araguaia-PA",
-       subtitle = "Recortes circulares de 5000m de raio (Interior de Floresta Terra Firme)",
+  labs(title = "Painel: 15 Paisagens de Santana do Araguaia-PA",
+       subtitle = "Recortes circulares de 5km de raio (Interior de Floresta Terra Firme)",
        fill = "Uso do Solo") +
   theme(axis.text = element_blank(),
         axis.ticks = element_blank(),
@@ -449,42 +399,111 @@ ggplot(df_painel) +
 
 ```
 
+### Referências:
+
+MapBiomas Brasil. , [S.d.]. Disponível em: <https://brasil.mapbiomas.org/>. Acesso em: 18 jun. 2026.
+
+Santana do Araguaia (PA) | Cidades e Estados | IBGE. Disponível em: <https://www.ibge.gov.br/cidades-e-estados/pa/santana-do-araguaia.html>. Acesso em: 17 jun. 2026. 
 
 
 # 2. Diagnóstico ecológico
 
-Em estudos do PDBFF as aves amzonicas de áreas abertas como savanas, capinaranas e . Além disso, houve recuperação das guildas e da abundância de aves antes da fragmentação em fragmentos com 10 ha (com floresta secundária como matriz), com exceção da guilda de insetívoros terrestes.
+Para entender melhor conectividade entre fragmentos e dinamicas de metapopulações, além de avaliar o efeito de borda classifiquei os fragmentos em quatro tamanhos. Esses tamanhos se baseiam nos tamanhos testados pelo PDBFF (1 e 10 hectáres) e no tamanho de fragmento que consegue suportar aves de guilda de inssetívoras terrestres, que na amzônia são aves que ocupam grandes terristórios e são pouco resilientes a fragmentação.
+Em estudos do PDBFF as aves amzonicas de áreas abertas como savanas e capinaranas, não adentraram em fragmentos florestais de 10 ha. Além disso, houve recuperação das guildas e da abundância de aves, que ocorriam antes da fragmentação, em fragmentos com 10 ha (com floresta secundária como matriz), com exceção da guilda de insetívoros terrestes. Stouffer (2007) estimou a área mínima ocupada por algumas espécies de aves da guilda de insetívoras terrestres próximas a Manaus em um fragmento de 100 ha, demonstrando que esse tamanho de fragmento é suficiente para a permanencia dessa guilda de aves que ocupam e se deslocam por um grande território, podendo haver um território de 14 hectáres para um casal.
 
-Stouffer (2007) estimou a área mínima ocupada por algumas espécies de aves da guilda de insetívoras terrestres próximas a Manaus em um fragmento de 100 ha.
+```{r}
+#| eval: true
+#| message: false
+#| warning: false
+#| code-fold: true
+#| results: hold
+
+# Reclassificar: manter só Formação Florestal (id = 3), resto vira NA
+r_floresta <- classify(r_utm, rbind(cbind(3, 3)), others = NA)
+
+# Calcular área dos fragmentos (em hectares)
+patch_area <- lsm_p_area(r_floresta)
+
+# Converter para dataframe simples
+df_area <- patch_area %>%
+  as.data.frame() %>%
+  rename(area_ha = value)
+
+# Classificar nas faixas
+df_area <- df_area %>%
+  mutate(classe_area = case_when(
+    area_ha < 1 ~ "< 1 ha",
+    area_ha >= 1 & area_ha < 10 ~ "1–10 ha",
+    area_ha >= 10 & area_ha < 100 ~ "10–100 ha",
+    area_ha >= 100 ~ "> 100 ha"
+  ))
+
+# Contar fragmentos por classe
+result_frag <- df_area %>%
+  group_by(classe_area) %>%
+  summarise(n_fragmentos = n()) %>%
+  arrange(classe_area)
+
+result_frag %>%
+  gt() %>%
+  tab_header(title = "Distribuição de Fragmentos Florestais por Tamanho")
+
+```
 
 
+### Conectividade e metapopulações 
 
-Conectividade e metapopulações 
+Existem um grande número de pequenos fragmentos, mas existem também existem mais de 200 fragmentos com mais de 100 ha, podendo suportar biodiversidade biológica e servir como fonte na dinâmica de metapopulações. Pode haver conexão entre essas áreas através da Floresta Alagável e atráves de fragmentos menores que podem funcionar como trampulins. Mas é importante levar em consideração também a baixa permeabilidade que a matriz de pastagem pode apresentar para certos grupos biológicos. Por exemplo aves de áreas abertas dificilmente entram em fragmentos florestais na amazônia e conseguem se dispersar pela matriz com maior facilidade. Já aves que vivem em florestas co bioma amzônico dependem de floresta secundária, como secropias, como matriz para poderem se dispersar.
 
-Efeito de borda
 
-Não é muito claro efeito de borda para aves em terra firme
+### Efeito de borda
 
-Produtividade primária e estoque de carbono 
+Quanto a aves não é muito claro efeito de borda para aves que vivem em áreas florestais de Terra Firme. 
+
+
+### Produtividade primária e estoque de carbono 
+
+O mapa abaixo apresenta o fogo acumulado no município de 1985 a 2025, quase todo o município já passou por alguma queimada em algum momento (todos os mapas desse subtópico foram retirados do mapbiomas).
 
 ![Fogo acumulado no município de 1985 a 2025](exercise_images/fogo_acumulado_santana.png)
 
+Abaixo o gráfico apresenta a quantidade de hectáres queimadas no município em cada ano, sendo 1997 e 2007 os anos que mais tiveram áreas queimadas.
+
 ![Fogo no município ao longo os anos](exercise_images/fogo_escala_temporal_santana.png)
+
+Quanto a área queimada acumulada, foram queimados ao todo mais de 1 milhão de hectáres no município de Santana do Araguaia.
 
 ![Área queimada acumulada no município de 1985 a 2025](exercise_images/area_acumulada_fogo_santana.png)
 
+Quanto ao estoque de carbono no solo, se manteve alto e teve pouca perda de 1985 a 2025 mesmo com o desmatamento sofrido no município. O estoque de carbono presente na parte area da vegetação foi perdido, mas parte do estoque de carbono no solo ou nas raízes se manteve, podendo ser utilizado na recuper
+
 ![Carbono no solo](exercise_images/carbono_no_solo_santana.png)
 
-Heterogeneidade e diversidade beta
+### Referências:
 
+Lessons from Amazonia: The Ecology and Conservation of a Fragmented Forest. Journal of Mammalogy, v. 83, n. 4, p. 1154–1156, 1 nov. 2002. 
+
+STOUFFER, Philip C. Density, Territory Size, and Long-Term Spatial Dynamics of a Guild of Terrestrial Insectivorous Birds Near Manaus, Brazil. The Auk, v. 124, n. 1, p. 291–306, 1 jan. 2007. 
+
+STOUFFER, Philip C. Birds in fragmented Amazonian rainforest: Lessons from 40 years at the Biological Dynamics of Forest Fragments Project. The Condor: Ornithological Applications, v. 122, n. 3, p. duaa005, 4 ago. 2020. 
 
 
 # 3. Análise de Ecologia Política
 
-Santana do Araguaia
+Os anos escolhidos para análise temporal da paisagem no tópico 1 estão relacionadas a história desse município. 1985 é a data mais antiga disponível no mapbiomas, mas o uso do município para a criação de gado começou na década de 70. Nos anos 2000 houveram algumas despropriações de terra que resultaram em assentamentos que até hoje não estão totalmente regularizados quanto a divisão de terras.
+Em 1973 a Volkwagen adquiriu 140 mil hectáres de terras públicas em Santana do Araguaia por incentivos fiscais da SUNDAM (Superintendência de Desenvolvimento da Amazônia) durante a ditadura militar. Essas terras foram utilizadas para a criação de gado e ficaram conhecidas como Fazenda Rio Cristalino.
+Na década de 80 surgiram um série de denúncias contra a Volkswagen a Fazenda Rio Cristalino relacionadas a abuso, tortura e trabalho análogo a escravidão. A abertura de pastos eram realizadas em condições precárias e os trabalhadores não conseguiam sair daquela situação devido a dívidas fraudulentas e vigilãncia constante.
 
-Grupos beneficiados: Volkswagen e politicos/donos de terra que ganharam com desapropriamento
-Grupos afetados negativamente: Trabalhadores da antiga fazenda rio cristalino, trabalhadores rurais sem terras ou que foram enganados no esquema de venda de terras nos assentamentos, povo indigena kayapo.
+Mas muito antes da Fazenda Rio Cristalino naquele município já viviam populações do povo indígena Iny (como se autodenominam) ou Karajá (nome em tupi). Os Iny enfretaram epidemias e conflitos e atualmente as aldeias que permanencem em Santana do Araguaia também tiveram perda do seu território.
+Por mais que historicamente os Iny vivam as margens do Rio Araguaia, existe apenas uma Terra Indígena Iny no Pará cuja o território é pequeno e inadequado. O processo de demarcação fundiária dessa Terra Indígena, Terra Indígena Karajá Santana do Araguaia (que não se localiza no município de Santana do Araguaia e sim em um município vizinho), teve graves irregularidades ao longo do tempo, resultando na demarcação de um território com terras inferteis e em área alagáveç, impossibilitando o estabelecimento de moradias fixas e até o estabelecimento de um cemitério dentro da terra indígena.
+
+Em 1998 houve o aliciamento de moradores para a ocupação de terras, com promessas de serem sustentados por um mês e de invadir uma fazenda com escolas, hospital, ambulatório, estrada, etc. O principal lider MBST (Movimento Brasileiro dos Sem Terra) na época fez essas promessas e não voltou ao Pará por pelo menos dois meses, deixando as pessoas que invadiram as terras passando fome. Enquanto isso a desapropriação da Fazenda Rio Cristalino foi calculada em até 40 milhões de reais na epóca.
+Em 2004 Governo Federal desapropriou parte da antiga Fazenda Cristalino, assentando 1300 famílias e reservando parte da área para exploração de reserva de urânio. E em 2008 o INCRA abriu processo de desapropriação de terras para fins de reforma agrária de 52 mil hectares da Fazenda Cristalino, de posse da Agropecuária Santa Bárbara Xinguara. 
+No entanto, até hoje essas áreas não foram totalmente regulamentadas, se tornando um local de conflitos e disputas, havendo também assassinatos por conta desses conflitos. Há relatos de venda de propriedades dentro dos assentamentos, sem documentação ou qualquer tipo de contrato. Há um relato em especifico em que o vendedor do terreno tentou tomar de volta o terreno vendido. Havendo também um caso de tortura da população praticado por pistoleiro no Projeto de Assentamento Colônia Verde Brasileira. Além disso, o município perdeu 47,55% da população do municipio de 2011 a 2025, havendo a diminuição de 27.612 moradores.
+
+ - Grupos beneficiados: Volkswagen e politicos/donos de terra que ganharam com desapropriamento
+ - Grupos afetados negativamente: Trabalhadores da antiga fazenda rio cristalino, trabalhadores rurais sem terras ou que foram enganados no esquema de venda de terras nos assentamentos, povo indigena Iny.
+
 
 ### Linha do tempo
 
@@ -493,7 +512,7 @@ Grupos afetados negativamente: Trabalhadores da antiga fazenda rio cristalino, t
   - Conhecida como Fazenda Rio Cristalino.
   - Criação de gado
   - Denúncias de irregularidades trabalhistas, tortura e trabalho escravo
- - Década de 70: Criação da TI Santana do Araguaia em cidade vizinha 
+ - Década de 70: Início da demarcação da TI Santana do Araguaia em cidade vizinha 
  - 1998: Aliciamento dos moradores para ocupação de terras, pressionando INCRA para reforma agrária e indenização.
  - 2004: Governo Federal desapropria parte da antiga Fazenda Cristalino, assentando 1300 famílias e reservando parte da área para exploração de reserva de urânio.
  - 2008: INCRA abre processo de desapropriação de terras para fins de reforma agrária de 52 mil hectares da Fazenda Cristalino, de posse da Agropecuária Santa Bárbara Xinguara.
@@ -510,9 +529,7 @@ Folha de S.Paulo - Questão agrária: Desapropriação vira negócio no Pará - 
 
 LEIROS, Marcela. Quem são os Iny Karajá, etnia às margens do Rio Araguaia. Revista Cenarium, 28 abr. 2025. Disponível em: <https://revistacenarium.com.br/quem-sao-os-iny-karaja-etnia-que-preserva-tradicao-as-margens-do-rio-araguaia/>. Acesso em: 16 jun. 2026
 
-LENGERT, Mathias. As vítimas do Araguaia: famílias de camponeses mortos na ditadura pedem reparação. Disponível em: <https://www.ihu.unisinos.br/categorias/655795-as-vitimas-do-araguaia-familias-de-camponeses-mortos-na-ditadura-pedem-reparacao>. Acesso em: 16 jun. 2026.
-
-MPF vai à Justiça pela demarcação da Terra Indígena Karajá em Santana do Araguaia : Disponível em: <https://www.olharalerta.com.br/noticia/68085/mpf-vai-a-justica-pela-demarcacao-da-terra-indigena-karaja-em-santana-do-araguaia>. Acesso em: 16 jun. 2026.
+MPF vai à Justiça pela demarcação da Terra Indígena Karajá em Santana do Araguaia: Disponível em: <https://www.olharalerta.com.br/noticia/68085/mpf-vai-a-justica-pela-demarcacao-da-terra-indigena-karaja-em-santana-do-araguaia>. Acesso em: 16 jun. 2026.
 
 OLIVEIRA, Marcelo. PA: Volkswagen teve fazenda com trabalho escravo e verba da ditadura. Agência Pública, 31 jan. 2025. Disponível em: <https://apublica.org/2025/01/volkswagen-manteve-por-12-anos-fazenda-com-trabalho-escravo-no-pa-financiada-pela-ditadura/>. Acesso em: 16 jun. 2026
 
@@ -527,9 +544,15 @@ SOUZA, Beatriz. Urânio, gado e reforma agrária: que fim levou a Fazenda Volksw
 
 # 4. Proposta de manejo integrado
 
-Estabelecer Terra Indígena Iny/Kayapó próxima à paisagem 2
-Aumentar em cerca  de 34% a coberta de Formação Florestal regularizando as reservas legais do município
-adequação ambiental para imóveis rurais
+Uma das propostas é demarcar uma Terra Indígena Iny/Karajá próxima à paisagem 2; tendo seu território na paisagem 2, e ao sul e oeste dessa paisagem, se estendendo até o Rio Araguaia. Essa TI deve compreender área de Floresta de Terra Firme, e áreas de Floresta Alagável e Formação Savânica. É importante que a terra indígena possua áreas as margens do rio Araguaia, tanto para que a população indígena possa utilizar o rio e seus recursos pesqueiros, como viver próximo às margens do Rio Araguaia faz parte da história e identidade cultural dos Iny. É importante também que haja território de Terra Firme dentro da TI (Terra Indígena) para que os Iny possam plantar, caçar e construir aldeias permamentes e cemitérios.
+O estabelecimento de uma TI Karajá em Santana do Aragauaia proporcionará recursos para a subexistência e maior segurança para os Iny que vivem no sudeste do Pará, auxiliando também a preservar o modo de vida e cultura desse povo. Além disso, o estabelicimento de uma TI auxilia na cobertura vegetal e conservação da biodiversidade nessa área. Para que isso seja possível será necessário o envolvimento da FUNAI e do Governo Federal, a despropriação das áreas que serão destinadas à Terra Indígena e a recuperação de áreas nesse local que hoje estão ocupadas por soja e pastagem.
+
+Se faz necessária também a melhoria da qualidade de vida da população rural (levando também em conta a grande dimuição da população em pouco menos de uma década), envolvendo não só o acesso à saúde e à educação como também a diminuição de conflitos rurais.
+Quanto ao acesso a educação, esse não se extende apenas ao ensino básico, mas também à formação e qualificação de trabalhadores rurais para práticas rentáveis e com menor impacto amiental, como extrativismo, agroflorestas ou sivicultura próxima áreas florestais, diminuindo o efeito de borda e aumentando conectividade entre os fragmentos. Além disso, maior acesso a educação possibilita com que jovens tenham outras oportunidades de trabalho além do campo, dimuindo a expansão das áreas rurais.
+Quanto aos conflitos rurais, esses se ocorrem atualmente em sua maioria em assentamenos, sendo necessária a regularização da reforma agrária nos locais de conflito. Além disso, é preciso uma maior fiscalização sobre a venda de terras dentro dos assentamentos de forma ilegal ou irregular, que tem sido um dos causadores de conflitos.
+Para monitoramento dessa meta, podem ser utilizados indices de conflitos rurais, nível de escolaridade médio, idh do município e uso do solo nos assentamentos.
+
+A seguir foram geradas imagens com os imóveis rurais declarados no Sigef e SNCI com a retirada dos imóveis dentro dos assentamentos, pois diante das reportagens e relatos sobre conflitos de terras dentro dos assentamento, preferi considerar que a maior parte dos os assentamos ou todos eles não estão totalmente regularizados quanto a divisão e titulação de terras. Também gerei um mapa com todos os assentamentos e imóveis rurais declarados nesses assentamentos. Além disso, calculei cobertura florestal no imóveis com mais de 4 módulos rurais (300 ha em santana do Araguaia) para saber se eles estão regularizados ambientalmente quanto à Reserva Legal.
 
 ```{r}
 #| eval: false
@@ -818,7 +841,8 @@ write.csv(metricas_grandes_individuais_df, "metricas_individual_maisde_300.csv",
 402705.1/1159142.7 # área total que precisa ser reflorestada dividida pela área do município, resultando em quanto porcento do município precisa ser reflorestado
 
 ```
-
+Pelos resultados para que todos os imóveis rurais estejam regularizados ambientalmente (considerando apenas Reserva Legal) seria necessário o reflorestamento de cerca de 402705 hectáres equivalente a 34,74% da área do município. Esse valor é uma extrapolações, pois algumas propriedades à leste possuem naturalmente mais área de Formação Savânica que Formação Savânica, não fazendo sentido que 80% desses imóveis sejam convertidos para Formação Florestal.
+Dessa forma, uma das metas para o município é a adequação ambiental para imóveis rurais com mais de 300 ha, sendo utilizado o CAR (Cadastro Ambiental Rural) como forma de monitoramento, assim como as proporções de cobertura florestal. Para garantir que os proprietários se regularizem pode ser dificultado o acesso à crédito rural aqueles que não se regularizaram ou não estão no processo de regularização. Se possível seria interessante projetar o reflorestamento dessas reservas legais em conjunto com os proprietários de forma a aumentar a conectividade entre fragmentos maiores.
 
 ## Referências:
 

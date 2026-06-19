@@ -174,16 +174,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#análise-descritiva-da-paisagem" id="toc-análise-descritiva-da-paisagem" class="nav-link active" data-scroll-target="#análise-descritiva-da-paisagem">1. Análise descritiva da paisagem</a></li>
-  <li><a href="#diagnóstico-ecológico" id="toc-diagnóstico-ecológico" class="nav-link" data-scroll-target="#diagnóstico-ecológico">2. Diagnóstico ecológico</a></li>
+  <li><a href="#análise-descritiva-da-paisagem" id="toc-análise-descritiva-da-paisagem" class="nav-link active" data-scroll-target="#análise-descritiva-da-paisagem">1. Análise descritiva da paisagem</a>
+  <ul class="collapse">
+  <li><a href="#referências" id="toc-referências" class="nav-link" data-scroll-target="#referências">Referências:</a></li>
+  </ul></li>
+  <li><a href="#diagnóstico-ecológico" id="toc-diagnóstico-ecológico" class="nav-link" data-scroll-target="#diagnóstico-ecológico">2. Diagnóstico ecológico</a>
+  <ul class="collapse">
+  <li><a href="#conectividade-e-metapopulações" id="toc-conectividade-e-metapopulações" class="nav-link" data-scroll-target="#conectividade-e-metapopulações">Conectividade e metapopulações</a></li>
+  <li><a href="#efeito-de-borda" id="toc-efeito-de-borda" class="nav-link" data-scroll-target="#efeito-de-borda">Efeito de borda</a></li>
+  <li><a href="#produtividade-primária-e-estoque-de-carbono" id="toc-produtividade-primária-e-estoque-de-carbono" class="nav-link" data-scroll-target="#produtividade-primária-e-estoque-de-carbono">Produtividade primária e estoque de carbono</a></li>
+  <li><a href="#referências-1" id="toc-referências-1" class="nav-link" data-scroll-target="#referências-1">Referências:</a></li>
+  </ul></li>
   <li><a href="#análise-de-ecologia-política" id="toc-análise-de-ecologia-política" class="nav-link" data-scroll-target="#análise-de-ecologia-política">3. Análise de Ecologia Política</a>
   <ul class="collapse">
   <li><a href="#linha-do-tempo" id="toc-linha-do-tempo" class="nav-link" data-scroll-target="#linha-do-tempo">Linha do tempo</a></li>
-  <li><a href="#referências" id="toc-referências" class="nav-link" data-scroll-target="#referências">Referências:</a></li>
+  <li><a href="#referências-2" id="toc-referências-2" class="nav-link" data-scroll-target="#referências-2">Referências:</a></li>
   </ul></li>
   <li><a href="#proposta-de-manejo-integrado" id="toc-proposta-de-manejo-integrado" class="nav-link" data-scroll-target="#proposta-de-manejo-integrado">4. Proposta de manejo integrado</a>
   <ul class="collapse">
-  <li><a href="#referências-1" id="toc-referências-1" class="nav-link" data-scroll-target="#referências-1">Referências:</a></li>
+  <li><a href="#referências-3" id="toc-referências-3" class="nav-link" data-scroll-target="#referências-3">Referências:</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -213,7 +222,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="análise-descritiva-da-paisagem" class="level1">
 <h1>1. Análise descritiva da paisagem</h1>
-<p>Santana do Araguaia é um município localizado no extremo sudeste do Pará às margens do rio Araguaia, possuindo 11.591,427 km² de extensão. Por conta da grande extensão, para o cálculo da maior parte das metricas, optei por analisar a paisagem através de 15 pontos aleatórios com 3km de raio com seu centro em uma área de Formação Florestal. Para métricas do município como um todo calculei a diversidade de shannon da paisagem, proporção de cada classe e número de fragmentos por classe. É possível visualizar o resultado tabelado abaixo assim como a projeção do município, que possível 15 classes de cobertura do solo.</p>
+<p>Santana do Araguaia é um município localizado no extremo sudeste do Pará às margens do rio Araguaia, possuindo 11.591,427 km² de extensão. Para métricas do município como um todo calculei a diversidade de shannon da paisagem, proporção de cada classe e número de fragmentos por classe. É possível visualizar o resultado tabelado abaixo assim como a projeção do município, que possível 15 classes de cobertura do solo.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -493,7 +502,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>O valor da diversidade de shannon (1,38) demonstra uma alta heterogeneadade de paisagens dentro do município. Quanto as proporções de cada uso de terra, a maior parte do município é ocupado por pastagem (50,29%), enquanto a formação florestal ocupa 29,88% do município. Santana do araguaia também tem sua área composta por 6,63% de soja e apenas 0,10% de área urbana, sendo um município predominante rural. Quanto ao número de fragmentos por município as classes mais fragmentadas são formação florestal, pastagem, formação savânica, campo alagado, outras lavouras temporárias e floresta alagável. Quatro das fitofisionomias nativas presentes no município estão entre os usos de solo mais fragmentados.</p>
-<p>Para entender melhor o histórico de uso de solo do município, escolhi projetar Santana do Araguaia nos anos de 1985, 2005 e 2024. 1985 é a data mais antiga disponível no mapbiomas, mas o uso do município para a criação de gado começou na década de 70. Nos anos 2000 houveram algumas despropriações de terra que resultaram em assentamentos que até hoje não estão totalmente regularizados quanto a divisão de terras. Escolhi calcular o percentual de cobertura, densidade de borda e número de fragmentos para as quatro fitofisionomias presentes no município para entender quanto de cobertura dessas fitofisionomias foram perdidas ao longo dos anos e quão fragmentas elas foram nesse processo.</p>
+<p>Para entender melhor o histórico de uso de solo do município, escolhi projetar Santana do Araguaia nos anos de 1985, 2005 e 2024.Escolhi calcular o percentual de cobertura, densidade de borda e número de fragmentos para as quatro fitofisionomias presentes no município para entender quanto de cobertura dessas fitofisionomias foram perdidas ao longo dos anos e quão fragmentas elas foram nesse processo.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -638,7 +647,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Processando raster para o ano: 1985...
+<pre><code>
+|---------|---------|---------|---------|
+=========================================
+                                          
+
+|---------|---------|---------|---------|
+=========================================
+                                          
+Processando raster para o ano: 1985...
 
 |---------|---------|---------|---------|
 =========================================
@@ -817,13 +834,13 @@ Processando raster para o ano: 2024...
 </table>
 </div>
 </div>
-<p>Formação Florestal perdeu mais área entre 1985 e 2005, em 2024 a Formação Florestal possui menos da metade da área que possuia em 1985.</p>
-<p>Formação Savãnica Floresta Alagável Campo Alagado Formação campestre</p>
-<p>Por conta da grande extensão do município optei por calcular as métricas … em 15 pontos sorteados com raio de 5km</p>
+<p>Formação Florestal perdeu mais área entre 1985 e 2005, perdendo 58,90% de sua área entre 1985 e 2024. O número de fragmentos para esse uso de solo também aumentou ao longo desses três períodos. No entanto, a densidade de borda para essa classe diminuiu de 2005 para 2024, mesmo com o aumento do número de fragmentos, como essa métrica mede apenas o periméttro dos fragmentos, a diminuição dessa métrica juntamente com o aumento da quantidade de fragmentos indica diminuição do tamanho desses fragmentos.</p>
+<p>Na Formação Savãnica houve pouca variação entre os anos de 1985 e 2005, havendo fragmentação e perda de 11,64% da sua área de 1985 a 2024. A diminuição de área de cobertura de 1985 a 2024 foi semelhante entre as outras fitofisionomias; Floresta Alagável (23,39%), Campo Alagado (26,28%) e Formação campestre (23,20%). Como é possível observar nas imagens, as vegetações nativas foram em sua maioria substituídas por pastagem e em 2024 algumas áreas de pastagens, já presentes em 2005, foram substituídas por soja.</p>
+<p>Por conta da grande extensão do município optei por calcular as métricas … em 15 pontos sorteados com raio de 5km, essas serão as paisagens amostrais. As de classe iram se aplicar apenas à formação florestal. Escolhi essa classe por ser a fitofisionomia nativa mais predominante, por ter sido a que mais foi desmatada e por questões biologicas explicadas no próximo tópico.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Criando sorteio de 15 pontos dentro de áreas de vegetação nativa</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Criando sorteio de 15 pontos dentro de áreas de floresta de terra firme</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>vetor_total <span class="ot">&lt;-</span> <span class="fu">as.polygons</span>(r_utm, <span class="at">dissolve =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>municipio_limite <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(vetor_total)</span>
@@ -912,7 +929,7 @@ Processando raster para o ano: 2024...
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="avaliacao_final_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="avaliacao_final_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -920,93 +937,101 @@ Processando raster para o ano: 2024...
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Cálculo de Métricas para Todas as Classes ---</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Lista para armazenar os resultados</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>metricas_completas <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Identificar o valor numérico da classe Floresta</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>id_floresta <span class="ot">&lt;-</span> legenda<span class="sc">$</span>id[legenda<span class="sc">$</span>Categoria <span class="sc">==</span> <span class="st">"Formação Florestal"</span>]</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(buffers)) {</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 1. Recortar e mascarar o raster para o buffer atual</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  crop_i <span class="ot">&lt;-</span> <span class="fu">crop</span>(r_utm, buffers[i,])</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  mask_i <span class="ot">&lt;-</span> <span class="fu">mask</span>(crop_i, buffers[i,])</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 2. Calcular as métricas desejadas</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lsm_c_pland: % da paisagem ocupada por cada classe</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lsm_c_np: Número de manchas por classe</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lsm_p_enn: Distância do vizinho mais próximo (nível da mancha - patch)</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lsm_l_shdi: Diversidade de Shannon (nível da paisagem)</span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>  pland <span class="ot">&lt;-</span> <span class="fu">lsm_c_pland</span>(mask_i)</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  np    <span class="ot">&lt;-</span> <span class="fu">lsm_c_np</span>(mask_i)</span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>  enn_p <span class="ot">&lt;-</span> <span class="fu">lsm_p_enn</span>(mask_i) <span class="co"># Retorna um valor por mancha</span></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>  shdi  <span class="ot">&lt;-</span> <span class="fu">lsm_l_shdi</span>(mask_i)</span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>  ai    <span class="ot">&lt;-</span> <span class="fu">lsm_c_ai</span>(mask_i)</span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>  edge  <span class="ot">&lt;-</span> <span class="fu">lsm_c_ed</span>(mask_i)</span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Como o ENN é calculado por mancha (patch), vamos tirar a média por classe </span></span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># para consolidar na tabela de classes</span></span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>  enn_c <span class="ot">&lt;-</span> enn_p <span class="sc">%&gt;%</span></span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(class) <span class="sc">%&gt;%</span></span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">enn_mean =</span> <span class="fu">mean</span>(value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 3. Unir as métricas de classe em um único dataframe para este buffer</span></span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>  metrics_buffer <span class="ot">&lt;-</span> pland <span class="sc">%&gt;%</span></span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(class, <span class="at">pland =</span> value) <span class="sc">%&gt;%</span></span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(np <span class="sc">%&gt;%</span> <span class="fu">select</span>(class, <span class="at">np =</span> value), <span class="at">by =</span> <span class="st">"class"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(ai <span class="sc">%&gt;%</span> <span class="fu">select</span>(class, <span class="at">ai =</span> value), <span class="at">by =</span> <span class="st">"class"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(edge <span class="sc">%&gt;%</span> <span class="fu">select</span>(class, <span class="at">edge =</span> value), <span class="at">by =</span> <span class="st">"class"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(enn_c, <span class="at">by =</span> <span class="st">"class"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
-<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>      <span class="at">id_buffer =</span> i,</span>
-<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>      <span class="at">shannon_paisagem =</span> shdi<span class="sc">$</span>value</span>
-<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>  metricas_completas[[i]] <span class="ot">&lt;-</span> metrics_buffer</span>
-<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Combinar todos os buffers e adicionar os nomes das categorias</span></span>
-<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>tabela_metricas_final <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(metricas_completas) <span class="sc">%&gt;%</span></span>
-<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(legenda <span class="sc">%&gt;%</span> <span class="fu">select</span>(id, Categoria), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"class"</span> <span class="ot">=</span> <span class="st">"id"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id_buffer, class, Categoria, pland, np, ai, edge, enn_mean, shannon_paisagem)</span>
-<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a><span class="co"># Salvar e visualizar</span></span>
-<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(tabela_metricas_final, <span class="st">"metricas_completas_por_classe_santana.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a>dados_buffers <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"metricas_completas_por_classe_santana.csv"</span>)</span>
-<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(</span>
-<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>  dados_buffers,</span>
-<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a>  <span class="at">digits =</span> <span class="dv">2</span>,</span>
-<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"Métricas da paisagem por buffer"</span></span>
-<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Lista para armazenar os resultados</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>metricas_lista<span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(buffers)) {</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Recortar e mascarar o raster para o buffer atual</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  crop_i <span class="ot">&lt;-</span> <span class="fu">crop</span>(r_utm, buffers[i,])</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  mask_i <span class="ot">&lt;-</span> <span class="fu">mask</span>(crop_i, buffers[i,])</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calcular as métricas desejadas</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lsm_c_pland: % da paisagem ocupada por cada classe</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lsm_c_np: Número de manchas por classe</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lsm_p_enn: Distância do vizinho mais próximo (nível da mancha - patch)</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lsm_l_shdi: Diversidade de Shannon (nível da paisagem)</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>  pland_all <span class="ot">&lt;-</span> <span class="fu">lsm_c_pland</span>(mask_i)</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>  np_all    <span class="ot">&lt;-</span> <span class="fu">lsm_c_np</span>(mask_i)</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>  enn_all <span class="ot">&lt;-</span> <span class="fu">lsm_p_enn</span>(mask_i) <span class="co"># Retorna um valor por mancha</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>  shannon  <span class="ot">&lt;-</span> <span class="fu">lsm_l_shdi</span>(mask_i)</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>  ai_all    <span class="ot">&lt;-</span> <span class="fu">lsm_c_ai</span>(mask_i)</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>  ed_all  <span class="ot">&lt;-</span> <span class="fu">lsm_c_ed</span>(mask_i)</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filtrar apenas a classe floresta</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>  pland_floresta <span class="ot">&lt;-</span> pland_all <span class="sc">%&gt;%</span> <span class="fu">filter</span>(class <span class="sc">==</span> id_floresta)</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>  np_floresta <span class="ot">&lt;-</span> np_all <span class="sc">%&gt;%</span> <span class="fu">filter</span>(class <span class="sc">==</span> id_floresta)</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>  enn_floresta <span class="ot">&lt;-</span> enn_all <span class="sc">%&gt;%</span> <span class="fu">filter</span>(class <span class="sc">==</span> id_floresta)</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>  ai_floresta <span class="ot">&lt;-</span> ai_all <span class="sc">%&gt;%</span> <span class="fu">filter</span>(class <span class="sc">==</span> id_floresta)</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>  ed_floresta <span class="ot">&lt;-</span> ed_all <span class="sc">%&gt;%</span> <span class="fu">filter</span>(class <span class="sc">==</span> id_floresta)</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extrair valores (se não houver floresta, colocar NA ou 0)</span></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>  div_shannon <span class="ot">&lt;-</span> shannon<span class="sc">$</span>value</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>  perc_floresta <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">nrow</span>(pland_floresta) <span class="sc">&gt;</span> <span class="dv">0</span>, pland_floresta<span class="sc">$</span>value, <span class="dv">0</span>)</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>  num_frag <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">nrow</span>(np_floresta) <span class="sc">&gt;</span> <span class="dv">0</span>, ed_floresta<span class="sc">$</span>value, <span class="cn">NA</span>)</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>  frag_prox <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">nrow</span>(enn_floresta) <span class="sc">&gt;</span> <span class="dv">0</span>, ed_floresta<span class="sc">$</span>value, <span class="cn">NA</span>)  </span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>  indice_agreg <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">nrow</span>(ai_floresta) <span class="sc">&gt;</span> <span class="dv">0</span>, ed_floresta<span class="sc">$</span>value, <span class="cn">NA</span>)  </span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>  dens_borda <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">nrow</span>(ed_floresta) <span class="sc">&gt;</span> <span class="dv">0</span>, ed_floresta<span class="sc">$</span>value, <span class="cn">NA</span>)</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Guardar</span></span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>  metricas_lista[[i]] <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">paisagem =</span> i,</span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">diversidade_shannon =</span> div_shannon,</span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">perc_floresta =</span> perc_floresta,</span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">num_fragmentos =</span> num_frag,</span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">proximidade_fragmentos =</span> frag_prox,</span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>    indice_agregação <span class="ot">=</span> indice_agreg,</span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">densidade_borda_m_ha =</span> dens_borda</span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Combinar tudo</span></span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>metricas_paisagem <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(metricas_lista)</span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Salvar e visualizar</span></span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(metricas_paisagem, <span class="st">"metricas_paisagens_florestal_santana.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar buffers</span></span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a>dados_buffers <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"metricas_paisagens_florestal_santana.csv"</span>)</span>
 <span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a>lista_recortes <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(buffers)) {</span>
-<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a>  crop_i <span class="ot">&lt;-</span> <span class="fu">crop</span>(r_utm, buffers[i, ])</span>
-<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a>  mask_i <span class="ot">&lt;-</span> <span class="fu">mask</span>(crop_i, buffers[i, ])</span>
-<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a>  df_i <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(mask_i, <span class="at">xy =</span> <span class="cn">TRUE</span>, <span class="at">cells =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a>  df_i<span class="sc">$</span>id_buffer <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"Paisagem"</span>, i)</span>
-<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a>  lista_recortes[[i]] <span class="ot">&lt;-</span> df_i</span>
-<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a>df_painel <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(lista_recortes)</span>
-<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_painel) <span class="sc">+</span></span>
-<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> Categoria)) <span class="sc">+</span></span>
-<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">setNames</span>(legenda<span class="sc">$</span>Cores, legenda<span class="sc">$</span>Categoria)) <span class="sc">+</span></span>
-<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>id_buffer, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">5</span>, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
-<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Painel de Amostragem: 15 Paisagens de Santana do Araguaia-PA"</span>,</span>
-<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Recortes circulares de 5000m de raio (Interior de Floresta Terra Firme)"</span>,</span>
-<span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Uso do Solo"</span>) <span class="sc">+</span></span>
-<span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(</span>
+<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a>  dados_buffers,</span>
+<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a>  <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"Métricas da paisagem por buffer"</span></span>
+<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar buffers</span></span>
+<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a>lista_recortes <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(buffers)) {</span>
+<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a>  crop_i <span class="ot">&lt;-</span> <span class="fu">crop</span>(r_utm, buffers[i, ])</span>
+<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a>  mask_i <span class="ot">&lt;-</span> <span class="fu">mask</span>(crop_i, buffers[i, ])</span>
+<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a>  df_i <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(mask_i, <span class="at">xy =</span> <span class="cn">TRUE</span>, <span class="at">cells =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a>  df_i<span class="sc">$</span>id_buffer <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"Paisagem"</span>, i)</span>
+<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a>  lista_recortes[[i]] <span class="ot">&lt;-</span> df_i</span>
+<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a>df_painel <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(lista_recortes)</span>
+<span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_painel) <span class="sc">+</span></span>
+<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> Categoria)) <span class="sc">+</span></span>
+<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">setNames</span>(legenda<span class="sc">$</span>Cores, legenda<span class="sc">$</span>Categoria)) <span class="sc">+</span></span>
+<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>id_buffer, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">5</span>, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
+<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Painel: 15 Paisagens de Santana do Araguaia-PA"</span>,</span>
+<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Recortes circulares de 5km de raio (Interior de Floresta Terra Firme)"</span>,</span>
+<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Uso do Solo"</span>) <span class="sc">+</span></span>
+<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="avaliacao_final_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="avaliacao_final_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1014,1283 +1039,746 @@ Processando raster para o ano: 2024...
 <table class="caption-top table table-sm table-striped small">
 <caption>Métricas da paisagem por buffer</caption>
 <colgroup>
-<col style="width: 10%">
-<col style="width: 6%">
-<col style="width: 30%">
-<col style="width: 6%">
-<col style="width: 3%">
 <col style="width: 7%">
-<col style="width: 6%">
-<col style="width: 9%">
-<col style="width: 18%">
+<col style="width: 16%">
+<col style="width: 11%">
+<col style="width: 12%">
+<col style="width: 19%">
+<col style="width: 14%">
+<col style="width: 17%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: right;">id_buffer</th>
-<th style="text-align: right;">class</th>
-<th style="text-align: left;">Categoria</th>
-<th style="text-align: right;">pland</th>
-<th style="text-align: right;">np</th>
-<th style="text-align: right;">ai</th>
-<th style="text-align: right;">edge</th>
-<th style="text-align: right;">enn_mean</th>
-<th style="text-align: right;">shannon_paisagem</th>
+<th style="text-align: right;">paisagem</th>
+<th style="text-align: right;">diversidade_shannon</th>
+<th style="text-align: right;">perc_floresta</th>
+<th style="text-align: right;">num_fragmentos</th>
+<th style="text-align: right;">proximidade_fragmentos</th>
+<th style="text-align: right;">indice_agregação</th>
+<th style="text-align: right;">densidade_borda_m_ha</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">Formação Florestal</td>
+<td style="text-align: right;">1.20</td>
 <td style="text-align: right;">53.57</td>
-<td style="text-align: right;">26</td>
-<td style="text-align: right;">98.83</td>
 <td style="text-align: right;">8.20</td>
-<td style="text-align: right;">210.41</td>
-<td style="text-align: right;">1.20</td>
+<td style="text-align: right;">8.20</td>
+<td style="text-align: right;">8.20</td>
+<td style="text-align: right;">8.20</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: left;">Floresta Alagável</td>
-<td style="text-align: right;">21.40</td>
-<td style="text-align: right;">26</td>
-<td style="text-align: right;">97.22</td>
-<td style="text-align: right;">9.36</td>
-<td style="text-align: right;">138.00</td>
-<td style="text-align: right;">1.20</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: left;">Campo Alagado</td>
-<td style="text-align: right;">1.44</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">89.14</td>
-<td style="text-align: right;">2.42</td>
-<td style="text-align: right;">1031.95</td>
-<td style="text-align: right;">1.20</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: left;">Pastagem</td>
-<td style="text-align: right;">18.92</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">96.72</td>
-<td style="text-align: right;">8.69</td>
-<td style="text-align: right;">128.44</td>
-<td style="text-align: right;">1.20</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">29</td>
-<td style="text-align: left;">Afloramento Rochoso</td>
-<td style="text-align: right;">0.01</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">75.00</td>
-<td style="text-align: right;">0.06</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">1.20</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: left;">Corpo d’Água</td>
-<td style="text-align: right;">0.20</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: right;">37.99</td>
-<td style="text-align: right;">1.70</td>
-<td style="text-align: right;">194.79</td>
-<td style="text-align: right;">1.20</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">39</td>
-<td style="text-align: left;">Soja</td>
-<td style="text-align: right;">4.31</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">98.20</td>
-<td style="text-align: right;">1.59</td>
-<td style="text-align: right;">186.59</td>
-<td style="text-align: right;">1.20</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">41</td>
-<td style="text-align: left;">Outras lavouras temporárias</td>
-<td style="text-align: right;">0.15</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">56.11</td>
-<td style="text-align: right;">0.93</td>
-<td style="text-align: right;">324.41</td>
-<td style="text-align: right;">1.20</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">Formação Florestal</td>
+<td style="text-align: right;">0.68</td>
 <td style="text-align: right;">80.43</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">99.64</td>
 <td style="text-align: right;">4.73</td>
-<td style="text-align: right;">447.80</td>
-<td style="text-align: right;">0.68</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">Formação Savânica</td>
-<td style="text-align: right;">0.01</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">93.33</td>
-<td style="text-align: right;">0.06</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">4.73</td>
+<td style="text-align: right;">4.73</td>
+<td style="text-align: right;">4.73</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: left;">Floresta Alagável</td>
-<td style="text-align: right;">0.07</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">88.42</td>
-<td style="text-align: right;">0.21</td>
-<td style="text-align: right;">334.93</td>
-<td style="text-align: right;">0.68</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: left;">Campo Alagado</td>
-<td style="text-align: right;">0.22</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">84.98</td>
-<td style="text-align: right;">0.58</td>
-<td style="text-align: right;">477.08</td>
-<td style="text-align: right;">0.68</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: left;">Pastagem</td>
-<td style="text-align: right;">12.13</td>
-<td style="text-align: right;">40</td>
-<td style="text-align: right;">90.65</td>
-<td style="text-align: right;">14.78</td>
-<td style="text-align: right;">109.70</td>
-<td style="text-align: right;">0.68</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">25</td>
-<td style="text-align: left;">Outras Áreas não Vegetadas</td>
-<td style="text-align: right;">0.26</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">89.66</td>
-<td style="text-align: right;">0.54</td>
-<td style="text-align: right;">98.34</td>
-<td style="text-align: right;">0.68</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: left;">Corpo d’Água</td>
-<td style="text-align: right;">0.07</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">83.87</td>
-<td style="text-align: right;">0.21</td>
-<td style="text-align: right;">62.20</td>
-<td style="text-align: right;">0.68</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">39</td>
-<td style="text-align: left;">Soja</td>
-<td style="text-align: right;">6.10</td>
-<td style="text-align: right;">28</td>
-<td style="text-align: right;">88.44</td>
-<td style="text-align: right;">9.36</td>
-<td style="text-align: right;">150.48</td>
-<td style="text-align: right;">0.68</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">41</td>
-<td style="text-align: left;">Outras lavouras temporárias</td>
-<td style="text-align: right;">0.73</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">76.83</td>
-<td style="text-align: right;">2.39</td>
-<td style="text-align: right;">364.97</td>
-<td style="text-align: right;">0.68</td>
-</tr>
-<tr class="even">
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">Formação Florestal</td>
+<td style="text-align: right;">0.65</td>
 <td style="text-align: right;">71.71</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">99.29</td>
 <td style="text-align: right;">8.35</td>
-<td style="text-align: right;">231.16</td>
-<td style="text-align: right;">0.65</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: left;">Floresta Alagável</td>
-<td style="text-align: right;">0.05</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">84.13</td>
-<td style="text-align: right;">0.11</td>
-<td style="text-align: right;">1107.37</td>
-<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">8.35</td>
+<td style="text-align: right;">8.35</td>
+<td style="text-align: right;">8.35</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: left;">Pastagem</td>
-<td style="text-align: right;">27.17</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">98.04</td>
-<td style="text-align: right;">6.17</td>
-<td style="text-align: right;">873.10</td>
-<td style="text-align: right;">0.65</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">25</td>
-<td style="text-align: left;">Outras Áreas não Vegetadas</td>
-<td style="text-align: right;">0.02</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">77.78</td>
-<td style="text-align: right;">0.09</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">0.65</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">29</td>
-<td style="text-align: left;">Afloramento Rochoso</td>
-<td style="text-align: right;">1.06</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">83.94</td>
-<td style="text-align: right;">2.57</td>
-<td style="text-align: right;">531.37</td>
-<td style="text-align: right;">0.65</td>
-</tr>
-<tr class="odd">
 <td style="text-align: right;">4</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">Formação Florestal</td>
+<td style="text-align: right;">0.73</td>
 <td style="text-align: right;">33.20</td>
-<td style="text-align: right;">46</td>
-<td style="text-align: right;">95.82</td>
 <td style="text-align: right;">18.79</td>
-<td style="text-align: right;">280.98</td>
-<td style="text-align: right;">0.73</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">Formação Savânica</td>
-<td style="text-align: right;">0.32</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">77.48</td>
-<td style="text-align: right;">1.09</td>
-<td style="text-align: right;">567.83</td>
-<td style="text-align: right;">0.73</td>
+<td style="text-align: right;">18.79</td>
+<td style="text-align: right;">18.79</td>
+<td style="text-align: right;">18.79</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: left;">Formação Campestre</td>
-<td style="text-align: right;">0.14</td>
 <td style="text-align: right;">5</td>
-<td style="text-align: right;">79.50</td>
-<td style="text-align: right;">0.50</td>
-<td style="text-align: right;">532.39</td>
-<td style="text-align: right;">0.73</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: left;">Pastagem</td>
-<td style="text-align: right;">65.10</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">97.34</td>
-<td style="text-align: right;">22.29</td>
-<td style="text-align: right;">177.01</td>
-<td style="text-align: right;">0.73</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">29</td>
-<td style="text-align: left;">Afloramento Rochoso</td>
-<td style="text-align: right;">0.03</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">88.37</td>
-<td style="text-align: right;">0.13</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">0.73</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">39</td>
-<td style="text-align: left;">Soja</td>
-<td style="text-align: right;">1.14</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">88.86</td>
-<td style="text-align: right;">2.06</td>
-<td style="text-align: right;">148.22</td>
-<td style="text-align: right;">0.73</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">41</td>
-<td style="text-align: left;">Outras lavouras temporárias</td>
-<td style="text-align: right;">0.07</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">64.95</td>
-<td style="text-align: right;">0.39</td>
-<td style="text-align: right;">2246.05</td>
-<td style="text-align: right;">0.73</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">Formação Florestal</td>
+<td style="text-align: right;">0.53</td>
 <td style="text-align: right;">18.62</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: right;">96.63</td>
 <td style="text-align: right;">9.44</td>
-<td style="text-align: right;">417.10</td>
-<td style="text-align: right;">0.53</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">Formação Savânica</td>
-<td style="text-align: right;">0.01</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">100.00</td>
-<td style="text-align: right;">0.05</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">0.53</td>
+<td style="text-align: right;">9.44</td>
+<td style="text-align: right;">9.44</td>
+<td style="text-align: right;">9.44</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: left;">Formação Campestre</td>
-<td style="text-align: right;">0.33</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">84.69</td>
-<td style="text-align: right;">0.84</td>
-<td style="text-align: right;">908.06</td>
-<td style="text-align: right;">0.53</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: left;">Pastagem</td>
-<td style="text-align: right;">80.75</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">98.83</td>
-<td style="text-align: right;">11.62</td>
-<td style="text-align: right;">172.78</td>
-<td style="text-align: right;">0.53</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">25</td>
-<td style="text-align: left;">Outras Áreas não Vegetadas</td>
-<td style="text-align: right;">0.01</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">71.43</td>
-<td style="text-align: right;">0.06</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">0.53</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">29</td>
-<td style="text-align: left;">Afloramento Rochoso</td>
-<td style="text-align: right;">0.04</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">90.74</td>
-<td style="text-align: right;">0.13</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">0.53</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: left;">Corpo d’Água</td>
-<td style="text-align: right;">0.02</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">76.00</td>
-<td style="text-align: right;">0.12</td>
-<td style="text-align: right;">3010.24</td>
-<td style="text-align: right;">0.53</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">39</td>
-<td style="text-align: left;">Soja</td>
-<td style="text-align: right;">0.19</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">66.32</td>
-<td style="text-align: right;">0.96</td>
-<td style="text-align: right;">578.60</td>
-<td style="text-align: right;">0.53</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">41</td>
-<td style="text-align: left;">Outras lavouras temporárias</td>
-<td style="text-align: right;">0.03</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">62.22</td>
-<td style="text-align: right;">0.22</td>
-<td style="text-align: right;">1903.90</td>
-<td style="text-align: right;">0.53</td>
-</tr>
-<tr class="odd">
 <td style="text-align: right;">6</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">Formação Florestal</td>
+<td style="text-align: right;">0.73</td>
 <td style="text-align: right;">44.23</td>
-<td style="text-align: right;">40</td>
-<td style="text-align: right;">98.81</td>
 <td style="text-align: right;">7.62</td>
-<td style="text-align: right;">348.35</td>
-<td style="text-align: right;">0.73</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">Formação Savânica</td>
-<td style="text-align: right;">0.03</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">88.24</td>
-<td style="text-align: right;">0.11</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">0.73</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: left;">Pastagem</td>
-<td style="text-align: right;">55.07</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">98.84</td>
-<td style="text-align: right;">8.62</td>
-<td style="text-align: right;">107.02</td>
-<td style="text-align: right;">0.73</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">25</td>
-<td style="text-align: left;">Outras Áreas não Vegetadas</td>
-<td style="text-align: right;">0.01</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">100.00</td>
-<td style="text-align: right;">0.04</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">0.73</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">29</td>
-<td style="text-align: left;">Afloramento Rochoso</td>
-<td style="text-align: right;">0.35</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">80.60</td>
-<td style="text-align: right;">1.05</td>
-<td style="text-align: right;">1107.55</td>
-<td style="text-align: right;">0.73</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: left;">Corpo d’Água</td>
-<td style="text-align: right;">0.01</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">100.00</td>
-<td style="text-align: right;">0.05</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">0.73</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">39</td>
-<td style="text-align: left;">Soja</td>
-<td style="text-align: right;">0.28</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">91.43</td>
-<td style="text-align: right;">0.48</td>
-<td style="text-align: right;">6542.25</td>
-<td style="text-align: right;">0.73</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">41</td>
-<td style="text-align: left;">Outras lavouras temporárias</td>
-<td style="text-align: right;">0.03</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">93.75</td>
-<td style="text-align: right;">0.09</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">0.73</td>
+<td style="text-align: right;">7.62</td>
+<td style="text-align: right;">7.62</td>
+<td style="text-align: right;">7.62</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">7</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">Formação Florestal</td>
+<td style="text-align: right;">1.16</td>
 <td style="text-align: right;">23.91</td>
-<td style="text-align: right;">32</td>
-<td style="text-align: right;">95.72</td>
 <td style="text-align: right;">14.10</td>
-<td style="text-align: right;">271.12</td>
-<td style="text-align: right;">1.16</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">Formação Savânica</td>
-<td style="text-align: right;">0.62</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">82.33</td>
-<td style="text-align: right;">1.69</td>
-<td style="text-align: right;">653.10</td>
-<td style="text-align: right;">1.16</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: left;">Floresta Alagável</td>
-<td style="text-align: right;">0.72</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">90.80</td>
-<td style="text-align: right;">1.12</td>
-<td style="text-align: right;">724.84</td>
-<td style="text-align: right;">1.16</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: left;">Campo Alagado</td>
-<td style="text-align: right;">0.11</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">77.99</td>
-<td style="text-align: right;">0.42</td>
-<td style="text-align: right;">911.96</td>
-<td style="text-align: right;">1.16</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: left;">Pastagem</td>
-<td style="text-align: right;">25.16</td>
-<td style="text-align: right;">82</td>
-<td style="text-align: right;">91.33</td>
-<td style="text-align: right;">28.26</td>
-<td style="text-align: right;">123.29</td>
-<td style="text-align: right;">1.16</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">25</td>
-<td style="text-align: left;">Outras Áreas não Vegetadas</td>
-<td style="text-align: right;">0.01</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">100.00</td>
-<td style="text-align: right;">0.05</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">1.16</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: left;">Corpo d’Água</td>
-<td style="text-align: right;">0.10</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">89.40</td>
-<td style="text-align: right;">0.28</td>
-<td style="text-align: right;">6578.22</td>
-<td style="text-align: right;">1.16</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">39</td>
-<td style="text-align: left;">Soja</td>
-<td style="text-align: right;">48.70</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: right;">96.79</td>
-<td style="text-align: right;">21.27</td>
-<td style="text-align: right;">130.16</td>
-<td style="text-align: right;">1.16</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">41</td>
-<td style="text-align: left;">Outras lavouras temporárias</td>
-<td style="text-align: right;">0.67</td>
-<td style="text-align: right;">48</td>
-<td style="text-align: right;">59.35</td>
-<td style="text-align: right;">3.68</td>
-<td style="text-align: right;">329.70</td>
-<td style="text-align: right;">1.16</td>
+<td style="text-align: right;">14.10</td>
+<td style="text-align: right;">14.10</td>
+<td style="text-align: right;">14.10</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">8</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">Formação Florestal</td>
+<td style="text-align: right;">0.89</td>
 <td style="text-align: right;">69.70</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">99.40</td>
 <td style="text-align: right;">6.12</td>
-<td style="text-align: right;">219.34</td>
-<td style="text-align: right;">0.89</td>
+<td style="text-align: right;">6.12</td>
+<td style="text-align: right;">6.12</td>
+<td style="text-align: right;">6.12</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">Formação Savânica</td>
-<td style="text-align: right;">0.35</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">84.46</td>
-<td style="text-align: right;">0.88</td>
-<td style="text-align: right;">995.86</td>
-<td style="text-align: right;">0.89</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: left;">Floresta Alagável</td>
-<td style="text-align: right;">1.94</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">96.12</td>
-<td style="text-align: right;">1.46</td>
-<td style="text-align: right;">2113.97</td>
-<td style="text-align: right;">0.89</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: left;">Pastagem</td>
-<td style="text-align: right;">9.55</td>
-<td style="text-align: right;">39</td>
-<td style="text-align: right;">90.60</td>
-<td style="text-align: right;">11.72</td>
-<td style="text-align: right;">176.96</td>
-<td style="text-align: right;">0.89</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">39</td>
-<td style="text-align: left;">Soja</td>
-<td style="text-align: right;">18.44</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">96.86</td>
-<td style="text-align: right;">8.51</td>
-<td style="text-align: right;">234.20</td>
-<td style="text-align: right;">0.89</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">41</td>
-<td style="text-align: left;">Outras lavouras temporárias</td>
-<td style="text-align: right;">0.02</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">60.00</td>
-<td style="text-align: right;">0.13</td>
-<td style="text-align: right;">1485.22</td>
-<td style="text-align: right;">0.89</td>
-</tr>
-<tr class="even">
 <td style="text-align: right;">9</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">Formação Florestal</td>
+<td style="text-align: right;">0.61</td>
 <td style="text-align: right;">71.28</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">99.17</td>
 <td style="text-align: right;">7.28</td>
-<td style="text-align: right;">182.35</td>
-<td style="text-align: right;">0.61</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: left;">Silvicultura</td>
-<td style="text-align: right;">0.01</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">80.00</td>
-<td style="text-align: right;">0.08</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">0.61</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: left;">Pastagem</td>
-<td style="text-align: right;">28.56</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">98.17</td>
-<td style="text-align: right;">7.92</td>
-<td style="text-align: right;">734.47</td>
-<td style="text-align: right;">0.61</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">39</td>
-<td style="text-align: left;">Soja</td>
-<td style="text-align: right;">0.15</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">69.63</td>
-<td style="text-align: right;">0.72</td>
-<td style="text-align: right;">89.53</td>
-<td style="text-align: right;">0.61</td>
+<td style="text-align: right;">7.28</td>
+<td style="text-align: right;">7.28</td>
+<td style="text-align: right;">7.28</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">10</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">Formação Florestal</td>
+<td style="text-align: right;">0.70</td>
 <td style="text-align: right;">9.59</td>
-<td style="text-align: right;">89</td>
-<td style="text-align: right;">87.45</td>
 <td style="text-align: right;">16.36</td>
-<td style="text-align: right;">233.73</td>
-<td style="text-align: right;">0.70</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: left;">Floresta Alagável</td>
-<td style="text-align: right;">10.37</td>
-<td style="text-align: right;">27</td>
-<td style="text-align: right;">94.32</td>
-<td style="text-align: right;">8.66</td>
-<td style="text-align: right;">188.04</td>
-<td style="text-align: right;">0.70</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: left;">Campo Alagado</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">24</td>
-<td style="text-align: right;">80.61</td>
-<td style="text-align: right;">2.87</td>
-<td style="text-align: right;">425.74</td>
-<td style="text-align: right;">0.70</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: left;">Pastagem</td>
-<td style="text-align: right;">78.90</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">97.98</td>
-<td style="text-align: right;">19.96</td>
-<td style="text-align: right;">103.85</td>
-<td style="text-align: right;">0.70</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">29</td>
-<td style="text-align: left;">Afloramento Rochoso</td>
-<td style="text-align: right;">0.01</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">92.31</td>
-<td style="text-align: right;">0.06</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">0.70</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: left;">Corpo d’Água</td>
-<td style="text-align: right;">0.12</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">37.06</td>
-<td style="text-align: right;">0.97</td>
-<td style="text-align: right;">325.46</td>
-<td style="text-align: right;">0.70</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">39</td>
-<td style="text-align: left;">Soja</td>
-<td style="text-align: right;">0.01</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">91.67</td>
-<td style="text-align: right;">0.06</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">16.36</td>
+<td style="text-align: right;">16.36</td>
+<td style="text-align: right;">16.36</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">11</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">Formação Florestal</td>
+<td style="text-align: right;">0.88</td>
 <td style="text-align: right;">43.82</td>
-<td style="text-align: right;">31</td>
-<td style="text-align: right;">97.29</td>
 <td style="text-align: right;">16.21</td>
-<td style="text-align: right;">240.95</td>
-<td style="text-align: right;">0.88</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">Formação Savânica</td>
-<td style="text-align: right;">2.88</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">92.05</td>
-<td style="text-align: right;">3.63</td>
-<td style="text-align: right;">256.53</td>
-<td style="text-align: right;">0.88</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: left;">Silvicultura</td>
-<td style="text-align: right;">0.02</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">74.07</td>
-<td style="text-align: right;">0.13</td>
-<td style="text-align: right;">452.79</td>
-<td style="text-align: right;">0.88</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: left;">Pastagem</td>
-<td style="text-align: right;">51.45</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">97.69</td>
-<td style="text-align: right;">15.55</td>
-<td style="text-align: right;">195.32</td>
-<td style="text-align: right;">0.88</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">29</td>
-<td style="text-align: left;">Afloramento Rochoso</td>
-<td style="text-align: right;">1.82</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: right;">82.32</td>
-<td style="text-align: right;">4.47</td>
-<td style="text-align: right;">374.94</td>
-<td style="text-align: right;">0.88</td>
+<td style="text-align: right;">16.21</td>
+<td style="text-align: right;">16.21</td>
+<td style="text-align: right;">16.21</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">12</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">Formação Florestal</td>
+<td style="text-align: right;">0.65</td>
 <td style="text-align: right;">68.38</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">98.47</td>
 <td style="text-align: right;">14.80</td>
-<td style="text-align: right;">260.12</td>
-<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">14.80</td>
+<td style="text-align: right;">14.80</td>
+<td style="text-align: right;">14.80</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: left;">Pastagem</td>
-<td style="text-align: right;">31.24</td>
-<td style="text-align: right;">28</td>
-<td style="text-align: right;">96.01</td>
-<td style="text-align: right;">15.71</td>
-<td style="text-align: right;">280.32</td>
-<td style="text-align: right;">0.65</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">29</td>
-<td style="text-align: left;">Afloramento Rochoso</td>
-<td style="text-align: right;">0.11</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">70.81</td>
-<td style="text-align: right;">0.52</td>
-<td style="text-align: right;">1267.74</td>
-<td style="text-align: right;">0.65</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: left;">Corpo d’Água</td>
-<td style="text-align: right;">0.01</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">76.47</td>
-<td style="text-align: right;">0.09</td>
-<td style="text-align: right;">1072.31</td>
-<td style="text-align: right;">0.65</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">39</td>
-<td style="text-align: left;">Soja</td>
-<td style="text-align: right;">0.16</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">70.46</td>
-<td style="text-align: right;">0.73</td>
-<td style="text-align: right;">130.45</td>
-<td style="text-align: right;">0.65</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">41</td>
-<td style="text-align: left;">Outras lavouras temporárias</td>
-<td style="text-align: right;">0.10</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">73.79</td>
-<td style="text-align: right;">0.45</td>
-<td style="text-align: right;">283.43</td>
-<td style="text-align: right;">0.65</td>
-</tr>
-<tr class="even">
 <td style="text-align: right;">13</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">Formação Florestal</td>
+<td style="text-align: right;">0.73</td>
 <td style="text-align: right;">32.71</td>
-<td style="text-align: right;">50</td>
-<td style="text-align: right;">95.83</td>
 <td style="text-align: right;">17.74</td>
-<td style="text-align: right;">240.15</td>
-<td style="text-align: right;">0.73</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">Formação Savânica</td>
-<td style="text-align: right;">0.37</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">82.24</td>
-<td style="text-align: right;">1.07</td>
-<td style="text-align: right;">478.98</td>
-<td style="text-align: right;">0.73</td>
+<td style="text-align: right;">17.74</td>
+<td style="text-align: right;">17.74</td>
+<td style="text-align: right;">17.74</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: left;">Formação Campestre</td>
-<td style="text-align: right;">0.49</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: right;">72.08</td>
-<td style="text-align: right;">2.00</td>
-<td style="text-align: right;">555.06</td>
-<td style="text-align: right;">0.73</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: left;">Pastagem</td>
-<td style="text-align: right;">65.58</td>
 <td style="text-align: right;">14</td>
-<td style="text-align: right;">98.02</td>
-<td style="text-align: right;">17.58</td>
-<td style="text-align: right;">216.37</td>
-<td style="text-align: right;">0.73</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">25</td>
-<td style="text-align: left;">Outras Áreas não Vegetadas</td>
-<td style="text-align: right;">0.09</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">88.80</td>
-<td style="text-align: right;">0.24</td>
-<td style="text-align: right;">155.49</td>
-<td style="text-align: right;">0.73</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">29</td>
-<td style="text-align: left;">Afloramento Rochoso</td>
-<td style="text-align: right;">0.74</td>
-<td style="text-align: right;">27</td>
-<td style="text-align: right;">75.85</td>
-<td style="text-align: right;">2.51</td>
-<td style="text-align: right;">557.86</td>
-<td style="text-align: right;">0.73</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: left;">Corpo d’Água</td>
-<td style="text-align: right;">0.03</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">90.62</td>
-<td style="text-align: right;">0.10</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">0.73</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">Formação Florestal</td>
+<td style="text-align: right;">0.97</td>
 <td style="text-align: right;">42.39</td>
-<td style="text-align: right;">26</td>
-<td style="text-align: right;">97.07</td>
 <td style="text-align: right;">16.47</td>
-<td style="text-align: right;">250.71</td>
-<td style="text-align: right;">0.97</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">Formação Savânica</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">100.00</td>
-<td style="text-align: right;">0.03</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">0.97</td>
+<td style="text-align: right;">16.47</td>
+<td style="text-align: right;">16.47</td>
+<td style="text-align: right;">16.47</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: left;">Floresta Alagável</td>
-<td style="text-align: right;">0.03</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">89.47</td>
-<td style="text-align: right;">0.08</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">0.97</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: left;">Silvicultura</td>
-<td style="text-align: right;">3.79</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">90.73</td>
-<td style="text-align: right;">5.18</td>
-<td style="text-align: right;">120.41</td>
-<td style="text-align: right;">0.97</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: left;">Formação Campestre</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">0.02</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">0.97</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">14</td>
 <td style="text-align: right;">15</td>
-<td style="text-align: left;">Pastagem</td>
-<td style="text-align: right;">50.45</td>
-<td style="text-align: right;">24</td>
-<td style="text-align: right;">96.61</td>
-<td style="text-align: right;">22.52</td>
-<td style="text-align: right;">202.11</td>
-<td style="text-align: right;">0.97</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">25</td>
-<td style="text-align: left;">Outras Áreas não Vegetadas</td>
-<td style="text-align: right;">0.04</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">84.00</td>
-<td style="text-align: right;">0.16</td>
-<td style="text-align: right;">306.28</td>
-<td style="text-align: right;">0.97</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">29</td>
-<td style="text-align: left;">Afloramento Rochoso</td>
-<td style="text-align: right;">0.29</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">81.88</td>
-<td style="text-align: right;">0.84</td>
-<td style="text-align: right;">1376.97</td>
-<td style="text-align: right;">0.97</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: left;">Corpo d’Água</td>
-<td style="text-align: right;">0.05</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">76.12</td>
-<td style="text-align: right;">0.23</td>
-<td style="text-align: right;">5695.34</td>
-<td style="text-align: right;">0.97</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">39</td>
-<td style="text-align: left;">Soja</td>
-<td style="text-align: right;">2.77</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">92.83</td>
-<td style="text-align: right;">3.24</td>
-<td style="text-align: right;">285.68</td>
-<td style="text-align: right;">0.97</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">41</td>
-<td style="text-align: left;">Outras lavouras temporárias</td>
-<td style="text-align: right;">0.19</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">57.84</td>
-<td style="text-align: right;">1.16</td>
-<td style="text-align: right;">896.47</td>
-<td style="text-align: right;">0.97</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">Formação Florestal</td>
+<td style="text-align: right;">0.65</td>
 <td style="text-align: right;">12.21</td>
-<td style="text-align: right;">64</td>
-<td style="text-align: right;">91.42</td>
 <td style="text-align: right;">14.70</td>
-<td style="text-align: right;">197.58</td>
-<td style="text-align: right;">0.65</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">Formação Savânica</td>
-<td style="text-align: right;">0.49</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">79.52</td>
-<td style="text-align: right;">1.53</td>
-<td style="text-align: right;">432.26</td>
-<td style="text-align: right;">0.65</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: left;">Silvicultura</td>
-<td style="text-align: right;">0.17</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">72.66</td>
-<td style="text-align: right;">0.65</td>
-<td style="text-align: right;">307.53</td>
-<td style="text-align: right;">0.65</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: left;">Campo Alagado</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">0.03</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">0.65</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: left;">Formação Campestre</td>
-<td style="text-align: right;">2.13</td>
-<td style="text-align: right;">42</td>
-<td style="text-align: right;">81.53</td>
-<td style="text-align: right;">5.51</td>
-<td style="text-align: right;">302.37</td>
-<td style="text-align: right;">0.65</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: left;">Pastagem</td>
-<td style="text-align: right;">82.47</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">98.02</td>
-<td style="text-align: right;">20.36</td>
-<td style="text-align: right;">188.78</td>
-<td style="text-align: right;">0.65</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">29</td>
-<td style="text-align: left;">Afloramento Rochoso</td>
-<td style="text-align: right;">1.19</td>
-<td style="text-align: right;">26</td>
-<td style="text-align: right;">79.37</td>
-<td style="text-align: right;">3.52</td>
-<td style="text-align: right;">538.92</td>
-<td style="text-align: right;">0.65</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">39</td>
-<td style="text-align: left;">Soja</td>
-<td style="text-align: right;">0.89</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">76.04</td>
-<td style="text-align: right;">3.07</td>
-<td style="text-align: right;">190.74</td>
-<td style="text-align: right;">0.65</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">41</td>
-<td style="text-align: left;">Outras lavouras temporárias</td>
-<td style="text-align: right;">0.45</td>
-<td style="text-align: right;">17</td>
-<td style="text-align: right;">68.15</td>
-<td style="text-align: right;">2.04</td>
-<td style="text-align: right;">668.68</td>
-<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">14.70</td>
+<td style="text-align: right;">14.70</td>
+<td style="text-align: right;">14.70</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
+<section id="referências" class="level3">
+<h3 class="anchored" data-anchor-id="referências">Referências:</h3>
+<p>MapBiomas Brasil. , [S.d.]. Disponível em: <a href="https://brasil.mapbiomas.org/" class="uri">https://brasil.mapbiomas.org/</a>. Acesso em: 18 jun. 2026.</p>
+<p>Santana do Araguaia (PA) | Cidades e Estados | IBGE. Disponível em: <a href="https://www.ibge.gov.br/cidades-e-estados/pa/santana-do-araguaia.html" class="uri">https://www.ibge.gov.br/cidades-e-estados/pa/santana-do-araguaia.html</a>. Acesso em: 17 jun. 2026.</p>
+</section>
 </section>
 <section id="diagnóstico-ecológico" class="level1">
 <h1>2. Diagnóstico ecológico</h1>
-<p>Em estudos do PDBFF as aves amzonicas de áreas abertas como savanas, capinaranas e . Além disso, houve recuperação das guildas e da abundância de aves antes da fragmentação em fragmentos com 10 ha (com floresta secundária como matriz), com exceção da guilda de insetívoros terrestes.</p>
-<p>Stouffer (2007) estimou a área mínima ocupada por algumas espécies de aves da guilda de insetívoras terrestres próximas a Manaus em um fragmento de 100 ha.</p>
-<p>Conectividade e metapopulações</p>
-<p>Efeito de borda</p>
-<p>Não é muito claro efeito de borda para aves em terra firme</p>
-<p>Produtividade primária e estoque de carbono</p>
+<p>Para entender melhor conectividade entre fragmentos e dinamicas de metapopulações, além de avaliar o efeito de borda classifiquei os fragmentos em quatro tamanhos. Esses tamanhos se baseiam nos tamanhos testados pelo PDBFF (1 e 10 hectáres) e no tamanho de fragmento que consegue suportar aves de guilda de inssetívoras terrestres, que na amzônia são aves que ocupam grandes terristórios e são pouco resilientes a fragmentação. Em estudos do PDBFF as aves amzonicas de áreas abertas como savanas e capinaranas, não adentraram em fragmentos florestais de 10 ha. Além disso, houve recuperação das guildas e da abundância de aves, que ocorriam antes da fragmentação, em fragmentos com 10 ha (com floresta secundária como matriz), com exceção da guilda de insetívoros terrestes. Stouffer (2007) estimou a área mínima ocupada por algumas espécies de aves da guilda de insetívoras terrestres próximas a Manaus em um fragmento de 100 ha, demonstrando que esse tamanho de fragmento é suficiente para a permanencia dessa guilda de aves que ocupam e se deslocam por um grande território, podendo haver um território de 14 hectáres para um casal.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reclassificar: manter só Formação Florestal (id = 3), resto vira NA</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>r_floresta <span class="ot">&lt;-</span> <span class="fu">classify</span>(r_utm, <span class="fu">rbind</span>(<span class="fu">cbind</span>(<span class="dv">3</span>, <span class="dv">3</span>)), <span class="at">others =</span> <span class="cn">NA</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular área dos fragmentos (em hectares)</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>patch_area <span class="ot">&lt;-</span> <span class="fu">lsm_p_area</span>(r_floresta)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Converter para dataframe simples</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>df_area <span class="ot">&lt;-</span> patch_area <span class="sc">%&gt;%</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">area_ha =</span> value)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Classificar nas faixas</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>df_area <span class="ot">&lt;-</span> df_area <span class="sc">%&gt;%</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">classe_area =</span> <span class="fu">case_when</span>(</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    area_ha <span class="sc">&lt;</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">"&lt; 1 ha"</span>,</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    area_ha <span class="sc">&gt;=</span> <span class="dv">1</span> <span class="sc">&amp;</span> area_ha <span class="sc">&lt;</span> <span class="dv">10</span> <span class="sc">~</span> <span class="st">"1–10 ha"</span>,</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    area_ha <span class="sc">&gt;=</span> <span class="dv">10</span> <span class="sc">&amp;</span> area_ha <span class="sc">&lt;</span> <span class="dv">100</span> <span class="sc">~</span> <span class="st">"10–100 ha"</span>,</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    area_ha <span class="sc">&gt;=</span> <span class="dv">100</span> <span class="sc">~</span> <span class="st">"&gt; 100 ha"</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Contar fragmentos por classe</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>result_frag <span class="ot">&lt;-</span> df_area <span class="sc">%&gt;%</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(classe_area) <span class="sc">%&gt;%</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n_fragmentos =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(classe_area)</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>result_frag <span class="sc">%&gt;%</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Distribuição de Fragmentos Florestais por Tamanho"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="ebohtplcwi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ebohtplcwi table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ebohtplcwi thead, #ebohtplcwi tbody, #ebohtplcwi tfoot, #ebohtplcwi tr, #ebohtplcwi td, #ebohtplcwi th {
+  border-style: none;
+}
+
+#ebohtplcwi p {
+  margin: 0;
+  padding: 0;
+}
+
+#ebohtplcwi .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ebohtplcwi .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ebohtplcwi .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ebohtplcwi .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ebohtplcwi .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ebohtplcwi .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ebohtplcwi .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ebohtplcwi .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ebohtplcwi .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ebohtplcwi .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ebohtplcwi .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ebohtplcwi .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ebohtplcwi .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ebohtplcwi .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ebohtplcwi .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ebohtplcwi .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ebohtplcwi .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ebohtplcwi .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ebohtplcwi .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ebohtplcwi .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ebohtplcwi .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ebohtplcwi .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ebohtplcwi .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ebohtplcwi .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ebohtplcwi .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ebohtplcwi .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ebohtplcwi .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ebohtplcwi .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ebohtplcwi .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ebohtplcwi .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ebohtplcwi .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ebohtplcwi .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ebohtplcwi .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ebohtplcwi .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ebohtplcwi .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ebohtplcwi .gt_left {
+  text-align: left;
+}
+
+#ebohtplcwi .gt_center {
+  text-align: center;
+}
+
+#ebohtplcwi .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ebohtplcwi .gt_font_normal {
+  font-weight: normal;
+}
+
+#ebohtplcwi .gt_font_bold {
+  font-weight: bold;
+}
+
+#ebohtplcwi .gt_font_italic {
+  font-style: italic;
+}
+
+#ebohtplcwi .gt_super {
+  font-size: 65%;
+}
+
+#ebohtplcwi .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ebohtplcwi .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ebohtplcwi .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ebohtplcwi .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ebohtplcwi .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ebohtplcwi .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ebohtplcwi .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#ebohtplcwi .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#ebohtplcwi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border">Distribuição de Fragmentos Florestais por Tamanho</td>
+</tr>
+<tr class="gt_col_headings even">
+<th id="classe_area" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">classe_area</th>
+<th id="n_fragmentos" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_fragmentos</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="classe_area">10–100 ha</td>
+<td class="gt_row gt_right" headers="n_fragmentos">1206</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="classe_area">1–10 ha</td>
+<td class="gt_row gt_right" headers="n_fragmentos">2929</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="classe_area">&lt; 1 ha</td>
+<td class="gt_row gt_right" headers="n_fragmentos">1703</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="classe_area">&gt; 100 ha</td>
+<td class="gt_row gt_right" headers="n_fragmentos">265</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<section id="conectividade-e-metapopulações" class="level3">
+<h3 class="anchored" data-anchor-id="conectividade-e-metapopulações">Conectividade e metapopulações</h3>
+<p>Existem um grande número de pequenos fragmentos, mas existem também existem mais de 200 fragmentos com mais de 100 ha, podendo suportar biodiversidade biológica e servir como fonte na dinâmica de metapopulações. Pode haver conexão entre essas áreas através da Floresta Alagável e atráves de fragmentos menores que podem funcionar como trampulins. Mas é importante levar em consideração também a baixa permeabilidade que a matriz de pastagem pode apresentar para certos grupos biológicos. Por exemplo aves de áreas abertas dificilmente entram em fragmentos florestais na amazônia e conseguem se dispersar pela matriz com maior facilidade. Já aves que vivem em florestas co bioma amzônico dependem de floresta secundária, como secropias, como matriz para poderem se dispersar.</p>
+</section>
+<section id="efeito-de-borda" class="level3">
+<h3 class="anchored" data-anchor-id="efeito-de-borda">Efeito de borda</h3>
+<p>Quanto a aves não é muito claro efeito de borda para aves que vivem em áreas florestais de Terra Firme.</p>
+</section>
+<section id="produtividade-primária-e-estoque-de-carbono" class="level3">
+<h3 class="anchored" data-anchor-id="produtividade-primária-e-estoque-de-carbono">Produtividade primária e estoque de carbono</h3>
+<p>O mapa abaixo apresenta o fogo acumulado no município de 1985 a 2025, quase todo o município já passou por alguma queimada em algum momento (todos os mapas desse subtópico foram retirados do mapbiomas).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="exercise_images/fogo_acumulado_santana.png" class="img-fluid figure-img"></p>
 <figcaption>Fogo acumulado no município de 1985 a 2025</figcaption>
 </figure>
 </div>
+<p>Abaixo o gráfico apresenta a quantidade de hectáres queimadas no município em cada ano, sendo 1997 e 2007 os anos que mais tiveram áreas queimadas.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="exercise_images/fogo_escala_temporal_santana.png" class="img-fluid figure-img"></p>
 <figcaption>Fogo no município ao longo os anos</figcaption>
 </figure>
 </div>
+<p>Quanto a área queimada acumulada, foram queimados ao todo mais de 1 milhão de hectáres no município de Santana do Araguaia.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="exercise_images/area_acumulada_fogo_santana.png" class="img-fluid figure-img"></p>
 <figcaption>Área queimada acumulada no município de 1985 a 2025</figcaption>
 </figure>
 </div>
+<p>Quanto ao estoque de carbono no solo, se manteve alto e teve pouca perda de 1985 a 2025 mesmo com o desmatamento sofrido no município. O estoque de carbono presente na parte area da vegetação foi perdido, mas parte do estoque de carbono no solo ou nas raízes se manteve, podendo ser utilizado na recuper</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="exercise_images/carbono_no_solo_santana.png" class="img-fluid figure-img"></p>
 <figcaption>Carbono no solo</figcaption>
 </figure>
 </div>
-<p>Heterogeneidade e diversidade beta</p>
+</section>
+<section id="referências-1" class="level3">
+<h3 class="anchored" data-anchor-id="referências-1">Referências:</h3>
+<p>Lessons from Amazonia: The Ecology and Conservation of a Fragmented Forest. Journal of Mammalogy, v. 83, n.&nbsp;4, p.&nbsp;1154–1156, 1 nov. 2002.</p>
+<p>STOUFFER, Philip C. Density, Territory Size, and Long-Term Spatial Dynamics of a Guild of Terrestrial Insectivorous Birds Near Manaus, Brazil. The Auk, v. 124, n.&nbsp;1, p.&nbsp;291–306, 1 jan. 2007.</p>
+<p>STOUFFER, Philip C. Birds in fragmented Amazonian rainforest: Lessons from 40 years at the Biological Dynamics of Forest Fragments Project. The Condor: Ornithological Applications, v. 122, n.&nbsp;3, p.&nbsp;duaa005, 4 ago. 2020.</p>
+</section>
 </section>
 <section id="análise-de-ecologia-política" class="level1">
 <h1>3. Análise de Ecologia Política</h1>
-<p>Santana do Araguaia</p>
-<p>Grupos beneficiados: Volkswagen e politicos/donos de terra que ganharam com desapropriamento Grupos afetados negativamente: Trabalhadores da antiga fazenda rio cristalino, trabalhadores rurais sem terras ou que foram enganados no esquema de venda de terras nos assentamentos, povo indigena kayapo.</p>
+<p>Os anos escolhidos para análise temporal da paisagem no tópico 1 estão relacionadas a história desse município. 1985 é a data mais antiga disponível no mapbiomas, mas o uso do município para a criação de gado começou na década de 70. Nos anos 2000 houveram algumas despropriações de terra que resultaram em assentamentos que até hoje não estão totalmente regularizados quanto a divisão de terras. Em 1973 a Volkwagen adquiriu 140 mil hectáres de terras públicas em Santana do Araguaia por incentivos fiscais da SUNDAM (Superintendência de Desenvolvimento da Amazônia) durante a ditadura militar. Essas terras foram utilizadas para a criação de gado e ficaram conhecidas como Fazenda Rio Cristalino. Na década de 80 surgiram um série de denúncias contra a Volkswagen a Fazenda Rio Cristalino relacionadas a abuso, tortura e trabalho análogo a escravidão. A abertura de pastos eram realizadas em condições precárias e os trabalhadores não conseguiam sair daquela situação devido a dívidas fraudulentas e vigilãncia constante.</p>
+<p>Mas muito antes da Fazenda Rio Cristalino naquele município já viviam populações do povo indígena Iny (como se autodenominam) ou Karajá (nome em tupi). Os Iny enfretaram epidemias e conflitos e atualmente as aldeias que permanencem em Santana do Araguaia também tiveram perda do seu território. Por mais que historicamente os Iny vivam as margens do Rio Araguaia, existe apenas uma Terra Indígena Iny no Pará cuja o território é pequeno e inadequado. O processo de demarcação fundiária dessa Terra Indígena, Terra Indígena Karajá Santana do Araguaia (que não se localiza no município de Santana do Araguaia e sim em um município vizinho), teve graves irregularidades ao longo do tempo, resultando na demarcação de um território com terras inferteis e em área alagáveç, impossibilitando o estabelecimento de moradias fixas e até o estabelecimento de um cemitério dentro da terra indígena.</p>
+<p>Em 1998 houve o aliciamento de moradores para a ocupação de terras, com promessas de serem sustentados por um mês e de invadir uma fazenda com escolas, hospital, ambulatório, estrada, etc. O principal lider MBST (Movimento Brasileiro dos Sem Terra) na época fez essas promessas e não voltou ao Pará por pelo menos dois meses, deixando as pessoas que invadiram as terras passando fome. Enquanto isso a desapropriação da Fazenda Rio Cristalino foi calculada em até 40 milhões de reais na epóca. Em 2004 Governo Federal desapropriou parte da antiga Fazenda Cristalino, assentando 1300 famílias e reservando parte da área para exploração de reserva de urânio. E em 2008 o INCRA abriu processo de desapropriação de terras para fins de reforma agrária de 52 mil hectares da Fazenda Cristalino, de posse da Agropecuária Santa Bárbara Xinguara. No entanto, até hoje essas áreas não foram totalmente regulamentadas, se tornando um local de conflitos e disputas, havendo também assassinatos por conta desses conflitos. Há relatos de venda de propriedades dentro dos assentamentos, sem documentação ou qualquer tipo de contrato. Há um relato em especifico em que o vendedor do terreno tentou tomar de volta o terreno vendido. Havendo também um caso de tortura da população praticado por pistoleiro no Projeto de Assentamento Colônia Verde Brasileira. Além disso, o município perdeu 47,55% da população do municipio de 2011 a 2025, havendo a diminuição de 27.612 moradores.</p>
+<ul>
+<li>Grupos beneficiados: Volkswagen e politicos/donos de terra que ganharam com desapropriamento</li>
+<li>Grupos afetados negativamente: Trabalhadores da antiga fazenda rio cristalino, trabalhadores rurais sem terras ou que foram enganados no esquema de venda de terras nos assentamentos, povo indigena Iny.</li>
+</ul>
 <section id="linha-do-tempo" class="level3">
 <h3 class="anchored" data-anchor-id="linha-do-tempo">Linha do tempo</h3>
 <ul>
@@ -2299,21 +1787,20 @@ Processando raster para o ano: 2024...
 <li>Conhecida como Fazenda Rio Cristalino.</li>
 <li>Criação de gado</li>
 <li>Denúncias de irregularidades trabalhistas, tortura e trabalho escravo</li>
-<li>Década de 70: Criação da TI Santana do Araguaia em cidade vizinha</li>
+<li>Década de 70: Início da demarcação da TI Santana do Araguaia em cidade vizinha</li>
 <li>1998: Aliciamento dos moradores para ocupação de terras, pressionando INCRA para reforma agrária e indenização.</li>
 <li>2004: Governo Federal desapropria parte da antiga Fazenda Cristalino, assentando 1300 famílias e reservando parte da área para exploração de reserva de urânio.</li>
 <li>2008: INCRA abre processo de desapropriação de terras para fins de reforma agrária de 52 mil hectares da Fazenda Cristalino, de posse da Agropecuária Santa Bárbara Xinguara.</li>
 <li>2011-2025: diminuição de 27.612 moradores (47,55% da população do municipio)</li>
 </ul>
 </section>
-<section id="referências" class="level3">
-<h3 class="anchored" data-anchor-id="referências">Referências:</h3>
+<section id="referências-2" class="level3">
+<h3 class="anchored" data-anchor-id="referências-2">Referências:</h3>
 <p>ALANTYGEL. Famílias de trabalhadores rurais de Santana do Araguaia são vítimas de tortura praticada por pistoleiros. Comissão Pastoral da Terra - CPT, 28 set. 2012. Disponível em: <a href="https://cptnacional.org.br/2012/09/28/familias-de-trabalhadores-rurais-de-santana-do-araguaia-sao-vitimas-de-tortura-praticada-por-pistoleiros/" class="uri">https://cptnacional.org.br/2012/09/28/familias-de-trabalhadores-rurais-de-santana-do-araguaia-sao-vitimas-de-tortura-praticada-por-pistoleiros/</a>. Acesso em: 16 jun. 2026</p>
 <p>CARAJÁS, Gazeta. Santana do Araguaia é 4º município que mais perdeu moradores no Brasil - Gazeta Carajás. Disponível em: <a href="https://www.gazetacarajas.com/noticia/santana-do-araguaia-e-4-municipio-que-mais-perdeu-moradores-no-brasil" class="uri">https://www.gazetacarajas.com/noticia/santana-do-araguaia-e-4-municipio-que-mais-perdeu-moradores-no-brasil</a>. Acesso em: 16 jun. 2026.</p>
 <p>Folha de S.Paulo - Questão agrária: Desapropriação vira negócio no Pará - 15/08/99. Disponível em: <a href="https://www1.folha.uol.com.br/fsp/brasil/fc15089914.htm" class="uri">https://www1.folha.uol.com.br/fsp/brasil/fc15089914.htm</a>. Acesso em: 16 jun. 2026.</p>
 <p>LEIROS, Marcela. Quem são os Iny Karajá, etnia às margens do Rio Araguaia. Revista Cenarium, 28 abr. 2025. Disponível em: <a href="https://revistacenarium.com.br/quem-sao-os-iny-karaja-etnia-que-preserva-tradicao-as-margens-do-rio-araguaia/" class="uri">https://revistacenarium.com.br/quem-sao-os-iny-karaja-etnia-que-preserva-tradicao-as-margens-do-rio-araguaia/</a>. Acesso em: 16 jun. 2026</p>
-<p>LENGERT, Mathias. As vítimas do Araguaia: famílias de camponeses mortos na ditadura pedem reparação. Disponível em: <a href="https://www.ihu.unisinos.br/categorias/655795-as-vitimas-do-araguaia-familias-de-camponeses-mortos-na-ditadura-pedem-reparacao" class="uri">https://www.ihu.unisinos.br/categorias/655795-as-vitimas-do-araguaia-familias-de-camponeses-mortos-na-ditadura-pedem-reparacao</a>. Acesso em: 16 jun. 2026.</p>
-<p>MPF vai à Justiça pela demarcação da Terra Indígena Karajá em Santana do Araguaia : Disponível em: <a href="https://www.olharalerta.com.br/noticia/68085/mpf-vai-a-justica-pela-demarcacao-da-terra-indigena-karaja-em-santana-do-araguaia" class="uri">https://www.olharalerta.com.br/noticia/68085/mpf-vai-a-justica-pela-demarcacao-da-terra-indigena-karaja-em-santana-do-araguaia</a>. Acesso em: 16 jun. 2026.</p>
+<p>MPF vai à Justiça pela demarcação da Terra Indígena Karajá em Santana do Araguaia: Disponível em: <a href="https://www.olharalerta.com.br/noticia/68085/mpf-vai-a-justica-pela-demarcacao-da-terra-indigena-karaja-em-santana-do-araguaia" class="uri">https://www.olharalerta.com.br/noticia/68085/mpf-vai-a-justica-pela-demarcacao-da-terra-indigena-karaja-em-santana-do-araguaia</a>. Acesso em: 16 jun. 2026.</p>
 <p>OLIVEIRA, Marcelo. PA: Volkswagen teve fazenda com trabalho escravo e verba da ditadura. Agência Pública, 31 jan. 2025. Disponível em: <a href="https://apublica.org/2025/01/volkswagen-manteve-por-12-anos-fazenda-com-trabalho-escravo-no-pa-financiada-pela-ditadura/" class="uri">https://apublica.org/2025/01/volkswagen-manteve-por-12-anos-fazenda-com-trabalho-escravo-no-pa-financiada-pela-ditadura/</a>. Acesso em: 16 jun. 2026</p>
 <p>PA - Conflitos e disputas por terra na Amazônia são marcados por assassinatos na região. Mapa de Conflitos Envolvendo Injustiça Ambiental e Saúde no Brasil, [S.d.]. Disponível em: <a href="https://mapadeconflitos.ensp.fiocruz.br/conflito/pa-conflitos-e-disputas-por-terra-na-amazonia-sao-marcados-por-assassinatos-na-regiao/" class="uri">https://mapadeconflitos.ensp.fiocruz.br/conflito/pa-conflitos-e-disputas-por-terra-na-amazonia-sao-marcados-por-assassinatos-na-regiao/</a>. Acesso em: 16 jun. 2026</p>
 <p>SANTANA, Diego. Casos de Covid-19 aumentam entre povos indígenas de Santana do Araguaia. ZÉ DUDU, 17 jun. 2020. Disponível em: <a href="https://www.zedudu.com.br/casos-de-covid-19-aumentam-entre-povos-indigenas-de-santana-do-araguaia/" class="uri">https://www.zedudu.com.br/casos-de-covid-19-aumentam-entre-povos-indigenas-de-santana-do-araguaia/</a>. Acesso em: 16 jun. 2026</p>
@@ -2323,156 +1810,158 @@ Processando raster para o ano: 2024...
 </section>
 <section id="proposta-de-manejo-integrado" class="level1">
 <h1>4. Proposta de manejo integrado</h1>
-<p>Estabelecer Terra Indígena Iny/Kayapó próxima à paisagem 2 Aumentar em cerca de 34% a coberta de Formação Florestal regularizando as reservas legais do município adequação ambiental para imóveis rurais</p>
+<p>Uma das propostas é demarcar uma Terra Indígena Iny/Karajá próxima à paisagem 2; tendo seu território na paisagem 2, e ao sul e oeste dessa paisagem, se estendendo até o Rio Araguaia. Essa TI deve compreender área de Floresta de Terra Firme, e áreas de Floresta Alagável e Formação Savânica. É importante que a terra indígena possua áreas as margens do rio Araguaia, tanto para que a população indígena possa utilizar o rio e seus recursos pesqueiros, como viver próximo às margens do Rio Araguaia faz parte da história e identidade cultural dos Iny. É importante também que haja território de Terra Firme dentro da TI (Terra Indígena) para que os Iny possam plantar, caçar e construir aldeias permamentes e cemitérios. O estabelecimento de uma TI Karajá em Santana do Aragauaia proporcionará recursos para a subexistência e maior segurança para os Iny que vivem no sudeste do Pará, auxiliando também a preservar o modo de vida e cultura desse povo. Além disso, o estabelicimento de uma TI auxilia na cobertura vegetal e conservação da biodiversidade nessa área. Para que isso seja possível será necessário o envolvimento da FUNAI e do Governo Federal, a despropriação das áreas que serão destinadas à Terra Indígena e a recuperação de áreas nesse local que hoje estão ocupadas por soja e pastagem.</p>
+<p>Se faz necessária também a melhoria da qualidade de vida da população rural (levando também em conta a grande dimuição da população em pouco menos de uma década), envolvendo não só o acesso à saúde e à educação como também a diminuição de conflitos rurais. Quanto ao acesso a educação, esse não se extende apenas ao ensino básico, mas também à formação e qualificação de trabalhadores rurais para práticas rentáveis e com menor impacto amiental, como extrativismo, agroflorestas ou sivicultura próxima áreas florestais, diminuindo o efeito de borda e aumentando conectividade entre os fragmentos. Além disso, maior acesso a educação possibilita com que jovens tenham outras oportunidades de trabalho além do campo, dimuindo a expansão das áreas rurais. Quanto aos conflitos rurais, esses se ocorrem atualmente em sua maioria em assentamenos, sendo necessária a regularização da reforma agrária nos locais de conflito. Além disso, é preciso uma maior fiscalização sobre a venda de terras dentro dos assentamentos de forma ilegal ou irregular, que tem sido um dos causadores de conflitos. Para monitoramento dessa meta, podem ser utilizados indices de conflitos rurais, nível de escolaridade médio, idh do município e uso do solo nos assentamentos.</p>
+<p>A seguir foram geradas imagens com os imóveis rurais declarados no Sigef e SNCI com a retirada dos imóveis dentro dos assentamentos, pois diante das reportagens e relatos sobre conflitos de terras dentro dos assentamento, preferi considerar que a maior parte dos os assentamos ou todos eles não estão totalmente regularizados quanto a divisão e titulação de terras. Também gerei um mapa com todos os assentamentos e imóveis rurais declarados nesses assentamentos. Além disso, calculei cobertura florestal no imóveis com mais de 4 módulos rurais (300 ha em santana do Araguaia) para saber se eles estão regularizados ambientalmente quanto à Reserva Legal.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Preparação dos Shapefiles Fundiários e de Assentamentos ---</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Criando limite para município</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>vetor_total <span class="ot">&lt;-</span> <span class="fu">as.polygons</span>(r_utm, <span class="at">dissolve =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>municipio_limite <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(vetor_total)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregar o shapefile de municípios do Pará (ajuste o caminho conforme necessário)</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>municipios_pa <span class="ot">&lt;-</span> <span class="fu">vect</span>(<span class="st">"C:/Users/Anna/Documents/disciplinas_bach/ecologia_de_paisagens/diario_ecologia_anna/exercicios/shapefiles/PA_Municipios_2025/PA_Municipios_2025.shp"</span>)</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar apenas Santana do Araguaia</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>santana_poligono <span class="ot">&lt;-</span> municipios_pa[municipios_pa<span class="sc">$</span>NM_MUN <span class="sc">==</span> <span class="st">"Santana do Araguaia"</span>, ]</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregar SNCI e SIGEF</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>shp_snci <span class="ot">&lt;-</span> <span class="fu">vect</span>(<span class="st">"C:/Users/Anna/Documents/disciplinas_bach/ecologia_de_paisagens/diario_ecologia_anna/exercicios/shapefiles/SNCI_Brasil_PA/SNCI_Brasil_PA.shp"</span>)</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>shp_sigef <span class="ot">&lt;-</span> <span class="fu">vect</span>(<span class="st">"C:/Users/Anna/Documents/disciplinas_bach/ecologia_de_paisagens/diario_ecologia_anna/exercicios/shapefiles/Sigef_Brasil_PA/Sigef_Brasil_PA.shp"</span>)</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregar o shapefile de Assentamentos</span></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>shp_assen <span class="ot">&lt;-</span> <span class="fu">vect</span>(<span class="st">"C:/Users/Anna/Documents/disciplinas_bach/ecologia_de_paisagens/diario_ecologia_anna/exercicios/shapefiles/Assentamento_Brasil/Assentamento_Brasil.shp"</span>)</span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Reprojetar todos para o CRS do polígono de Santana</span></span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>shp_snci <span class="ot">&lt;-</span> <span class="fu">project</span>(shp_snci, <span class="fu">crs</span>(santana_poligono))</span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>shp_sigef <span class="ot">&lt;-</span> <span class="fu">project</span>(shp_sigef, <span class="fu">crs</span>(santana_poligono))</span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>shp_assen <span class="ot">&lt;-</span> <span class="fu">project</span>(shp_assen, <span class="fu">crs</span>(santana_poligono))</span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Cortar todos pelo limite de Santana do Araguaia</span></span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>snci_santana <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">intersect</span>(shp_snci, santana_poligono)</span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>sigef_santana <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">intersect</span>(shp_sigef, santana_poligono)</span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>assen_santana <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">intersect</span>(shp_assen, santana_poligono)</span>
-<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Reprojetar o shapefile de assentamentos para o raster de cobertura (para uso posterior)</span></span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>assen_santana_utm <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(assen_santana, <span class="fu">crs</span>(r_utm))</span>
-<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a><span class="co"># --- União de SIGEF e SNCI e Resolução de Sobreposição com Assentamentos ---</span></span>
-<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a><span class="co"># 3.1. Unir SIGEF e SNCI</span></span>
-<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Usamos 'union' para combinar as geometrias e atributos. Isso cria novas feições onde há sobreposição.</span></span>
-<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Para simplificar a análise subsequente, podemos dissolver as geometrias unidas.</span></span>
-<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>terras_fund_uniao <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">union</span>(snci_santana, sigef_santana)</span>
-<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Se houver atributos duplicados ou que não são relevantes para a união, podemos simplificar antes de dissolver</span></span>
-<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Ou selecionar apenas os atributos que queremos manter.</span></span>
-<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Por exemplo, se quisermos apenas a geometria, podemos fazer:</span></span>
-<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a><span class="co"># terras_fund_uniao_geom &lt;- terra::aggregate(terras_fund_uniao, dissolve = TRUE)</span></span>
-<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Para manter os atributos e lidar com sobreposições, 'union' é o correto.</span></span>
-<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a><span class="co"># 3.2. Remover áreas de assentamento da união SIGEF/SNCI</span></span>
-<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a><span class="co"># As áreas de assentamento serão 'apagadas' da união SIGEF/SNCI.</span></span>
-<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>fund_santana_sem_assentamento <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">erase</span>(terras_fund_uniao, assen_santana)</span>
-<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a><span class="co"># 3.3. Criar SpatVector com a sobreposição dos três (SIGEF+SNCI dentro de Assentamentos)</span></span>
-<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Isso representa as áreas de SIGEF/SNCI que *estão* dentro dos assentamentos.</span></span>
-<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a>fund_santana_apenas_assentamento <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">intersect</span>(terras_fund_uniao, assen_santana)</span>
-<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a><span class="co">#unir imoveis dentro de assentamentos com os limites dos assentamentos</span></span>
-<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a>terras_assen <span class="ot">&lt;-</span> <span class="fu">rbind</span>(fund_santana_apenas_assentamento, assen_santana)</span>
-<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a><span class="co"># Reprojetar o shapefile resultante (sem e apenas assentamentos) para o raster de cobertura</span></span>
-<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a>fund_santana_utm <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(fund_santana_sem_assentamento, <span class="fu">crs</span>(r_utm))</span>
-<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a>assen_santana_utm <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(terras_assen, <span class="fu">crs</span>(r_utm))</span>
-<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a><span class="co"># Cortar e mascarar o raster usando o limite fundiário sem assentamentos</span></span>
-<span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a>r_masked_fund <span class="ot">&lt;-</span> <span class="fu">crop</span>(r_utm, fund_santana_utm)</span>
-<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a>r_masked_fund <span class="ot">&lt;-</span> <span class="fu">mask</span>(r_masked_fund, fund_santana_utm)</span>
-<span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-65"><a href="#cb11-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Cortar e mascarar o raster usando o limite fundiário apenas assentamentos</span></span>
-<span id="cb11-66"><a href="#cb11-66" aria-hidden="true" tabindex="-1"></a>r_masked_assen <span class="ot">&lt;-</span> <span class="fu">crop</span>(r_utm, assen_santana_utm)</span>
-<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a>r_masked_assen <span class="ot">&lt;-</span> <span class="fu">mask</span>(r_masked_assen, assen_santana_utm)</span>
-<span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a><span class="co"># --- 4. Cálculo de Áreas e Agrupamento ---</span></span>
-<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a><span class="co"># No terra, expanse() calcula em m². Dividimos por 10.000 para hectares.</span></span>
-<span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a>fund_santana_utm<span class="sc">$</span>area_ha <span class="ot">&lt;-</span> <span class="fu">expanse</span>(fund_santana_utm, <span class="at">unit =</span> <span class="st">"ha"</span>)</span>
-<span id="cb11-73"><a href="#cb11-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-74"><a href="#cb11-74" aria-hidden="true" tabindex="-1"></a><span class="co"># Criar os dois grupos</span></span>
-<span id="cb11-75"><a href="#cb11-75" aria-hidden="true" tabindex="-1"></a>pequenas <span class="ot">&lt;-</span> fund_santana_utm[fund_santana_utm<span class="sc">$</span>area_ha <span class="sc">&lt;=</span> <span class="dv">300</span>, ]</span>
-<span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a>grandes  <span class="ot">&lt;-</span> fund_santana_utm[fund_santana_utm<span class="sc">$</span>area_ha <span class="sc">&gt;</span> <span class="dv">300</span>, ]</span>
-<span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a><span class="co"># --- 5. Calcular Proporção das Classes (PLAND) ---</span></span>
-<span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a><span class="co"># IDs solicitados: 3, 4, 6, 11 e 12 (Formação Campestre é ID 12 no MapBiomas)</span></span>
-<span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a><span class="co">#ids_interesse &lt;- c(3, 4, 6, 11, 12)</span></span>
-<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a><span class="co"># Função para calcular PLAND (Percentage of Landscape) para um grupo ou feição individual</span></span>
-<span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a>calcular_pland <span class="ot">&lt;-</span> <span class="cf">function</span>(raster, mascara, titulo) {</span>
-<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Corta o raster pela máscara do grupo</span></span>
-<span id="cb11-85"><a href="#cb11-85" aria-hidden="true" tabindex="-1"></a>  r_crop <span class="ot">&lt;-</span> <span class="fu">crop</span>(raster, mascara)</span>
-<span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a>  r_mask <span class="ot">&lt;-</span> <span class="fu">mask</span>(r_crop, mascara)</span>
-<span id="cb11-87"><a href="#cb11-87" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb11-88"><a href="#cb11-88" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calcula a métrica PLAND (porcentagem da classe)</span></span>
-<span id="cb11-89"><a href="#cb11-89" aria-hidden="true" tabindex="-1"></a>  metricas <span class="ot">&lt;-</span> <span class="fu">calculate_lsm</span>(r_mask, <span class="at">what =</span> <span class="fu">c</span>(<span class="st">"lsm_c_pland"</span>, <span class="st">"lsm_l_ta"</span>))</span>
-<span id="cb11-90"><a href="#cb11-90" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb11-91"><a href="#cb11-91" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filtra apenas as classes de interesse e organiza</span></span>
-<span id="cb11-92"><a href="#cb11-92" aria-hidden="true" tabindex="-1"></a>  resultado <span class="ot">&lt;-</span> metricas <span class="sc">%&gt;%</span></span>
-<span id="cb11-93"><a href="#cb11-93" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(legenda, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"class"</span> <span class="ot">=</span> <span class="st">"id"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb11-94"><a href="#cb11-94" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Grupo =</span> titulo) <span class="sc">%&gt;%</span></span>
-<span id="cb11-95"><a href="#cb11-95" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Grupo, Categoria, value)</span>
-<span id="cb11-96"><a href="#cb11-96" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb11-97"><a href="#cb11-97" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(resultado)</span>
-<span id="cb11-98"><a href="#cb11-98" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb11-99"><a href="#cb11-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-100"><a href="#cb11-100" aria-hidden="true" tabindex="-1"></a><span class="co"># Executar para os dois grupos como um todo</span></span>
-<span id="cb11-101"><a href="#cb11-101" aria-hidden="true" tabindex="-1"></a>res_pequenas_total <span class="ot">&lt;-</span> <span class="fu">calcular_pland</span>(r_utm, pequenas, <span class="st">"Até 300 ha (Total)"</span>)</span>
-<span id="cb11-102"><a href="#cb11-102" aria-hidden="true" tabindex="-1"></a>res_grandes_total  <span class="ot">&lt;-</span> <span class="fu">calcular_pland</span>(r_utm, grandes, <span class="st">"Mais de 300 ha (Total)"</span>)</span>
-<span id="cb11-103"><a href="#cb11-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-104"><a href="#cb11-104" aria-hidden="true" tabindex="-1"></a><span class="co"># --- 6. Calcular Métricas Individualmente para Áreas &gt; 300 ha ---</span></span>
-<span id="cb11-105"><a href="#cb11-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-106"><a href="#cb11-106" aria-hidden="true" tabindex="-1"></a><span class="co"># Salavar resultados</span></span>
-<span id="cb11-107"><a href="#cb11-107" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(res_pequenas_total, <span class="st">"metricas_total_ate_300.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb11-108"><a href="#cb11-108" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(res_grandes_total, <span class="st">"metricas_total_maisde_300.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-110"><a href="#cb11-110" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar a lista para armazenar os resultados individuais</span></span>
-<span id="cb11-111"><a href="#cb11-111" aria-hidden="true" tabindex="-1"></a>metricas_grandes_individuais <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb11-112"><a href="#cb11-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-113"><a href="#cb11-113" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterar sobre cada feição no grupo \'grandes\'</span></span>
-<span id="cb11-114"><a href="#cb11-114" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">nrow</span>(grandes) <span class="sc">&gt;</span> <span class="dv">0</span>) { <span class="co"># Adicionada verificação para garantir que há propriedades no grupo</span></span>
-<span id="cb11-115"><a href="#cb11-115" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(grandes)) {</span>
-<span id="cb11-116"><a href="#cb11-116" aria-hidden="true" tabindex="-1"></a>    propriedade_atual <span class="ot">&lt;-</span> grandes[i, ]</span>
-<span id="cb11-117"><a href="#cb11-117" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-118"><a href="#cb11-118" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Criar um identificador para a propriedade</span></span>
-<span id="cb11-119"><a href="#cb11-119" aria-hidden="true" tabindex="-1"></a>    id_propriedade <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Propriedade_"</span>, i, <span class="st">"_Area_"</span>, <span class="fu">round</span>(propriedade_atual<span class="sc">$</span>area_ha, <span class="dv">2</span>), <span class="st">"ha"</span>)</span>
-<span id="cb11-120"><a href="#cb11-120" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-121"><a href="#cb11-121" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calcular PLAND para a propriedade individual</span></span>
-<span id="cb11-122"><a href="#cb11-122" aria-hidden="true" tabindex="-1"></a>    metricas_individuais <span class="ot">&lt;-</span> <span class="fu">calcular_pland</span>(r_utm, propriedade_atual, id_propriedade)</span>
-<span id="cb11-123"><a href="#cb11-123" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-124"><a href="#cb11-124" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Adicionar ao resultado, se não for NULL</span></span>
-<span id="cb11-125"><a href="#cb11-125" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(metricas_individuais)) {</span>
-<span id="cb11-126"><a href="#cb11-126" aria-hidden="true" tabindex="-1"></a>      metricas_grandes_individuais[[id_propriedade]] <span class="ot">&lt;-</span> metricas_individuais</span>
-<span id="cb11-127"><a href="#cb11-127" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb11-128"><a href="#cb11-128" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb11-129"><a href="#cb11-129" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb11-130"><a href="#cb11-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-131"><a href="#cb11-131" aria-hidden="true" tabindex="-1"></a><span class="co"># Combinar todos os resultados individuais em um único data frame</span></span>
-<span id="cb11-132"><a href="#cb11-132" aria-hidden="true" tabindex="-1"></a>metricas_grandes_individuais_df <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, metricas_grandes_individuais)</span>
-<span id="cb11-133"><a href="#cb11-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-134"><a href="#cb11-134" aria-hidden="true" tabindex="-1"></a><span class="co">#salvar resultados</span></span>
-<span id="cb11-135"><a href="#cb11-135" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(metricas_grandes_individuais_df, <span class="st">"metricas_individual_maisde_300.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb11-136"><a href="#cb11-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-137"><a href="#cb11-137" aria-hidden="true" tabindex="-1"></a><span class="co"># --- 7. Visualização (Opcional) ---</span></span>
-<span id="cb11-138"><a href="#cb11-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-139"><a href="#cb11-139" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar o resultado da união SIGEF/SNCI sem assentamentos</span></span>
-<span id="cb11-140"><a href="#cb11-140" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb11-141"><a href="#cb11-141" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_spatraster</span>(<span class="at">data =</span> r_masked_fund) <span class="sc">+</span></span>
-<span id="cb11-142"><a href="#cb11-142" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_spatvector</span>(<span class="at">data =</span> fund_santana_utm, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> legenda<span class="sc">$</span>Cores, <span class="at">na.value =</span> <span class="st">"white"</span>, <span class="at">name =</span> <span class="st">"Uso do Solo"</span>) <span class="sc">+</span></span>
-<span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_spatvector</span>(<span class="at">data =</span> municipio_limite, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Imóveis rurais (SIGEF/SNCI) fora dos Assentamentos em Santana do Araguaia - 2025"</span>) <span class="sc">+</span></span>
-<span id="cb11-146"><a href="#cb11-146" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Preparação dos Shapefiles Fundiários e de Assentamentos ---</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Criando limite para município</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>vetor_total <span class="ot">&lt;-</span> <span class="fu">as.polygons</span>(r_utm, <span class="at">dissolve =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>municipio_limite <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(vetor_total)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregar o shapefile de municípios do Pará (ajuste o caminho conforme necessário)</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>municipios_pa <span class="ot">&lt;-</span> <span class="fu">vect</span>(<span class="st">"C:/Users/Anna/Documents/disciplinas_bach/ecologia_de_paisagens/diario_ecologia_anna/exercicios/shapefiles/PA_Municipios_2025/PA_Municipios_2025.shp"</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar apenas Santana do Araguaia</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>santana_poligono <span class="ot">&lt;-</span> municipios_pa[municipios_pa<span class="sc">$</span>NM_MUN <span class="sc">==</span> <span class="st">"Santana do Araguaia"</span>, ]</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregar SNCI e SIGEF</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>shp_snci <span class="ot">&lt;-</span> <span class="fu">vect</span>(<span class="st">"C:/Users/Anna/Documents/disciplinas_bach/ecologia_de_paisagens/diario_ecologia_anna/exercicios/shapefiles/SNCI_Brasil_PA/SNCI_Brasil_PA.shp"</span>)</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>shp_sigef <span class="ot">&lt;-</span> <span class="fu">vect</span>(<span class="st">"C:/Users/Anna/Documents/disciplinas_bach/ecologia_de_paisagens/diario_ecologia_anna/exercicios/shapefiles/Sigef_Brasil_PA/Sigef_Brasil_PA.shp"</span>)</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregar o shapefile de Assentamentos</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>shp_assen <span class="ot">&lt;-</span> <span class="fu">vect</span>(<span class="st">"C:/Users/Anna/Documents/disciplinas_bach/ecologia_de_paisagens/diario_ecologia_anna/exercicios/shapefiles/Assentamento_Brasil/Assentamento_Brasil.shp"</span>)</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Reprojetar todos para o CRS do polígono de Santana</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>shp_snci <span class="ot">&lt;-</span> <span class="fu">project</span>(shp_snci, <span class="fu">crs</span>(santana_poligono))</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>shp_sigef <span class="ot">&lt;-</span> <span class="fu">project</span>(shp_sigef, <span class="fu">crs</span>(santana_poligono))</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>shp_assen <span class="ot">&lt;-</span> <span class="fu">project</span>(shp_assen, <span class="fu">crs</span>(santana_poligono))</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Cortar todos pelo limite de Santana do Araguaia</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>snci_santana <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">intersect</span>(shp_snci, santana_poligono)</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>sigef_santana <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">intersect</span>(shp_sigef, santana_poligono)</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>assen_santana <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">intersect</span>(shp_assen, santana_poligono)</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Reprojetar o shapefile de assentamentos para o raster de cobertura (para uso posterior)</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>assen_santana_utm <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(assen_santana, <span class="fu">crs</span>(r_utm))</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a><span class="co"># --- União de SIGEF e SNCI e Resolução de Sobreposição com Assentamentos ---</span></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a><span class="co"># 3.1. Unir SIGEF e SNCI</span></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Usamos 'union' para combinar as geometrias e atributos. Isso cria novas feições onde há sobreposição.</span></span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Para simplificar a análise subsequente, podemos dissolver as geometrias unidas.</span></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>terras_fund_uniao <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">union</span>(snci_santana, sigef_santana)</span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Se houver atributos duplicados ou que não são relevantes para a união, podemos simplificar antes de dissolver</span></span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Ou selecionar apenas os atributos que queremos manter.</span></span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Por exemplo, se quisermos apenas a geometria, podemos fazer:</span></span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a><span class="co"># terras_fund_uniao_geom &lt;- terra::aggregate(terras_fund_uniao, dissolve = TRUE)</span></span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Para manter os atributos e lidar com sobreposições, 'union' é o correto.</span></span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a><span class="co"># 3.2. Remover áreas de assentamento da união SIGEF/SNCI</span></span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a><span class="co"># As áreas de assentamento serão 'apagadas' da união SIGEF/SNCI.</span></span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>fund_santana_sem_assentamento <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">erase</span>(terras_fund_uniao, assen_santana)</span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a><span class="co"># 3.3. Criar SpatVector com a sobreposição dos três (SIGEF+SNCI dentro de Assentamentos)</span></span>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Isso representa as áreas de SIGEF/SNCI que *estão* dentro dos assentamentos.</span></span>
+<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>fund_santana_apenas_assentamento <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">intersect</span>(terras_fund_uniao, assen_santana)</span>
+<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a><span class="co">#unir imoveis dentro de assentamentos com os limites dos assentamentos</span></span>
+<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a>terras_assen <span class="ot">&lt;-</span> <span class="fu">rbind</span>(fund_santana_apenas_assentamento, assen_santana)</span>
+<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a><span class="co"># Reprojetar o shapefile resultante (sem e apenas assentamentos) para o raster de cobertura</span></span>
+<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a>fund_santana_utm <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(fund_santana_sem_assentamento, <span class="fu">crs</span>(r_utm))</span>
+<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a>assen_santana_utm <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(terras_assen, <span class="fu">crs</span>(r_utm))</span>
+<span id="cb12-60"><a href="#cb12-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-61"><a href="#cb12-61" aria-hidden="true" tabindex="-1"></a><span class="co"># Cortar e mascarar o raster usando o limite fundiário sem assentamentos</span></span>
+<span id="cb12-62"><a href="#cb12-62" aria-hidden="true" tabindex="-1"></a>r_masked_fund <span class="ot">&lt;-</span> <span class="fu">crop</span>(r_utm, fund_santana_utm)</span>
+<span id="cb12-63"><a href="#cb12-63" aria-hidden="true" tabindex="-1"></a>r_masked_fund <span class="ot">&lt;-</span> <span class="fu">mask</span>(r_masked_fund, fund_santana_utm)</span>
+<span id="cb12-64"><a href="#cb12-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-65"><a href="#cb12-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Cortar e mascarar o raster usando o limite fundiário apenas assentamentos</span></span>
+<span id="cb12-66"><a href="#cb12-66" aria-hidden="true" tabindex="-1"></a>r_masked_assen <span class="ot">&lt;-</span> <span class="fu">crop</span>(r_utm, assen_santana_utm)</span>
+<span id="cb12-67"><a href="#cb12-67" aria-hidden="true" tabindex="-1"></a>r_masked_assen <span class="ot">&lt;-</span> <span class="fu">mask</span>(r_masked_assen, assen_santana_utm)</span>
+<span id="cb12-68"><a href="#cb12-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-69"><a href="#cb12-69" aria-hidden="true" tabindex="-1"></a><span class="co"># --- 4. Cálculo de Áreas e Agrupamento ---</span></span>
+<span id="cb12-70"><a href="#cb12-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-71"><a href="#cb12-71" aria-hidden="true" tabindex="-1"></a><span class="co"># No terra, expanse() calcula em m². Dividimos por 10.000 para hectares.</span></span>
+<span id="cb12-72"><a href="#cb12-72" aria-hidden="true" tabindex="-1"></a>fund_santana_utm<span class="sc">$</span>area_ha <span class="ot">&lt;-</span> <span class="fu">expanse</span>(fund_santana_utm, <span class="at">unit =</span> <span class="st">"ha"</span>)</span>
+<span id="cb12-73"><a href="#cb12-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-74"><a href="#cb12-74" aria-hidden="true" tabindex="-1"></a><span class="co"># Criar os dois grupos</span></span>
+<span id="cb12-75"><a href="#cb12-75" aria-hidden="true" tabindex="-1"></a>pequenas <span class="ot">&lt;-</span> fund_santana_utm[fund_santana_utm<span class="sc">$</span>area_ha <span class="sc">&lt;=</span> <span class="dv">300</span>, ]</span>
+<span id="cb12-76"><a href="#cb12-76" aria-hidden="true" tabindex="-1"></a>grandes  <span class="ot">&lt;-</span> fund_santana_utm[fund_santana_utm<span class="sc">$</span>area_ha <span class="sc">&gt;</span> <span class="dv">300</span>, ]</span>
+<span id="cb12-77"><a href="#cb12-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-78"><a href="#cb12-78" aria-hidden="true" tabindex="-1"></a><span class="co"># --- 5. Calcular Proporção das Classes (PLAND) ---</span></span>
+<span id="cb12-79"><a href="#cb12-79" aria-hidden="true" tabindex="-1"></a><span class="co"># IDs solicitados: 3, 4, 6, 11 e 12 (Formação Campestre é ID 12 no MapBiomas)</span></span>
+<span id="cb12-80"><a href="#cb12-80" aria-hidden="true" tabindex="-1"></a><span class="co">#ids_interesse &lt;- c(3, 4, 6, 11, 12)</span></span>
+<span id="cb12-81"><a href="#cb12-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-82"><a href="#cb12-82" aria-hidden="true" tabindex="-1"></a><span class="co"># Função para calcular PLAND (Percentage of Landscape) para um grupo ou feição individual</span></span>
+<span id="cb12-83"><a href="#cb12-83" aria-hidden="true" tabindex="-1"></a>calcular_pland <span class="ot">&lt;-</span> <span class="cf">function</span>(raster, mascara, titulo) {</span>
+<span id="cb12-84"><a href="#cb12-84" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Corta o raster pela máscara do grupo</span></span>
+<span id="cb12-85"><a href="#cb12-85" aria-hidden="true" tabindex="-1"></a>  r_crop <span class="ot">&lt;-</span> <span class="fu">crop</span>(raster, mascara)</span>
+<span id="cb12-86"><a href="#cb12-86" aria-hidden="true" tabindex="-1"></a>  r_mask <span class="ot">&lt;-</span> <span class="fu">mask</span>(r_crop, mascara)</span>
+<span id="cb12-87"><a href="#cb12-87" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-88"><a href="#cb12-88" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calcula a métrica PLAND (porcentagem da classe)</span></span>
+<span id="cb12-89"><a href="#cb12-89" aria-hidden="true" tabindex="-1"></a>  metricas <span class="ot">&lt;-</span> <span class="fu">calculate_lsm</span>(r_mask, <span class="at">what =</span> <span class="fu">c</span>(<span class="st">"lsm_c_pland"</span>, <span class="st">"lsm_l_ta"</span>))</span>
+<span id="cb12-90"><a href="#cb12-90" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-91"><a href="#cb12-91" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filtra apenas as classes de interesse e organiza</span></span>
+<span id="cb12-92"><a href="#cb12-92" aria-hidden="true" tabindex="-1"></a>  resultado <span class="ot">&lt;-</span> metricas <span class="sc">%&gt;%</span></span>
+<span id="cb12-93"><a href="#cb12-93" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(legenda, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"class"</span> <span class="ot">=</span> <span class="st">"id"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-94"><a href="#cb12-94" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Grupo =</span> titulo) <span class="sc">%&gt;%</span></span>
+<span id="cb12-95"><a href="#cb12-95" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Grupo, Categoria, value)</span>
+<span id="cb12-96"><a href="#cb12-96" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-97"><a href="#cb12-97" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(resultado)</span>
+<span id="cb12-98"><a href="#cb12-98" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-99"><a href="#cb12-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-100"><a href="#cb12-100" aria-hidden="true" tabindex="-1"></a><span class="co"># Executar para os dois grupos como um todo</span></span>
+<span id="cb12-101"><a href="#cb12-101" aria-hidden="true" tabindex="-1"></a>res_pequenas_total <span class="ot">&lt;-</span> <span class="fu">calcular_pland</span>(r_utm, pequenas, <span class="st">"Até 300 ha (Total)"</span>)</span>
+<span id="cb12-102"><a href="#cb12-102" aria-hidden="true" tabindex="-1"></a>res_grandes_total  <span class="ot">&lt;-</span> <span class="fu">calcular_pland</span>(r_utm, grandes, <span class="st">"Mais de 300 ha (Total)"</span>)</span>
+<span id="cb12-103"><a href="#cb12-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-104"><a href="#cb12-104" aria-hidden="true" tabindex="-1"></a><span class="co"># --- 6. Calcular Métricas Individualmente para Áreas &gt; 300 ha ---</span></span>
+<span id="cb12-105"><a href="#cb12-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-106"><a href="#cb12-106" aria-hidden="true" tabindex="-1"></a><span class="co"># Salavar resultados</span></span>
+<span id="cb12-107"><a href="#cb12-107" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(res_pequenas_total, <span class="st">"metricas_total_ate_300.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb12-108"><a href="#cb12-108" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(res_grandes_total, <span class="st">"metricas_total_maisde_300.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb12-109"><a href="#cb12-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-110"><a href="#cb12-110" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializar a lista para armazenar os resultados individuais</span></span>
+<span id="cb12-111"><a href="#cb12-111" aria-hidden="true" tabindex="-1"></a>metricas_grandes_individuais <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb12-112"><a href="#cb12-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-113"><a href="#cb12-113" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterar sobre cada feição no grupo \'grandes\'</span></span>
+<span id="cb12-114"><a href="#cb12-114" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">nrow</span>(grandes) <span class="sc">&gt;</span> <span class="dv">0</span>) { <span class="co"># Adicionada verificação para garantir que há propriedades no grupo</span></span>
+<span id="cb12-115"><a href="#cb12-115" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(grandes)) {</span>
+<span id="cb12-116"><a href="#cb12-116" aria-hidden="true" tabindex="-1"></a>    propriedade_atual <span class="ot">&lt;-</span> grandes[i, ]</span>
+<span id="cb12-117"><a href="#cb12-117" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-118"><a href="#cb12-118" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Criar um identificador para a propriedade</span></span>
+<span id="cb12-119"><a href="#cb12-119" aria-hidden="true" tabindex="-1"></a>    id_propriedade <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Propriedade_"</span>, i, <span class="st">"_Area_"</span>, <span class="fu">round</span>(propriedade_atual<span class="sc">$</span>area_ha, <span class="dv">2</span>), <span class="st">"ha"</span>)</span>
+<span id="cb12-120"><a href="#cb12-120" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-121"><a href="#cb12-121" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calcular PLAND para a propriedade individual</span></span>
+<span id="cb12-122"><a href="#cb12-122" aria-hidden="true" tabindex="-1"></a>    metricas_individuais <span class="ot">&lt;-</span> <span class="fu">calcular_pland</span>(r_utm, propriedade_atual, id_propriedade)</span>
+<span id="cb12-123"><a href="#cb12-123" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-124"><a href="#cb12-124" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Adicionar ao resultado, se não for NULL</span></span>
+<span id="cb12-125"><a href="#cb12-125" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(metricas_individuais)) {</span>
+<span id="cb12-126"><a href="#cb12-126" aria-hidden="true" tabindex="-1"></a>      metricas_grandes_individuais[[id_propriedade]] <span class="ot">&lt;-</span> metricas_individuais</span>
+<span id="cb12-127"><a href="#cb12-127" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb12-128"><a href="#cb12-128" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-129"><a href="#cb12-129" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-130"><a href="#cb12-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-131"><a href="#cb12-131" aria-hidden="true" tabindex="-1"></a><span class="co"># Combinar todos os resultados individuais em um único data frame</span></span>
+<span id="cb12-132"><a href="#cb12-132" aria-hidden="true" tabindex="-1"></a>metricas_grandes_individuais_df <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, metricas_grandes_individuais)</span>
+<span id="cb12-133"><a href="#cb12-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-134"><a href="#cb12-134" aria-hidden="true" tabindex="-1"></a><span class="co">#salvar resultados</span></span>
+<span id="cb12-135"><a href="#cb12-135" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(metricas_grandes_individuais_df, <span class="st">"metricas_individual_maisde_300.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb12-136"><a href="#cb12-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-137"><a href="#cb12-137" aria-hidden="true" tabindex="-1"></a><span class="co"># --- 7. Visualização (Opcional) ---</span></span>
+<span id="cb12-138"><a href="#cb12-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-139"><a href="#cb12-139" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar o resultado da união SIGEF/SNCI sem assentamentos</span></span>
+<span id="cb12-140"><a href="#cb12-140" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb12-141"><a href="#cb12-141" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_spatraster</span>(<span class="at">data =</span> r_masked_fund) <span class="sc">+</span></span>
+<span id="cb12-142"><a href="#cb12-142" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_spatvector</span>(<span class="at">data =</span> fund_santana_utm, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb12-143"><a href="#cb12-143" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> legenda<span class="sc">$</span>Cores, <span class="at">na.value =</span> <span class="st">"white"</span>, <span class="at">name =</span> <span class="st">"Uso do Solo"</span>) <span class="sc">+</span></span>
+<span id="cb12-144"><a href="#cb12-144" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_spatvector</span>(<span class="at">data =</span> municipio_limite, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb12-145"><a href="#cb12-145" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Imóveis rurais (SIGEF/SNCI) fora dos Assentamentos em Santana do Araguaia - 2025"</span>) <span class="sc">+</span></span>
+<span id="cb12-146"><a href="#cb12-146" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -2483,14 +1972,14 @@ Processando raster para o ano: 2024...
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar a sobreposição de SIGEF/SNCI com Assentamentos</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_spatraster</span>(<span class="at">data =</span> r_masked_assen) <span class="sc">+</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_spatvector</span>(<span class="at">data =</span> assen_santana_utm, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> legenda<span class="sc">$</span>Cores, <span class="at">na.value =</span> <span class="st">"white"</span>, <span class="at">name =</span> <span class="st">"Uso do Solo"</span>) <span class="sc">+</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_spatvector</span>(<span class="at">data =</span> municipio_limite, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Sobreposição de Terras Fundiárias (SIGEF/SNCI) com Assentamentos em Santana do Araguaia - 2025"</span>) <span class="sc">+</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar a sobreposição de SIGEF/SNCI com Assentamentos</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_spatraster</span>(<span class="at">data =</span> r_masked_assen) <span class="sc">+</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_spatvector</span>(<span class="at">data =</span> assen_santana_utm, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> legenda<span class="sc">$</span>Cores, <span class="at">na.value =</span> <span class="st">"white"</span>, <span class="at">name =</span> <span class="st">"Uso do Solo"</span>) <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_spatvector</span>(<span class="at">data =</span> municipio_limite, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Sobreposição de Terras Fundiárias (SIGEF/SNCI) com Assentamentos em Santana do Araguaia - 2025"</span>) <span class="sc">+</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -2501,11 +1990,11 @@ Processando raster para o ano: 2024...
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.8-0.3368</span>  <span class="co"># 80% de cobertura menos a cobertura florestal atual em imoveis rurais com mais de 4 módulos fiscais (75 ha é o módulo rural desse munícipio), ou seja, com mais de 300 ha</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fl">869397.9136</span><span class="sc">*</span><span class="fl">0.4632</span> <span class="co"># área total de todos os imóveis rurais vezes porcentagem de de área florestal que precisa ser reflorestada</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fl">402705.1</span><span class="sc">/</span><span class="fl">1159142.7</span> <span class="co"># área total que precisa ser reflorestada dividida pela área do município, resultando em quanto porcento do município precisa ser reflorestado</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.8-0.3368</span>  <span class="co"># 80% de cobertura menos a cobertura florestal atual em imoveis rurais com mais de 4 módulos fiscais (75 ha é o módulo rural desse munícipio), ou seja, com mais de 300 ha</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fl">869397.9136</span><span class="sc">*</span><span class="fl">0.4632</span> <span class="co"># área total de todos os imóveis rurais vezes porcentagem de de área florestal que precisa ser reflorestada</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fl">402705.1</span><span class="sc">/</span><span class="fl">1159142.7</span> <span class="co"># área total que precisa ser reflorestada dividida pela área do município, resultando em quanto porcento do município precisa ser reflorestado</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4632
@@ -2513,8 +2002,9 @@ Processando raster para o ano: 2024...
 [1] 0.3474163</code></pre>
 </div>
 </div>
-<section id="referências-1" class="level2">
-<h2 class="anchored" data-anchor-id="referências-1">Referências:</h2>
+<p>Pelos resultados para que todos os imóveis rurais estejam regularizados ambientalmente (considerando apenas Reserva Legal) seria necessário o reflorestamento de cerca de 402705 hectáres equivalente a 34,74% da área do município. Esse valor é uma extrapolações, pois algumas propriedades à leste possuem naturalmente mais área de Formação Savânica que Formação Savânica, não fazendo sentido que 80% desses imóveis sejam convertidos para Formação Florestal. Dessa forma, uma das metas para o município é a adequação ambiental para imóveis rurais com mais de 300 ha, sendo utilizado o CAR (Cadastro Ambiental Rural) como forma de monitoramento, assim como as proporções de cobertura florestal. Para garantir que os proprietários se regularizem pode ser dificultado o acesso à crédito rural aqueles que não se regularizaram ou não estão no processo de regularização. Se possível seria interessante projetar o reflorestamento dessas reservas legais em conjunto com os proprietários de forma a aumentar a conectividade entre fragmentos maiores.</p>
+<section id="referências-3" class="level2">
+<h2 class="anchored" data-anchor-id="referências-3">Referências:</h2>
 <p>https://www.legisweb.com.br/legislacao/?id=416495</p>
 
 
